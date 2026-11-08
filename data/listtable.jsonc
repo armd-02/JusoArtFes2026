@@ -1,0 +1,36 @@
+{
+    "list": {
+        "columns": {
+            "style": [
+                {
+                    "className": "col-12",
+                    "icon": true
+                },
+                {
+                    "className": "col-12 fw-bold"
+                },
+                {
+                    "className": "col-12"
+                },
+                {
+                    "glotName": "act_datetime",
+                    "className": "col-12"
+                }
+            ],
+            "poiFields": [
+                "id",
+                "name",
+                "title",
+                "actor",
+                "eventdate"
+            ],
+            "actFields": [
+                "id",
+                "#name",
+                "title",
+                "actor",
+                "eventdate"
+            ]
+        }
+    }
+}

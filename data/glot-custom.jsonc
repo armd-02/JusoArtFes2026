@@ -1,0 +1,230 @@
+{
+    "listUnnamed": {
+        "ja": "名称不明",
+        "en": "Unnamed place"
+    },
+    "site_title": {
+        "ja": "十三アートフェスマップ2026",
+        "en": "Juso Art-fes Map 2026"
+    },
+    "site_subtitle": {
+        "ja": "by 淀川アートネット",
+        "en": "by YODOGAWA ART-NET"
+    },
+    "about": {
+        "ja": "十三アートフェスマップ2026について",
+        "en": "about Juso Art-fes Map 2026"
+    },
+    "about_message": {
+        "ja": "淀川アートネットが主催している<a href='https://yodogawaartnet.jimdofree.com/%E5%8D%81%E4%B8%89%E3%82%A2%E3%83%BC%E3%83%88%E3%83%95%E3%82%A7%E3%82%B9/'>十三アートフェス</a>をマップに表示します。<br>イベント情報は2026年版のバックエンドから読み込んでいます。",
+        "en": "Hosted by Yodogawa Art Net. Show <a href='https://yodogawaartnet.jimdofree.com/%E5%8D%81%E4%B8%89%E3%82%A2%E3%83%BC%E3%83%88%E3%83%95%E3%82%A7%E3%82%B9/'>Juso Art Fes</a> on the map.<br>Event information is loaded from the 2026 backend."
+    },
+    "owner": {
+        "ja": "淀川アートネットのホームページへ",
+        "en": "To Yodogawa Art Net HomePage"
+    },
+    "licence_title": {
+        "ja": "利用しているデータについて",
+        "en": "About the data being used"
+    },
+    "licence_message": {
+        "ja": "このサイトでは、OpenStreetMapと淀川アートネットのイベント情報を組み合わせています。",
+        "en": "This map combines OpenStreetMap data with event information from Yodogawa Art Net."
+    },
+    "develop_site": {
+        "ja": "十三アートフェスマップの開発サイトへ",
+        "en": "Juso Art-fes Map development site"
+    },
+    "official_site": {
+        "ja": "公式サイト",
+        "en": "Official site"
+    },
+    "more_message": {
+        "ja": "",
+        "en": ""
+    },
+    "listCategory": {
+        "ja": "種類",
+        "en": "Category"
+    },
+    "listName": {
+        "ja": "施設名",
+        "en": "Name"
+    },
+    "listComment": {
+        "ja": "💬 ",
+        "en": "💬 "
+    },
+    "listTitle": {
+        "ja": "施設リスト",
+        "en": "Facilities"
+    },
+    "activities": {
+        "ja": "活動履歴",
+        "en": "Activities"
+    },
+    "actdate": {
+        "ja": "確認日",
+        "en": "Disaster Date"
+    },
+    "act_title": {
+        "ja": "【題名】",
+        "en": "Subject"
+    },
+    "act_attention": {
+        "ja": "写真URLにWikimedia Commonsを指定する時は、タイトルを入力してください(例 File:遊具名.jpg)",
+        "en": "When specifying Wikimedia Commons for the photo URL, enter the title (e.g. File: Play equipment name.jpg)"
+    },
+    "act_date": {
+        "ja": "確認日",
+        "en": "Disaster Date"
+    },
+    "act_address": {
+        "ja": "【住所】",
+        "en": "[Address] "
+    },
+    "act_genre": {
+        "ja": "【ジャンル】",
+        "en": "[Genre] "
+    },
+    "act_keyword": {
+        "ja": "キーワード",
+        "en": "keyword"
+    },
+    "act_memo": {
+        "ja": "",
+        "en": ""
+    },
+    "act_official_url": {
+        "ja": "公式サイトURL",
+        "en": "Public Site URL"
+    },
+    "act_recommend_url": {
+        "ja": "オススメURL",
+        "en": "Recommend URL"
+    },
+    "act_detail_url": {
+        "ja": "【詳細URL】",
+        "en": "[detail URL] "
+    },
+    "act_picture_url1": {
+        "ja": "【写真URL1】",
+        "en": "[Picture URL1] "
+    },
+    "act_picture_url2": {
+        "ja": "【写真URL2】",
+        "en": "[Picture URL2] "
+    },
+    "act_picture_url3": {
+        "ja": "【写真URL3】",
+        "en": "[Picture URL3] "
+    },
+    "act_picture_url4": {
+        "ja": "【写真URL4】",
+        "en": "[Picture URL4] "
+    },
+    "act_picture_url5": {
+        "ja": "【写真URL5】",
+        "en": "[Picture URL5] "
+    },
+    "act_picture_url6": {
+        "ja": "【写真URL6】",
+        "en": "[Picture URL6] "
+    },
+    "act_picture_url7": {
+        "ja": "写真URL7",
+        "en": "Picture URL7"
+    },
+    "act_picture_url8": {
+        "ja": "写真URL8",
+        "en": "Picture URL8"
+    },
+    "act_video_url1": {
+        "ja": "動画URL1",
+        "en": "Video URL1"
+    },
+    "act_license_attention": {
+        "ja": "投稿された情報はオープンデータ(CC0)として公開されます。内緒の情報などは書かないでください。",
+        "en": "The posted information will be published as open data (CC0), so please do not include any confidential information."
+    },
+    "libc": {
+        "ja": "年表",
+        "en": "chronology"
+    },
+    "higayodo_field_actdate": {
+        "ja": "投稿日",
+        "en": "Actdate"
+    },
+    "higayodo_field_title": {
+        "ja": "タイトル",
+        "en": "Title"
+    },
+    "higayodo_field_body": {
+        "ja": "本文",
+        "en": "Body"
+    },
+    "higayodo_field_category": {
+        "ja": "カテゴリ",
+        "en": "Category"
+    },
+    "higayodo_field_memo": {
+        "ja": "メモ",
+        "en": "Memo"
+    },
+    "higayodo_field_address": {
+        "ja": "住所",
+        "en": "Address"
+    },
+    "higayodo_field_openning": {
+        "ja": "開催時間",
+        "en": "Openning"
+    },
+    "higayodo_field_detail_url": {
+        "ja": "詳細URL",
+        "en": "Detail Url"
+    },
+    "higayodo_field_picture_url1": {
+        "ja": "写真URL1",
+        "en": "Picture Url1"
+    },
+    "higayodo_field_picture_url2": {
+        "ja": "写真URL2",
+        "en": "Picture Url2"
+    },
+    "higayodo_field_picture_url3": {
+        "ja": "写真URL3",
+        "en": "Picture Url3"
+    },
+    "act_category": {
+        "ja": "【カテゴリ】",
+        "en": "Category"
+    },
+    "act_actor": {
+        "ja": "【出演/作家】",
+        "en": "Actor"
+    },
+    "act_datetime": {
+        "ja": "【開催日時】",
+        "en": "DateTime"
+    },
+    "act_enter": {
+        "ja": "【来場時】",
+        "en": "entering"
+    },
+    "act_fee": {
+        "ja": "【料金】",
+        "en": "Fee"
+    },
+    "act_reserve": {
+        "ja": "【予約方法】",
+        "en": "Reserve"
+    },
+    "act_organizer": {
+        "ja": "【主催】",
+        "en": "Organizer"
+    },
+    "act_contact": {
+        "ja": "【問合せ】",
+        "en": "Contact"
+    }
+}

@@ -1,0 +1,207 @@
+{
+  "source_repository": "https://github.com/armd-02/JusoArtFes2025",
+  "source_commit": "02c8792641bdd42c53cbbf922e8cfc5bafcc9cbf",
+  "source_data": "data/st_artwork.jsonc",
+  "source_osm_timestamp": "2025-08-24T08:53:09Z",
+  "note": "2025 repository snapshot with a user-supplied DOPPEL.jpg added on 2026-11-08; original OSM data is preserved in yodokabe-2025.osm.json. Blank picture_url1 means no corresponding image is available.",
+  "records": [
+    {
+      "osmid": "node/9739406996",
+      "name": "淀壁",
+      "artist_name": "DOPPEL",
+      "latitude": 34.7233065,
+      "longitude": 135.4975241,
+      "website": "https://www.yodokabe.net/",
+      "picture_url1": "./yodokabe/DOPPEL.jpg"
+    },
+    {
+      "osmid": "node/9739421416",
+      "name": "淀川のナイチンゲール",
+      "artist_name": "BAKIBAKI",
+      "latitude": 34.721266,
+      "longitude": 135.487414,
+      "website": "https://www.yodokabe.net/artist/bakibaki",
+      "picture_url1": "./yodokabe/BAKIBAKI.jpg"
+    },
+    {
+      "osmid": "node/9739427885",
+      "name": "淀壁 LANP",
+      "artist_name": "LANP",
+      "latitude": 34.7215382,
+      "longitude": 135.4880487,
+      "website": "https://www.yodokabe.net/artist/lanp",
+      "picture_url1": "./yodokabe/LANP.jpg"
+    },
+    {
+      "osmid": "node/9739432469",
+      "name": "淀壁",
+      "artist_name": "カツマタヒデユキ",
+      "latitude": 34.7276848,
+      "longitude": 135.4661688,
+      "website": "https://www.yodokabe.net/",
+      "picture_url1": ""
+    },
+    {
+      "osmid": "node/9739438437",
+      "name": "淀壁 borutanext5",
+      "artist_name": "borutanext5",
+      "latitude": 34.7214786,
+      "longitude": 135.4879273,
+      "website": "https://www.yodokabe.net/artist/borutanext5",
+      "picture_url1": "./yodokabe/borutanext5.jpg"
+    },
+    {
+      "osmid": "node/9739456758",
+      "name": "淀壁 NAZE",
+      "artist_name": "NAZE",
+      "latitude": 34.7267967,
+      "longitude": 135.4880111,
+      "website": "https://www.yodokabe.net/artist/naze",
+      "picture_url1": "./yodokabe/NAZE.jpg"
+    },
+    {
+      "osmid": "node/9791802446",
+      "name": "淀壁 kuua",
+      "artist_name": "BAKIBAKI×kuua",
+      "latitude": 34.7192474,
+      "longitude": 135.4831798,
+      "website": "https://www.yodokabe.net/artist/kuua",
+      "picture_url1": "./yodokabe/kuua.jpg"
+    },
+    {
+      "osmid": "node/9791875285",
+      "name": "淀壁",
+      "artist_name": "BIEN",
+      "latitude": 34.7285567,
+      "longitude": 135.4662879,
+      "website": "https://www.yodokabe.net/",
+      "picture_url1": ""
+    },
+    {
+      "osmid": "node/11126651945",
+      "name": "淀壁 Nychos",
+      "artist_name": "Nychos",
+      "latitude": 34.7212124,
+      "longitude": 135.4814635,
+      "website": "https://www.yodokabe.net/artist/nychos",
+      "picture_url1": "./yodokabe/Nychos.jpg"
+    },
+    {
+      "osmid": "node/12161228684",
+      "name": "淀壁 ESSU",
+      "artist_name": "ESSU",
+      "latitude": 34.7218267,
+      "longitude": 135.4831984,
+      "website": "https://www.yodokabe.net/artist/essu",
+      "picture_url1": "./yodokabe/ESSU.jpg"
+    },
+    {
+      "osmid": "node/12304906029",
+      "name": "淀壁 Tokio Aoyama",
+      "artist_name": "Tokio Aoyama",
+      "latitude": 34.7188264,
+      "longitude": 135.4800526,
+      "website": "https://www.yodokabe.net/artist/tokio-aoyama",
+      "picture_url1": "./yodokabe/Tokio_Aoyama.jpg"
+    },
+    {
+      "osmid": "node/12366978243",
+      "name": "淀壁 YUBIA",
+      "artist_name": "YUBIA",
+      "latitude": 34.722602,
+      "longitude": 135.4854269,
+      "website": "https://www.yodokabe.net/artist/yubia",
+      "picture_url1": "./yodokabe/YUBIA.jpg"
+    },
+    {
+      "osmid": "node/12366989510",
+      "name": "淀壁 Obokata Mageko",
+      "artist_name": "Obokata Mageko",
+      "latitude": 34.7227335,
+      "longitude": 135.4849314,
+      "website": "https://www.yodokabe.net/artist/obokata-mageko",
+      "picture_url1": "./yodokabe/obokata-mageko.jpg"
+    },
+    {
+      "osmid": "node/12367065116",
+      "name": "淀壁 Lauren YS",
+      "artist_name": "Lauren YS",
+      "latitude": 34.7222847,
+      "longitude": 135.4838324,
+      "website": "https://www.yodokabe.net/artist/lauren-ys",
+      "picture_url1": "./yodokabe/Lauren_YS.jpg"
+    },
+    {
+      "osmid": "node/13081339340",
+      "name": "淀壁 MUEBON",
+      "artist_name": "MUEBON",
+      "latitude": 34.7188921,
+      "longitude": 135.4809694,
+      "website": "https://www.yodokabe.net/artist/muebon",
+      "picture_url1": "./yodokabe/MUEBON.jpg"
+    },
+    {
+      "osmid": "node/13081341752",
+      "name": "淀壁 NUT",
+      "artist_name": "NUT",
+      "latitude": 34.7205372,
+      "longitude": 135.4808154,
+      "website": "https://www.yodokabe.net/artist/nut",
+      "picture_url1": "./yodokabe/NUT.jpg"
+    },
+    {
+      "osmid": "node/13081341753",
+      "name": "淀壁  SUIKO",
+      "artist_name": "SUIKO",
+      "latitude": 34.7202791,
+      "longitude": 135.4807548,
+      "website": "https://www.yodokabe.net/artist/suiko",
+      "picture_url1": "./yodokabe/SUIKO.jpg"
+    },
+    {
+      "osmid": "node/13081355631",
+      "name": "淀壁 Alex Face",
+      "artist_name": "Alex Face",
+      "latitude": 34.7149938,
+      "longitude": 135.4797453,
+      "website": "https://www.yodokabe.net/artist/alex-face",
+      "picture_url1": "./yodokabe/Alex_Face.jpg"
+    },
+    {
+      "osmid": "node/13081355632",
+      "name": "淀壁 BAKIBAKI 2",
+      "artist_name": "BAKIBAKI",
+      "latitude": 34.7198887,
+      "longitude": 135.4799296,
+      "website": "https://www.yodokabe.net/artist/bakibaki-2",
+      "picture_url1": "./yodokabe/BAKIBAKI_2.jpg"
+    },
+    {
+      "osmid": "node/13081355633",
+      "name": "淀壁 TITI FREAK",
+      "artist_name": "TITI FREAK",
+      "latitude": 34.7198125,
+      "longitude": 135.4791159,
+      "website": "https://www.yodokabe.net/artist/titi-freak",
+      "picture_url1": "./yodokabe/TITI_FREAK.jpg"
+    },
+    {
+      "osmid": "node/13093942544",
+      "name": "淀壁 Dragon76",
+      "artist_name": "Dragon76",
+      "latitude": 34.7222659,
+      "longitude": 135.4837722,
+      "website": "https://www.yodokabe.net/artist/dragon76",
+      "picture_url1": "./yodokabe/Dragon76.jpg"
+    },
+    {
+      "osmid": "node/13093942545",
+      "name": "淀壁 Gravityfree",
+      "artist_name": "djow(デジョー);8g(エイジ)",
+      "latitude": 34.7221949,
+      "longitude": 135.4837749,
+      "website": "https://www.yodokabe.net/artist/gravityfree",
+      "picture_url1": "./yodokabe/Gravityfree.jpg"
+    }
+  ]
+}

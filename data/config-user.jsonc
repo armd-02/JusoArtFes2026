@@ -1,0 +1,514 @@
+{
+    "siteUpdates": {
+        "use": false
+    },
+    "mapDisplayStatus": {
+        "use": false
+    },
+    "map": {
+        "changeMap": true,
+        "tileName": "OSMFJ_NOPOI",
+        "viewCenter": [
+            135.4822973,
+            34.7205248
+        ],
+        "viewPitch": 30,
+        "maxPitch": 75,
+        "maxBounds": [
+            [
+                135.45,
+                34.68146
+            ],
+            [
+                135.53,
+                34.75737
+            ]
+        ],
+        "initZoom": 15,
+        "maxZoom": 21,
+        "detailZoom": 19,
+        "zoomMessageThreshold": 17,
+        "textFont": [
+            "Noto Sans Bold"
+        ],
+        "textSize": 12,
+        "polygonMarker": {
+            "fill-color": "#CC6666",
+            "fill-opacity": 0.3
+        }
+    },
+    "mapIllustrations": {
+        "use": false,
+        "autoHide": false,
+        "referenceZoom": 15,
+        "minZoom": 0,
+        "maxZoom": 24,
+        "widthPx": 120,
+        "mobileWidthPx": 80,
+        "shadow": {
+            "use": true,
+            "color": "rgba(0, 0, 0, 0.25)",
+            "blurPx": 4,
+            "offsetXPx": 2,
+            "offsetYPx": 4
+        },
+        "maxVisible": {
+            "desktop": 4,
+            "mobile": 2
+        },
+        "avoidPaddingPx": 24,
+        "illustrationGapPx": 40,
+        "items": []
+    },
+    "minimap": {
+        "use": true,
+        "height": 200,
+        "initZoom": 2,
+        "viewCenter": [
+            135,
+            34
+        ]
+    },
+    "icon": {
+        "fgPath": "icon",
+        "bgPath": "image",
+        "flagPath": "./flags/w40",
+        "shadow": 0.7,
+        "attention": 0.7,
+        "green": 0.7,
+        "middle": 0.7,
+        "visited": 0.5,
+        "normal": 0.7,
+        "flag": 0.6,
+        "textFont": [
+            "Noto Sans Regular"
+        ],
+        "textSize": 10.5,
+        "textViewZoom": 14,
+        "markerColors": {
+            "hover": {
+                "stroke": "#e9a05b"
+            },
+            "attention": {
+                "fill": "#ffffff",
+                "stroke": "#888888"
+            },
+            "green": {
+                "fill": "#ffffff",
+                "stroke": "#51b3a1"
+            },
+            "middle": {
+                "fill": "#ffffff",
+                "stroke": "#4d77ac"
+            },
+            "normal": {
+                "fill": "#ffffff",
+                "stroke": "#bfbfe1"
+            },
+            "visited": {
+                "fill": "#ffffff",
+                "stroke": "#9c9c9c"
+            }
+        }
+    },
+    "poiView": {
+        "poiActLoad": true,
+        "poiZoom": {
+            "activity": 8,
+            "historic": 16,
+            "natural": 16,
+            "amenity": 16,
+            "shop": 16,
+            "indoor": 18,
+            "parking": 16,
+            "JusoArtFes": 8,
+            "publicArt": 14,
+            "Green": 15
+        },
+        "mobilePoiZoom": {
+            "indoor": 17
+        },
+        "editZoom": {
+            "JusoArtFes": 14
+        },
+        "poiFilter": "filter"
+    },
+    "poiData": {
+        "maxFeatures": 12000,
+        "pruneThreshold": 15000,
+        "applyToStatic": false
+    },
+    "selectItem": {
+        "default": "activity",
+        "menu": "",
+        "action": ""
+    },
+    "sideBar": {
+        "everyView": true,
+        "initView": "view"
+    },
+    "listTable": {
+        "nameFallback": "category",
+        "backgroundImage": "./image/bgimage.png",
+        "category": "activity",
+        "target": "activity",
+        "allActs": true,
+        "playback": {
+            "view": false,
+            "zoomLevel": 15,
+            "timer": 4000
+        },
+        "download": false,
+        "csvColumn": [
+            "id",
+            "categoryJa",
+            "name",
+            "parentName",
+            "tag",
+            "categoryData",
+            "iconFile",
+            "lng",
+            "lat"
+        ],
+        "height": 0.8
+    },
+    "feature3d": {
+        "use": true,
+        "visualScale": 1,
+        "hitArea": {
+            "use": true,
+            "padding": 0.35,
+            "minSize": 2
+        },
+        "models": {
+            "play_aerialrotator": {
+                "type": "aerialrotator",
+                "size": 2
+            },
+            "play_basketrotator": {
+                "type": "basketrotator",
+                "size": 1.8
+            },
+            "play_activitypanel": {
+                "type": "activitypanel",
+                "size": 1.6
+            },
+            "play_cushion": {
+                "type": "trampoline",
+                "size": 3
+            },
+            "play_komyaku_eye": {
+                "type": "komyaku_eye",
+                "size": 2.7
+            },
+            "play_structure": {
+                "url": "./assets/models/playground/poly-pizza/composite-play-structure/composite-play-structure.glb",
+                "size": 8
+            },
+            "play_seesaw": {
+                "url": "./assets/models/playground/poly-pizza/seesaw/seesaw.glb",
+                "size": 4
+            },
+            "play_slide": {
+                "url": "./assets/models/playground/leonkin-playground/GLTF/slide.glb",
+                "size": 4
+            },
+            "bench": {
+                "url": "./assets/models/poi/bench/scene.gltf",
+                "size": 2
+            },
+            "drinking_water": {
+                "url": "./assets/models/poi/drinking-water/scene.gltf",
+                "size": 1.2,
+                "scaleBelowZoom": 19,
+                "maxZoomScale": 4
+            },
+            "vending_machine": {
+                "url": "./assets/models/poi/vending-machine/scene.gltf",
+                "size": 1.9,
+                "scaleBelowZoom": 19,
+                "maxZoomScale": 4
+            },
+            "vending_machine_red": {
+                "url": "./assets/models/poi/vending-machine-red/scene.gltf",
+                "size": 1.9,
+                "scaleBelowZoom": 19,
+                "maxZoomScale": 4
+            }
+        },
+        "rules": [
+            {
+                "tags": {
+                    "playground": "aerialrotator"
+                },
+                "model": "play_aerialrotator"
+            },
+            {
+                "tags": {
+                    "playground": "basketrotator"
+                },
+                "model": "play_basketrotator"
+            },
+            {
+                "tags": {
+                    "playground": "activitypanel"
+                },
+                "model": "play_activitypanel"
+            },
+            {
+                "tags": {
+                    "playground": "cushion",
+                    "playground:theme": "komyaku"
+                },
+                "model": "play_komyaku_eye"
+            },
+            {
+                "tags": {
+                    "playground": "cushion"
+                },
+                "model": "play_cushion"
+            },
+            {
+                "tags": {
+                    "playground": "structure"
+                },
+                "model": "play_structure"
+            },
+            {
+                "tags": {
+                    "playground": "slide"
+                },
+                "model": "play_slide"
+            },
+            {
+                "tags": {
+                    "playground": "seesaw"
+                },
+                "model": "play_seesaw"
+            },
+            {
+                "tags": {
+                    "amenity": "bench"
+                },
+                "model": "bench"
+            },
+            {
+                "tags": {
+                    "amenity": "drinking_water"
+                },
+                "model": "drinking_water"
+            },
+            {
+                "tags": {
+                    "amenity": "vending_machine",
+                    "brand": "コカ・コーラ"
+                },
+                "model": "vending_machine_red"
+            },
+            {
+                "tags": {
+                    "amenity": "vending_machine"
+                },
+                "model": "vending_machine"
+            }
+        ]
+    },
+    "thumbnail": {
+        "use": true,
+        "limits": 20,
+        "slideThumbWidth": "320",
+        "modalThumbWidth": "800"
+    },
+    "google": {
+        "AppScript": "https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/activities.php?app=jusoartfes2026",
+        "targetName": "activity",
+        "Analytics": ""
+    },
+    "static": {
+        "use": true,
+        "osmjsons": [
+            "./data/st_artwork.jsonc",
+            "./data/st_stores.jsonc"
+        ]
+    },
+    "indoor": {
+        "use": true,
+        "defaultLevel": "0",
+        "floorHeightMeters": 3.66,
+        "buildingLevelHeightMeters": 3.66,
+        "floorOffsetMeters": 0.2,
+        "backgroundTransportationOpacity": 0.08,
+        "buildingSource": {
+            "type": "vectorTile",
+            "styleSource": "openmaptiles",
+            "dedicatedSource": "indoor-building-tiles",
+            "sourceUrl": "https://tile.openstreetmap.jp/data/planet.json",
+            "sourceLayer": "building",
+            "heightProperty": "render_height",
+            "minHeightProperty": "render_min_height",
+            "deduplicate": true
+        },
+        "fallbackLevels": {
+            "highway=corridor": "0"
+        },
+        "underground": {
+            "useWithoutBuilding": true,
+            "activationRadiusMeters": 60
+        },
+        "largeBuildingActivation": {
+            "use": true,
+            "minZoom": 15,
+            "referenceZoom": 18,
+            "viewportCoverageRatio": 1,
+            "groupNearbyBuildings": false
+        },
+        "buildingGroup": {
+            "smallBuildingAreaSquareMeters": 1500,
+            "groupRadiusMeters": 50,
+            "activationRadiusMeters": 50,
+            "requireIndoorPoi": true
+        },
+        "levels": {
+            "discoverFromData": true,
+            "order": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+            ],
+            "labels": {
+                "roof": "屋上"
+            }
+        },
+        "control": {
+            "view": true,
+            "urlParameter": "level",
+            "label": "フロア"
+        }
+    },
+    "wikipedia": {
+        "marker": "wikipedia.svg",
+        "api_": "wikipedia.org/w/api.php?format=json&action=query&prop=extracts%7Cimages&exintro=&explaintext=&titles=",
+        "api": "wikipedia.org/api/rest_v1/page/summary/",
+        "domain": "wikipedia.org",
+        "tag": "wikipedia",
+        "image": true
+    },
+    "etc": {
+        "localSave": "JusoArtFes2026",
+        "reverseIcon": false,
+        "editMode": false,
+        "splashUrl": "./image/splash.png",
+        "loadingUrl": "./image/loading.gif"
+    },
+    "menu": {
+        "main": [
+            {
+                "glot-model": "about",
+                "linkto": "javascript:cMapMaker.about()",
+                "divider": false
+            },
+            {
+                "glot-model": "licence_title",
+                "linkto": "javascript:cMapMaker.licence()",
+                "divider": false
+            },
+            {
+                "glot-model": "develop_site",
+                "linkto": "https://github.com/armd-02/JusoArtFes2026",
+                "divider": false
+            },
+            {
+                "glot-model": "openstreetmap",
+                "linkto": "https://www.openstreetmap.org/about",
+                "divider": false
+            }
+        ],
+        "mainSystem": [
+            {
+                "glot-model": "export_visited",
+                "linkto": "javascript:poiStatusCont.export()",
+                "divider": false
+            },
+            {
+                "glot-model": "import_visited",
+                "linkto": "javascript:poiStatusCont.import()",
+                "divider": false
+            }
+        ],
+        "modal": [
+            {
+                "glot-model": "copyShareLink",
+                "linkto": "javascript:cMapMaker.shareURL()",
+                "divider": false
+            },
+            {
+                "glot-model": "osm_open",
+                "linkto": "javascript:winCont.osm_open(cMapMaker.openOSMid)",
+                "divider": false
+            }
+        ],
+        "activities": [],
+        "editActivity": [
+            {
+                "btn_class": "btn btn-light border-secondary p-2 ps-3 pe-3",
+                "code": "javascript:modalActs.save()",
+                "icon_class": "fa-solid fa-cloud-arrow-up",
+                "btn_glot_name": "act_save"
+            }
+        ],
+        "visited": [
+            {
+                "btn_class": "btn btn-light border-secondary p-2 ps-3 pe-3",
+                "code": "javascript:poiStatusCont.import_load()",
+                "icon_class": "fa-solid fa-cloud-arrow-up",
+                "btn_glot_name": "act_upload"
+            }
+        ]
+    },
+    "activity": {
+        "url": "https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/activities.php?app=jusoartfes2026",
+        "authMode": "basic",
+        "targetName": "activity",
+        "local": {
+            "use": false,
+            "hosts": [
+                "127.0.0.1",
+                "localhost",
+                "::1",
+                "[::1]"
+            ],
+            "url": ""
+        }
+    },
+    "news": {
+        "use": false
+    },
+    "changes": {
+        "use": false
+    },
+    "intro": {
+        "use": false
+    },
+    "areaFeatureLinker": {
+        "use": false
+    },
+    "areaSearch": {
+        "use": false
+    },
+    "discovery": {
+        "use": false
+    },
+    "listActions": {
+        "use": false
+    },
+    "directions": {
+        "use": false
+    }
+}

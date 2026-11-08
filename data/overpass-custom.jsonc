@@ -1,0 +1,77 @@
+{
+    "osm": {
+        "JusoArtFes": {
+            "overpass": [
+                "node[\"place\"=\"neighbourhood\"]",
+                "nwr[\"amenity\"]",
+                "nwr[\"shop\"]",
+                "nwr[\"craft\"]",
+                "nwr[\"tourism\"]",
+                "nwr[\"office\"]",
+                "node[\"highway\"=\"elevator\"]",
+                "node[\"railway\"=\"station\"]",
+                "nwr[\"leisure\"]"
+            ],
+            "tags": [
+                "place",
+                "shop",
+                "amenity!=parking",
+                "amenity!=vending_machine",
+                "amenity!=parking_entrance",
+                "amenity!=bench",
+                "craft",
+                "office",
+                "amenity",
+                "tourism",
+                "highway=elevator",
+                "railway",
+                "leisure"
+            ],
+            "expression": {
+                "poiView": true, // true時はアイコン表示
+                "viewArea": false,
+                "stroke": "#A06060",
+                "stroke-width": 1,
+                "fill-opacity": 0.25
+            },
+            "titles": [ // viewDetailのみで利用。listTableの名称を利用するよう改修予定（廃止したい）
+                "name"
+            ]
+        },
+        "publicArt": {
+            "overpass": [
+                "nwr[\"tourism\"=\"artwork\"]"
+            ],
+            "tags": [
+                "tourism=artwork"
+            ],
+            "expression": {
+                "poiView": true, // true時はアイコン表示
+                "viewArea": false,
+                "stroke": "#000000",
+                "stroke-width": 4,
+                "fill-opacity": 0.5
+            }
+        },
+        "Green": {
+            "overpass": [
+                "nwr[\"natural\"=\"tree_row\"]",
+                "nwr[\"barrier\"=\"hedge\"]"
+            ],
+            "tags": [
+                "natural",
+                "barrier"
+            ],
+            "expression": {
+                "poiView": false, // true時はアイコン表示
+                "viewArea": true,
+                "stroke": "#50A050",
+                "stroke-width": 3,
+                "fill-opacity": 0.25
+            },
+            "titles": [
+                "name"
+            ]
+        }
+    }
+}

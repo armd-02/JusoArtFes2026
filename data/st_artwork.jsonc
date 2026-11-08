@@ -1,0 +1,1275 @@
+{
+    "version": 0.6,
+    "generator": "Overpass API 0.7.62.8 e802775f",
+    "osm3s": {
+        "timestamp_osm_base": "2025-08-24T08:53:09Z",
+        "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+    },
+    "elements": [
+        {
+            "type": "node",
+            "id": 3490409460,
+            "lat": 34.7134536,
+            "lon": 135.4953242,
+            "tags": {
+                "artwork_type": "statue",
+                "denotation": "religious",
+                "natural": "tree",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4587131694,
+            "lat": 34.7071409,
+            "lon": 135.4984984,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4587131695,
+            "lat": 34.7071644,
+            "lon": 135.4984920,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4587131725,
+            "lat": 34.7071935,
+            "lon": 135.4985401,
+            "tags": {
+                "artwork_type": "stone",
+                "layer": "1",
+                "name": "牛と天神さま",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4592700906,
+            "lat": 34.7047593,
+            "lon": 135.5009839,
+            "tags": {
+                "artwork_type": "stone",
+                "name": "なで石",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4593927136,
+            "lat": 34.7034685,
+            "lon": 135.5048930,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4593927137,
+            "lat": 34.7034637,
+            "lon": 135.5048585,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4593930889,
+            "lat": 34.7034758,
+            "lon": 135.5048561,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4593930890,
+            "lat": 34.7034805,
+            "lon": 135.5048905,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4594207699,
+            "lat": 34.7034033,
+            "lon": 135.5047546,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4594207700,
+            "lat": 34.7033435,
+            "lon": 135.5047657,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4597361117,
+            "lat": 34.7034338,
+            "lon": 135.5049474,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4597361118,
+            "lat": 34.7033638,
+            "lon": 135.5049607,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4597361169,
+            "lat": 34.7033270,
+            "lon": 135.5048486,
+            "tags": {
+                "artwork_type": "stone",
+                "name": "神牛",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4608999621,
+            "lat": 34.7034768,
+            "lon": 135.5052933,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4608999622,
+            "lat": 34.7034166,
+            "lon": 135.5053037,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4849496059,
+            "lat": 34.7081096,
+            "lon": 135.5043362,
+            "tags": {
+                "artwork_type": "painting",
+                "name": "地球平和発祥の地 Super Peace",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468755732,
+            "lat": 34.7319535,
+            "lon": 135.4572985,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468755733,
+            "lat": 34.7319152,
+            "lon": 135.4572989,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856440,
+            "lat": 34.7318660,
+            "lon": 135.4569068,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856441,
+            "lat": 34.7319681,
+            "lon": 135.4569027,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856494,
+            "lat": 34.7321646,
+            "lon": 135.4569589,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856495,
+            "lat": 34.7321675,
+            "lon": 135.4569350,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856496,
+            "lat": 34.7321752,
+            "lon": 135.4569610,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5468856499,
+            "lat": 34.7321781,
+            "lon": 135.4569371,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525322197,
+            "lat": 34.7340712,
+            "lon": 135.5065591,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525322198,
+            "lat": 34.7340738,
+            "lon": 135.5065837,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525322204,
+            "lat": 34.7338575,
+            "lon": 135.5064598,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525322205,
+            "lat": 34.7338459,
+            "lon": 135.5063155,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525322220,
+            "lat": 34.7337817,
+            "lon": 135.5065764,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525326321,
+            "lat": 34.7338707,
+            "lon": 135.5065734,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5525326323,
+            "lat": 34.7337784,
+            "lon": 135.5064523,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "神馬",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594959,
+            "lat": 34.7310271,
+            "lon": 135.4978081,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "首無地蔵",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594960,
+            "lat": 34.7310338,
+            "lon": 135.4978040,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "子授地蔵",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594961,
+            "lat": 34.7310204,
+            "lon": 135.4978124,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "辻地蔵",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594962,
+            "lat": 34.7310404,
+            "lon": 135.4977998,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "日光地蔵",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594972,
+            "lat": 34.7310257,
+            "lon": 135.4977468,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594979,
+            "lat": 34.7310072,
+            "lon": 135.4977579,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5526594980,
+            "lat": 34.7309977,
+            "lon": 135.4977595,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5780512254,
+            "lat": 34.7038020,
+            "lon": 135.4942563,
+            "tags": {
+                "name:en": "Umeda green bear fontaine",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5789621141,
+            "lat": 34.7035461,
+            "lon": 135.4991327,
+            "tags": {
+                "artwork_type": "sculpture",
+                "name": "梅田",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5907520951,
+            "lat": 34.7206084,
+            "lon": 135.4845592,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 5907520952,
+            "lat": 34.7206071,
+            "lon": 135.4844552,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 6482248898,
+            "lat": 34.7338577,
+            "lon": 135.5079671,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 6482248899,
+            "lat": 34.7338555,
+            "lon": 135.5079447,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 6970649485,
+            "lat": 34.7036567,
+            "lon": 135.4980574,
+            "tags": {
+                "artwork_type": "statue",
+                "name": "女神像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 8588767299,
+            "lat": 34.7103730,
+            "lon": 135.4957916,
+            "tags": {
+                "artist_name": "中村晋也",
+                "artwork_type": "sculpture",
+                "name": "子守歌 -いのち-",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9168726812,
+            "lat": 34.7029824,
+            "lon": 135.4954315,
+            "tags": {
+                "artwork_type": "sculpture",
+                "level": "0",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518034,
+            "lat": 34.7133707,
+            "lon": 135.4954416,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518035,
+            "lat": 34.7133682,
+            "lon": 135.4953872,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518036,
+            "lat": 34.7133644,
+            "lon": 135.4953279,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518037,
+            "lat": 34.7133627,
+            "lon": 135.4953128,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518061,
+            "lat": 34.7134035,
+            "lon": 135.4951740,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛狐",
+                "note:en": "Guardian fox",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518062,
+            "lat": 34.7134101,
+            "lon": 135.4952079,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛狐",
+                "note:en": "Guardian fox",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518065,
+            "lat": 34.7134236,
+            "lon": 135.4952843,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518066,
+            "lat": 34.7134126,
+            "lon": 135.4952250,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518092,
+            "lat": 34.7135481,
+            "lon": 135.4952945,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518093,
+            "lat": 34.7135444,
+            "lon": 135.4952761,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518117,
+            "lat": 34.7132960,
+            "lon": 135.4955167,
+            "tags": {
+                "artwork_type": "statue",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518130,
+            "lat": 34.7132287,
+            "lon": 135.4954013,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9388518131,
+            "lat": 34.7132398,
+            "lon": 135.4954560,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9722602869,
+            "lat": 34.7155683,
+            "lon": 135.5087651,
+            "tags": {
+                "artwork_type": "sculpture",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739406996,
+            "lat": 34.7233065,
+            "lon": 135.4975241,
+            "tags": {
+                "artist_name": "DOPPEL",
+                "artwork_type": "mural",
+                "name": "淀壁",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739421416,
+            "lat": 34.7212660,
+            "lon": 135.4874140,
+            "tags": {
+                "artist_name": "BAKIBAKI",
+                "artwork_type": "mural",
+                "name": "淀川のナイチンゲール",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/bakibaki"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739427885,
+            "lat": 34.7215382,
+            "lon": 135.4880487,
+            "tags": {
+                "artist_name": "LANP",
+                "artwork_type": "mural",
+                "name": "淀壁 LANP",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/lanp"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739432469,
+            "lat": 34.7276848,
+            "lon": 135.4661688,
+            "tags": {
+                "artist_name": "カツマタヒデユキ",
+                "artwork_type": "mural",
+                "name": "淀壁",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739438437,
+            "lat": 34.7214786,
+            "lon": 135.4879273,
+            "tags": {
+                "artist_name": "borutanext5",
+                "artwork_type": "mural",
+                "name": "淀壁 borutanext5",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/borutanext5"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9739456758,
+            "lat": 34.7267967,
+            "lon": 135.4880111,
+            "tags": {
+                "artist_name": "NAZE",
+                "artwork_type": "mural",
+                "name": "淀壁 NAZE",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/naze"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9791802446,
+            "lat": 34.7192474,
+            "lon": 135.4831798,
+            "tags": {
+                "artist_name": "BAKIBAKI×kuua",
+                "artwork_type": "mural",
+                "name": "淀壁 kuua",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/kuua"
+            }
+        },
+        {
+            "type": "node",
+            "id": 9791875285,
+            "lat": 34.7285567,
+            "lon": 135.4662879,
+            "tags": {
+                "artist_name": "BIEN",
+                "artwork_type": "mural",
+                "name": "淀壁",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/"
+            }
+        },
+        {
+            "type": "node",
+            "id": 10742858753,
+            "lat": 34.7042928,
+            "lon": 135.5103417,
+            "tags": {
+                "artwork_type": "mural",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 10796267947,
+            "lat": 34.7204911,
+            "lon": 135.4848454,
+            "tags": {
+                "artist_name": "バキバキ",
+                "man_made": "manhole",
+                "operator": "バキバキ絵画前向き",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 10816492919,
+            "lat": 34.7357018,
+            "lon": 135.5100511,
+            "tags": {
+                "artwork_type": "statue",
+                "religion": "shinto",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 10816492920,
+            "lat": 34.7357153,
+            "lon": 135.5100557,
+            "tags": {
+                "artwork_type": "statue",
+                "religion": "shinto",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 10839531948,
+            "lat": 34.7106122,
+            "lon": 135.4957353,
+            "tags": {
+                "artwork_type": "sculpture",
+                "name": "三つの虹",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 11126651945,
+            "lat": 34.7212124,
+            "lon": 135.4814635,
+            "tags": {
+                "artist_name": "Nychos",
+                "artwork_type": "mural",
+                "name": "淀壁 Nychos",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/nychos"
+            }
+        },
+        {
+            "type": "node",
+            "id": 11212727340,
+            "lat": 34.7337288,
+            "lon": 135.4924281,
+            "tags": {
+                "artist_name": "高田洋一",
+                "artwork_type": "sculpture",
+                "name": "夏への扉",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 11804582983,
+            "lat": 34.7309035,
+            "lon": 135.5020033,
+            "tags": {
+                "artwork_subject": "giraffe",
+                "artwork_type": "sculpture",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12064461347,
+            "lat": 34.7270857,
+            "lon": 135.5118181,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12064461348,
+            "lat": 34.7271094,
+            "lon": 135.5118201,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "仏像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12161228684,
+            "lat": 34.7218267,
+            "lon": 135.4831984,
+            "tags": {
+                "artist_name": "ESSU",
+                "artwork_type": "mural",
+                "name": "淀壁 ESSU",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/essu"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12161322777,
+            "lat": 34.7051784,
+            "lon": 135.4931522,
+            "tags": {
+                "artist_name": "ラム・カツィール",
+                "artist_name:en": "Ram Katzir",
+                "artwork_type": "statue",
+                "material": "metal",
+                "name": "YUMEMITAI",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12161367937,
+            "lat": 34.7042461,
+            "lon": 135.4932875,
+            "tags": {
+                "name": "FULL BLOOM1",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12304906029,
+            "lat": 34.7188264,
+            "lon": 135.4800526,
+            "tags": {
+                "artist_name": "Tokio Aoyama",
+                "artwork_type": "mural",
+                "contact:instagram": "tokioaoyama",
+                "name": "淀壁 Tokio Aoyama",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/tokio-aoyama"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12366978243,
+            "lat": 34.7226020,
+            "lon": 135.4854269,
+            "tags": {
+                "artist_name": "YUBIA",
+                "artwork_type": "mural",
+                "name": "淀壁 YUBIA",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/yubia"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12366989510,
+            "lat": 34.7227335,
+            "lon": 135.4849314,
+            "tags": {
+                "artist_name": "Obokata Mageko",
+                "artwork_type": "mural",
+                "name": "淀壁 Obokata Mageko",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/obokata-mageko"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12367065116,
+            "lat": 34.7222847,
+            "lon": 135.4838324,
+            "tags": {
+                "artist_name": "Lauren YS",
+                "artwork_type": "graffiti",
+                "name": "淀壁 Lauren YS",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/lauren-ys"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12466781968,
+            "lat": 34.7043115,
+            "lon": 135.4934614,
+            "tags": {
+                "artwork_type": "sculpture",
+                "name": "GRAND GREEN OSAKA",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12466806446,
+            "lat": 34.7040960,
+            "lon": 135.4929592,
+            "tags": {
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12511699447,
+            "lat": 34.7353115,
+            "lon": 135.4968139,
+            "tags": {
+                "name": "神農像",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12649759938,
+            "lat": 34.7346066,
+            "lon": 135.4675902,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12649759939,
+            "lat": 34.7346488,
+            "lon": 135.4675603,
+            "tags": {
+                "artwork_type": "statue",
+                "note": "狛犬",
+                "note:en": "Guardian dog",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12767027910,
+            "lat": 34.7196955,
+            "lon": 135.4816577,
+            "tags": {
+                "name": "見返りトミー君",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12850996214,
+            "lat": 34.7041128,
+            "lon": 135.4942339,
+            "tags": {
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081339340,
+            "lat": 34.7188921,
+            "lon": 135.4809694,
+            "tags": {
+                "artist_name": "MUEBON",
+                "artwork_type": "mural",
+                "name": "淀壁 MUEBON",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/muebon"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081341752,
+            "lat": 34.7205372,
+            "lon": 135.4808154,
+            "tags": {
+                "artist_name": "NUT",
+                "artwork_type": "mural",
+                "name": "淀壁 NUT",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/nut"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081341753,
+            "lat": 34.7202791,
+            "lon": 135.4807548,
+            "tags": {
+                "artist_name": "SUIKO",
+                "artwork_type": "mural",
+                "name": "淀壁  SUIKO",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/suiko"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081355631,
+            "lat": 34.7149938,
+            "lon": 135.4797453,
+            "tags": {
+                "artist_name": "Alex Face",
+                "artwork_type": "mural",
+                "name": "淀壁 Alex Face",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/alex-face"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081355632,
+            "lat": 34.7198887,
+            "lon": 135.4799296,
+            "tags": {
+                "artist_name": "BAKIBAKI",
+                "artwork_type": "mural",
+                "name": "淀壁 BAKIBAKI 2",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/bakibaki-2"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13081355633,
+            "lat": 34.7198125,
+            "lon": 135.4791159,
+            "tags": {
+                "artist_name": "TITI FREAK",
+                "artwork_type": "mural",
+                "name": "淀壁 TITI FREAK",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/titi-freak"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13093942544,
+            "lat": 34.7222659,
+            "lon": 135.4837722,
+            "tags": {
+                "artist_name": "Dragon76",
+                "artwork_type": "graffiti",
+                "name": "淀壁 Dragon76",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/dragon76"
+            }
+        },
+        {
+            "type": "node",
+            "id": 13093942545,
+            "lat": 34.7221949,
+            "lon": 135.4837749,
+            "tags": {
+                "artist_name": "djow(デジョー);8g(エイジ)",
+                "artwork_type": "mural",
+                "name": "淀壁 Gravityfree",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/gravityfree"
+            }
+        },
+        {
+            "type": "way",
+            "id": 1210534534,
+            "bounds": {
+                "minlat": 34.7294174,
+                "minlon": 135.4953585,
+                "maxlat": 34.7295009,
+                "maxlon": 135.4954684
+            },
+            "nodes": [
+                11215505270,
+                2722688972,
+                11062822905
+            ],
+            "geometry": [
+                {
+                    "lat": 34.7294174,
+                    "lon": 135.4953585
+                },
+                {
+                    "lat": 34.7294253,
+                    "lon": 135.4954019
+                },
+                {
+                    "lat": 34.7295009,
+                    "lon": 135.4954684
+                }
+            ],
+            "tags": {
+                "artwork_type": "mural",
+                "name": "創立70周年 大阪市立西中島幼稚園",
+                "tourism": "artwork"
+            }
+        },
+        {
+            "type": "node",
+            "id": 14058443330,
+            "lat": 34.7167106,
+            "lon": 135.4811025,
+            "timestamp": "2026-07-29T11:28:11Z",
+            "version": 4,
+            "changeset": 186578554,
+            "user": "K_Sakanoshita",
+            "uid": 389520,
+            "tags": {
+                "artist_name": "BAKIBAKI",
+                "artwork_type": "mural",
+                "name": "BAKIBAKI3",
+                "tourism": "artwork",
+                "website": "https://www.yodokabe.net/artist/bakibaki-3"
+            }
+        }
+    ]
+}

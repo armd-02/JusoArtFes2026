@@ -130,3 +130,11 @@ for (const level of ['1', '0;2', '0', '-1']) {
 }
 assert.equal(layers.get('marker-shadow').layout['icon-image'], 'circle_shadow.png');
 console.log('PASS: upper-floor shadow rendering for nested tags and multiple levels; ground/basement excluded');
+
+for (const [level, suffix] of [['0', ''], ['0.0', ''], ['1', '\n(1)'], ['-1', '\n(-1)'], ['0;2', '\n(0;2)']]) {
+    poi.geojson.properties.tags.level = level;
+    controller.setPoi([['node/1']], false);
+    assert.equal(poi.geojson.properties.cmapmaker_name, 'Test' + suffix,
+        'ground-floor labels are omitted while other floors remain: ' + level);
+}
+console.log('PASS: omit ground-only map labels, retain upper/basement/multi-floor labels');

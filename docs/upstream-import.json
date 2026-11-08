@@ -26,5 +26,24 @@
   "modelFiles": 14,
   "imageFiles": 1750,
   "modelResourceReferences": 18,
-  "localManifestResources": 29
+  "localManifestResources": 29,
+  "incrementalImports": [
+    {
+      "date": "2026-11-08",
+      "fromCommit": "85aa48a2eab03b1e0e5dcb801905f60171adba72",
+      "commit": "f1def015a0fd5ad524f46573b88b57791989d02f",
+      "scope": "shared-code-only",
+      "record": "docs/upstream-higayodo-20261108.md",
+      "testScriptsPassed": 70
+    },
+    {
+      "date": "2026-11-09",
+      "source": "K-Sakanoshita/community_mapmaker",
+      "fromCommit": "8526f8c62c310871a744d88c7f1b181be2d98e7f",
+      "commit": "1c2f7ae10058503c0777adf07a9713541864eeaf",
+      "scope": "shared-code-with-juso-fixes-preserved",
+      "record": "docs/upstream-juso-20261109.md",
+      "testScriptsPassed": 71
+    }
+  ]
 }

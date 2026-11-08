@@ -16,8 +16,8 @@
         "en": "about Juso Art-fes Map 2026"
     },
     "about_message": {
-        "ja": "淀川アートネットが主催している<a href='https://yodogawaartnet.jimdofree.com/%E5%8D%81%E4%B8%89%E3%82%A2%E3%83%BC%E3%83%88%E3%83%95%E3%82%A7%E3%82%B9/'>十三アートフェス</a>をマップに表示します。<br>イベント情報は2026年版のバックエンドから読み込んでいます。",
-        "en": "Hosted by Yodogawa Art Net. Show <a href='https://yodogawaartnet.jimdofree.com/%E5%8D%81%E4%B8%89%E3%82%A2%E3%83%BC%E3%83%88%E3%83%95%E3%82%A7%E3%82%B9/'>Juso Art Fes</a> on the map.<br>Event information is loaded from the 2026 backend."
+        "ja": "十三アートフェス2026は、街を歩きながらアートとお店、人との出会いを楽しむイベントです。カフェや商店、映画館など身近な場所を舞台に、作品展示、ライブ、ワークショップ、フェス限定メニューなど、多彩な企画が開かれます。<br><br><strong>開催期間：2026年11月21日（土）〜29日（日）</strong><br>十三を中心に、神崎川・西中島エリアでも展示を開催します。<br><br>このマップでは、会場ごとの展示・イベント情報や、街を彩る壁画「淀壁」を探せます。気になる場所を見つけて、自分だけの街歩きをお楽しみください。開催日時・料金・予約の有無は、各会場の詳細をご確認ください。<br><br>主催：NPO法人 淀川アートネット<br><a href=\"https://yodogawaartnet.sakura.ne.jp/category/artfes2026/\" target=\"_blank\" rel=\"noopener noreferrer\">十三アートフェス2026 公式サイト</a>",
+        "en": "Explore Juso through art, local businesses and the people who bring them together. Juso Art Fes 2026 features exhibitions, live performances, workshops and festival menus in cafés, shops, cinemas and other neighborhood venues.<br><br><strong>November 21–29, 2026</strong><br>Exhibitions also take place in Kanzakigawa and Nishinakajima.<br><br>Use this map to find venues, events and Yodokabe murals, and plan your own walk. Check each venue’s details for dates, times, fees and reservations.<br><br>Organized by NPO Yodogawa Art Net<br><a href=\"https://yodogawaartnet.sakura.ne.jp/category/artfes2026/\" target=\"_blank\" rel=\"noopener noreferrer\">Juso Art Fes 2026 official website</a>"
     },
     "owner": {
         "ja": "淀川アートネットのホームページへ",
@@ -226,5 +226,89 @@
     "act_contact": {
         "ja": "【問合せ】",
         "en": "Contact"
+    },
+    "list_religion_label": {
+        "ja": "宗教：",
+        "en": "Religion: "
+    },
+    "list_denomination_label": {
+        "ja": "宗派：",
+        "en": "Denomination: "
+    },
+    "list_start_date_label": {
+        "ja": "年代：",
+        "en": "Date: "
+    },
+    "religion_buddhist": {
+        "ja": "仏教",
+        "en": "Buddhism"
+    },
+    "religion_shinto": {
+        "ja": "神道",
+        "en": "Shinto"
+    },
+    "religion_christian": {
+        "ja": "キリスト教",
+        "en": "Christianity"
+    },
+    "religion_muslim": {
+        "ja": "イスラム教",
+        "en": "Islam"
+    },
+    "religion_jewish": {
+        "ja": "ユダヤ教",
+        "en": "Judaism"
+    },
+    "religion_hindu": {
+        "ja": "ヒンドゥー教",
+        "en": "Hinduism"
+    },
+    "religion_taoist": {
+        "ja": "道教",
+        "en": "Taoism"
+    },
+    "denomination_jodo_shinshu": {
+        "ja": "浄土真宗",
+        "en": "Jodo Shinshu"
+    },
+    "denomination_jodo_shu": {
+        "ja": "浄土宗",
+        "en": "Jodo Shu"
+    },
+    "denomination_nichiren": {
+        "ja": "日蓮宗",
+        "en": "Nichiren"
+    },
+    "denomination_zen": {
+        "ja": "禅宗",
+        "en": "Zen"
+    },
+    "denomination_soto": {
+        "ja": "曹洞宗",
+        "en": "Soto"
+    },
+    "denomination_rinzai": {
+        "ja": "臨済宗",
+        "en": "Rinzai"
+    },
+    "denomination_shingon": {
+        "ja": "真言宗",
+        "en": "Shingon"
+    },
+    "denomination_tendai": {
+        "ja": "天台宗",
+        "en": "Tendai"
+    },
+    "denomination_catholic": {
+        "ja": "カトリック",
+        "en": "Catholic"
+    },
+    "denomination_protestant": {
+        "ja": "プロテスタント",
+        "en": "Protestant"
+    },
+    "denomination_orthodox": {
+        "ja": "正教会",
+        "en": "Orthodox"
     }
 }

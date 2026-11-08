@@ -38,7 +38,7 @@
         }
     },
     "mapIllustrations": {
-        "use": false,
+        "use": true,
         "autoHide": false,
         "referenceZoom": 15,
         "minZoom": 0,
@@ -58,7 +58,62 @@
         },
         "avoidPaddingPx": 24,
         "illustrationGapPx": 40,
-        "items": []
+        "items": [
+            {
+                "id": "juso-festival-frame",
+                "image": "./image/juso-map-frame.png",
+                "widthPx": 2048,
+                "mobileWidthPx": 2048,
+                "shadow": {
+                    "use": false
+                },
+                "priority": -10,
+                "corners": [
+                    [
+                        135.4705,
+                        34.733
+                    ],
+                    [
+                        135.501,
+                        34.733
+                    ],
+                    [
+                        135.501,
+                        34.712
+                    ],
+                    [
+                        135.4705,
+                        34.712
+                    ]
+                ]
+            },
+            {
+                "id": "juso-frame-splash",
+                "image": "./image/splash.png",
+                "bounds": [
+                    135.4715,
+                    34.728986583186575,
+                    135.47516666666667,
+                    34.732
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-sanyodo",
+                "image": "./image/sanyodo.jpg",
+                "bounds": [
+                    135.49433333333334,
+                    34.713,
+                    135.5,
+                    34.715678449473664
+                ],
+                "shadow": {
+                    "use": false
+                }
+            }
+        ]
     },
     "minimap": {
         "use": true,
@@ -109,6 +164,10 @@
                 "fill": "#ffffff",
                 "stroke": "#9c9c9c"
             }
+        },
+        "photoMarkers": {
+            "use": true,
+            "maxMarkers": 100
         }
     },
     "poiView": {
@@ -332,7 +391,7 @@
         ]
     },
     "indoor": {
-        "use": true,
+        "use": false,
         "defaultLevel": "0",
         "floorHeightMeters": 3.66,
         "buildingLevelHeightMeters": 3.66,
@@ -402,6 +461,7 @@
     },
     "etc": {
         "localSave": "JusoArtFes2026",
+        "showPersonalMemo": false,
         "reverseIcon": false,
         "editMode": false,
         "splashUrl": "./image/splash.png",

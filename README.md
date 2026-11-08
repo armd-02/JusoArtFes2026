@@ -19,6 +19,14 @@
 
 2026年11月8日、`data/st_artwork.jsonc` に [BAKIBAKI3（node/14058443330）](https://www.openstreetmap.org/node/14058443330) をOSM APIから追加しました。座標・タグ・バージョン情報は取得内容を保持しています。`yodokabe-2025.osm.json` は2025年版の資料として22件のまま保持しています。
 
+2026年11月9日、既存OSM IDをキーに `https://overpass.openacrossbase.net/api/interpreter` から静的データを更新しました（データ基準日時: 2026-11-07 21:21:03 UTC）。閉鎖確認済みのスペースコラリオン、まちライブラリー＠ジオタワー大阪十三マンションギャラリーを除き、アート104件・店舗施設127件を保持しています。
+
+## 写真付きの施設アイコン
+
+自分用メモ欄は `etc.showPersonalMemo` で切り替えます。このマップでは `false`（非表示）です。`true` または未設定で表示します。訪問済み・お気に入りと保存済みのメモは維持されます。
+
+画像のある施設は、最初の投稿画像を地図アイコンとして表示します。`icon.photoMarkers.use` で切り替え、画像がない場合や読み込みに失敗した場合は通常アイコンを表示します。画像の選択順・サイズ・表示上限は [写真アイコンの設定](docs/photo-markers.md) を参照してください。
+
 ## 設定と確認
 
 `data/config-user.jsonc` の `activity.url` と互換設定 `google.AppScript` に、`https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/activities.php?app=jusoartfes2026` を設定しています。認証方式は `basic`、表示フォームは `data/config-activities.jsonc` の `activities.WP` です。画像URLは1〜6に対応しています。

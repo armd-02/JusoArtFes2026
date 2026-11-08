@@ -41,6 +41,7 @@
                 "./lib/newstickerview.js",
                 "./lib/newslib.js",
                 "./lib/discoverycontroller.js",
+                "./lib/photomarkerlib.js",
                 "./lib/mapillustrations.js",
                 "./lib/indoorlib.js",
                 "./cmapmaker.js"

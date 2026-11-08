@@ -63,7 +63,9 @@ class Activities {
                             break;
                         case "url":
                             if (gdata !== "http://" && gdata !== "https://" && gdata !== "") {
-                                chtml += `<div class='col-12'><p><span class="fw-bold"><small>${glot.get(form[key].glot)}</small></span><a href="${gdata}">${gdata}</a></p></div>`;
+                                const linkText = gdata.replace(/^https?:\/\//, "");
+                                const shortLink = linkText.length > 20 ? linkText.substring(0, 19) + "…" : linkText;
+                                chtml += `<div class='col-12'><p><span class="fw-bold"><small>${glot.get(form[key].glot)}</small></span><a href="${gdata}">${shortLink}</a></p></div>`;
                             }
                             break;
                         case "image_url":

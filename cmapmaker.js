@@ -1334,8 +1334,9 @@ class CMapMaker extends IndoorControl {
         const visited = document.getElementById("visited");
         const favorite = document.getElementById("favorite");
         const memo = document.getElementById("visited-memo");
-        if (!visited || !favorite || !memo) return;
-        poiStatusCont.setValueByOSMID(visited.name, visited.getAttribute("aria-pressed") === "true", favorite.getAttribute("aria-pressed") === "true", memo.value);
+        if (!visited || !favorite) return;
+        const memoValue = memo?.value ?? poiStatusCont.getRecord(visited.name).memo;
+        poiStatusCont.setValueByOSMID(visited.name, visited.getAttribute("aria-pressed") === "true", favorite.getAttribute("aria-pressed") === "true", memoValue);
         if (refreshMarkers) {
             this.viewPoi(listTable.getSelCategory());
             listTable.renderList();

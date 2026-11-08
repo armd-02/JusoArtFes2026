@@ -117,3 +117,16 @@ assert.deepEqual(Array.from(marker.geometry.coordinates), [135,34]);
 marker.properties.tags.name = 'Edited marker';
 assert.equal(poi.geojson.properties.tags.name, 'Test', 'marker properties remain isolated from source data');
 console.log('PASS: unchanged marker sources are skipped, viewport/style changes refresh them, and 5000-vertex polygons remain unmodified without a geometry copy');
+
+// Shadow source filters nested OSM tags before rendering; the style must not
+// try to read a top-level level value or convert a multi-level string again.
+context.cMapMaker.parseIndoorLevels = value => String(value).split(';');
+context.cMapMaker.formatIndoorLevel = value => String(value);
+for (const level of ['1', '0;2', '0', '-1']) {
+    poi.geojson.properties.tags.level = level;
+    controller.setPoi([['node/1']], false);
+    const expected = ['1', '0;2'].includes(level) ? 1 : 0;
+    assert.equal(sources.get('marker-shadow').data.features.length, expected, level);
+}
+assert.equal(layers.get('marker-shadow').layout['icon-image'], 'circle_shadow.png');
+console.log('PASS: upper-floor shadow rendering for nested tags and multiple levels; ground/basement excluded');

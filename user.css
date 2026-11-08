@@ -74,3 +74,20 @@ img.slide {
 #maplist {
     margin-bottom: 12px;
 }
+
+/* Reserve room for status icons only beside the first lines of each card. */
+#listArea .list-facility-item {
+    padding-right: .75rem;
+}
+
+#listArea .list-facility-item > .list-detail-button > .row {
+    display: flow-root;
+    padding-left: 36px;
+}
+
+#listArea .list-facility-item > .list-detail-button > .row::before {
+    content: "";
+    float: right;
+    width: 5.25rem;
+    height: 40px;
+}

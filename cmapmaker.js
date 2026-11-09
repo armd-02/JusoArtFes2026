@@ -1245,10 +1245,8 @@ class CMapMaker extends IndoorControl {
     // キーワード検索
     searchKeyword(keyword) {
         if (keyword !== null) {
-            const div = document.createElement("div");             // サニタイズ処理
-            div.appendChild(document.createTextNode(keyword));
             this.changeMode('list')
-            setTimeout(() => { listTable.filterKeyword(div.innerHTML) }, 300)
+            setTimeout(() => { listTable.filterKeyword(keyword) }, 300)
             areaSearchController.renderDisplayStatus();
         }
     }

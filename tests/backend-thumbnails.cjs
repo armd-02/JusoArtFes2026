@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 let requests = [], live = 0, peak = 0;
 const ctx = vm.createContext({
-    Conf: { thumbnail: { backend: { use: true, url: 'https://api.test/api/thumbnail.php?app=jusoartfes2026' } },
+    Conf: { thumbnail: { backend: { use: true, concurrency: 2, url: 'https://api.test/api/thumbnail.php?app=jusoartfes2026' } },
         activities: { WP: { form: { photo: { type: 'image_url', gsheet: 'picture_url1' } } } } },
     document: { baseURI: 'https://site.test/map/' },
     URL: class extends URL { static createObjectURL(blob) { return 'blob:' + blob.id; } },
@@ -35,7 +35,44 @@ ctx.Conf.thumbnail.backend.use = true;
         api.resolve(api.url({ id: 'WP/2' }, 'picture_url1', 'https://images.test/2.jpg'), 'https://images.test/2.jpg')]);
     assert.equal(a,'blob:WP/1506'); assert.equal(a,b); assert.equal(c,'blob:WP/2');
     assert.equal(requests.length,2,'map, strip and detail reuse one generated thumbnail');
-    assert.equal(peak,1,'backend thumbnail generation is serialized');
+    assert.equal(peak,2,'two distinct thumbnails load concurrently');
+    const normalFetch = ctx.fetch;
+    const releases = [], started = [];
+    let active = 0, maximum = 0;
+    ctx.fetch = url => new Promise((resolve, reject) => {
+        started.push(url); active++; maximum = Math.max(maximum, active);
+        releases.push(fail => {
+            active--;
+            if (fail) reject(new Error('network failure'));
+            else resolve({ok:true, status:200,
+                headers:{get:()=> 'image/webp'}, blob:async()=>({id:url})});
+        });
+    });
+    const queued = Array.from({length:4}, (_,i) => api.resolve(`https://api.test/pool/${i}`, `https://images.test/${i}.jpg`));
+    const duplicate = api.resolve('https://api.test/pool/0','https://images.test/0.jpg');
+    assert.equal(duplicate,queued[0],'pending duplicate shares the same promise');
+    await new Promise(setImmediate);
+    assert.equal(started.length,2,'the third request waits for an available connection');
+    releases[0](false); await new Promise(setImmediate);
+    assert.equal(started.length,3,'a completed download releases one connection');
+    releases[1](true); await new Promise(setImmediate);
+    assert.equal(started.length,4,'a failed download also releases its connection');
+    releases[2](false); releases[3](false);
+    const results = await Promise.all(queued);
+    assert.equal(maximum,2,'the shared queue never exceeds two connections');
+    assert.equal(results[1],'https://images.test/1.jpg','failures retain the original-image fallback');
+    await new Promise(setImmediate);
+    // Sites without the opt-in retain the original one-connection behavior.
+    delete ctx.Conf.thumbnail.backend.concurrency;
+    const serial = [api.resolve('https://api.test/serial/0','https://images.test/serial0.jpg'),
+        api.resolve('https://api.test/serial/1','https://images.test/serial1.jpg')];
+    await new Promise(setImmediate);
+    assert.equal(started.length,5,'missing concurrency setting starts only one request');
+    releases[4](false); await new Promise(setImmediate);
+    assert.equal(started.length,6);
+    releases[5](false); await Promise.all(serial); await new Promise(setImmediate);
+    ctx.Conf.thumbnail.backend.concurrency = 2;
+    ctx.fetch = normalFetch;
     assert.equal(await api.resolve('https://api.test/missing','https://images.test/original.jpg'),'https://images.test/original.jpg');
     const source = fs.readFileSync('detail/activities.js','utf8');
     const method = source.slice(source.indexOf('    viewImage(source) {'),source.lastIndexOf('\n}')).trim();
@@ -70,5 +107,5 @@ ctx.Conf.thumbnail.backend.use = true;
     ctx.fetch = async () => { pausedRequests++; throw new Error('unexpected paused request'); };
     assert.equal(await api.resolve('https://api.test/paused','https://images.test/pause.jpg'),'https://images.test/pause.jpg');
     assert.equal(pausedRequests,0,'schema failures pause queued API requests');
-    console.log('PASS: API mapping, Unicode URLs, local/Commons bypass, shared sequential loading, fallback and original-only viewer');
+    console.log('PASS: API mapping, Unicode URLs, local/Commons bypass, shared bounded parallel loading, fallback and original-only viewer');
 })().catch(e=>{console.error(e);process.exitCode=1;});

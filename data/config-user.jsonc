@@ -198,8 +198,7 @@
         },
         "editZoom": {
             "JusoArtFes": 14
-        },
-        "poiFilter": "filter"
+        }
     },
     "poiData": {
         "maxFeatures": 12000,
@@ -388,7 +387,8 @@
         "modalThumbWidth": "800",
         "backend": {
             "use": true,
-            "url": "https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/thumbnail.php?app=jusoartfes2026"
+            "url": "https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/thumbnail.php?app=jusoartfes2026",
+            "concurrency": 2
         }
     },
     "google": {

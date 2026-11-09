@@ -75,6 +75,20 @@ img.slide {
     margin-bottom: 12px;
 }
 
+/* Place map controls beside the thumbnails instead of above their spacer. */
+#mapid {
+    --map-controls-width: 48px;
+}
+
+#mapid #dummy {
+    display: none;
+}
+
+#mapid #images.showcase {
+    width: calc(100% - var(--map-controls-width));
+    max-width: calc(100% - var(--map-controls-width));
+}
+
 /* Reserve room for status icons only beside the first lines of each card. */
 #listArea .list-facility-item {
     padding-right: .75rem;

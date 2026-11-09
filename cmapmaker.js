@@ -1248,6 +1248,7 @@ class CMapMaker extends IndoorControl {
     searchKeyword(keyword) {
         if (keyword !== null) {
             this.changeMode('list')
+            if (winCont.sidebarSize === 1) winCont.setSidebar("list");
             setTimeout(() => { listTable.filterKeyword(keyword) }, 300)
             areaSearchController.renderDisplayStatus();
         }

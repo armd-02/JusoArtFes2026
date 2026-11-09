@@ -1,279 +1,54 @@
 # 十三アートフェスマップ2026
 
-淀川アートネットの十三アートフェス向けマップです。十三の街を巡りながら、アート展示・ライブ・ワークショップ・フェス限定メニューなどを探せます。
+十三アートフェス2026の会場・展示・イベントと、街の壁画「淀壁」を探すためのマップです。
 
-- 公開マップ: https://armd-02.github.io/JusoArtFes2026/
-- 公式イベント紹介: https://yodogawaartnet.sakura.ne.jp/category/artfes2026/
-- 開催期間: 2026年11月21日（土）〜29日（日）
+## イベント概要
 
-- ベース: [Community Mapmaker](https://github.com/K-Sakanoshita/community_mapmaker)、取り込みコミット `1c2f7ae10058503c0777adf07a9713541864eeaf`
-- 参考: [JusoArtFes2025](https://github.com/armd-02/JusoArtFes2025)、参照コミット `02c8792641bdd42c53cbbf922e8cfc5bafcc9cbf`
-- スプラッシュ: 提供された2026年版画像を `image/splash.png` に配置。SNS共有画像にも使用。
-- イベント情報: バックエンドのプロジェクトキー `jusoartfes2026` を利用。投稿IDは `WP/…` 形式です。
-- 会場・アート情報は静的OSMファイルから読み込みます。`static.use` は `true` で、`data/st_artwork.jsonc` と `data/st_stores.jsonc` を利用します。店舗・イベントの旧写真はコピーせず、バックエンドの画像URLを利用します。淀壁の画像は追加依頼により別途取得しています。
+- 開催期間：2026年11月21日（土）〜29日（日）
+- 開催地域：十三を中心に、神崎川・西中島エリア
+- 内容：アート展示、ライブ、ワークショップ、フェス限定メニューなど
+- 主催：NPO法人 淀川アートネット
+- [公開マップ](https://armd-02.github.io/JusoArtFes2026/)
+- [公式イベント情報](https://yodogawaartnet.sakura.ne.jp/category/artfes2026/)
 
-## 今回の更新（2026年11月10日）
+会場ごとの開催日時・料金・予約の有無は、各会場の詳細をご確認ください。
 
-- 左上のスプラッシュ画像と施設アイコンの重なりを避けるため、額縁を西へ約460m広げ、横幅を約16%拡張しました。スプラッシュ画像も同じ分だけ西へ移動し、画像の大きさ・額縁からの余白・額縁の高さは維持しています。詳細は[額縁の配置設定](docs/map-illustrations.md)を参照してください。
-- `poiView.poiFilter` を復活させ、カテゴリ選択時に地図アイコンも絞り込む `filter` と、一覧だけを絞り込む `all` を選べるようにしました。このマップは `filter` です。
-- 活動カテゴリの絞り込みを修正し、選択直後に一覧と地図アイコンへ反映するようにしました。
+## このマップの設定
 
-## 前回の更新（2026年11月9日）
+主な設定は [data/config-user.jsonc](data/config-user.jsonc) にまとめています。
 
-- Community Mapmaker `1c2f7ae` を取り込み、共通画像ビューア、画像取得失敗時の処理、一覧・翻訳を改善。十三向けの設定・画像・データと既存の不具合修正は保持しています。
-- サムネイルAPIで縮小表示の通信量を削減し、拡大表示にはオリジナルを使用します。
-- 1階だけの施設には地図上の「1F」表記を付けず、2階以上・地下の表記は維持します。
-- 「十三アートフェスマップ2026について」を公式サイトに基づく説明へ更新し、開催期間・イベント内容・マップの楽しみ方を紹介しています。
-- 統合・縮小画像・元画像表示を含む適用対象のテスト72本が成功しました。汎用初期設定を前提とする `generic-config.cjs` は、この専用マップの検証対象外です。
+| 項目 | 設定内容 |
+| --- | --- |
+| 初期表示 | 十三周辺、ズーム15、傾斜30度 |
+| 背景地図 | `OSMFJ_NOPOI` |
+| 会場・地物データ | `static.use: true`。[アート](data/st_artwork.jsonc)・[店舗施設](data/st_stores.jsonc)の静的OSMデータを使用 |
+| 展示・イベント情報 | バックエンドのプロジェクト `jusoartfes2026`。投稿IDは `WP/…`、認証方式は `basic` |
+| 投稿項目 | [data/config-activities.jsonc](data/config-activities.jsonc) の `activities.WP` |
+| 一覧 | 活動情報を対象に、会場名・タイトル・作家・開催日時を表示。`listTable.allActs: true` |
+| 地図アイコンの絞り込み | `poiView.poiFilter: "filter"`。`"all"` に変更すると一覧だけを絞り込み、地図は全件表示を維持 |
+| 写真アイコン | `icon.photoMarkers.use: true` |
+| 縮小画像 | `thumbnail.backend.use: true`。このプロジェクトのサムネイルAPIを使用 |
+| 3D表示・ミニマップ・屋内表示 | `feature3d.use`・`minimap.use`・`indoor.use` はいずれも `false` |
+| 編集モード | 初期値は `etc.editMode: false`。`etc.editModeSwitch: true` で切り替え可能 |
+| 自分用メモ欄 | `etc.showPersonalMemo: false` |
+| 額縁・装飾画像 | `mapIllustrations.use: true`。左上にスプラッシュ画像、右下に三洋堂の画像を配置。[配置設定](docs/map-illustrations.md) |
 
-共通コードの詳細は [統合記録](docs/upstream-juso-20261109.md) を参照してください。
+イベント情報の取得先は `activity.url`、互換設定は `google.AppScript` です。どちらも `activities.php?app=jusoartfes2026` を指定しています。
 
-## 淀壁の2025年版資料
+一覧の項目・表示形式は [data/listtable.jsonc](data/listtable.jsonc)、表示する地物とスタイルは [data/overpass-custom.jsonc](data/overpass-custom.jsonc) を参照してください。
 
-2025年リポジトリの `02c8792641bdd42c53cbbf922e8cfc5bafcc9cbf` から、淀壁の画像19点を `yodokabe/` に取得しました。
+## 画像・データの取り扱い
 
-- `data/yodokabe-2025.osm.json`: 淀壁のOSMデータ22件。元の座標・タグを保持（元データのOSM基準日時は2025-08-24）。
-- `data/yodokabe-2025-images.json`: 22件の作品と画像の対応表。DOPPELには2026年11月8日に提供された `yodokabe/DOPPEL.jpg` を設定しています。画像対応は20件で、カツマタヒデユキ、BIENの2件は画像がないため空欄です。
+**[yodokabe/](yodokabe/) 内の画像はオープンデータではありません。** 各画像・作品の権利はそれぞれの権利者に帰属し、このリポジトリのコードに適用されるMITライセンスの対象には含まれません。転載・再配布・改変などの利用には、権利者の許諾または別途明示された利用条件の確認が必要です。
 
-これらは2025年版の取得資料です。現在の展示・イベント情報は2026年版のバックエンドで管理し、地図には静的OSMデータと組み合わせて表示します。
+淀壁の作品と画像の対応は [data/yodokabe-2025-images.json](data/yodokabe-2025-images.json) を参照してください。スプラッシュ画像など、その他の画像にも各提供元の権利・利用条件が適用されます。
 
-2026年11月8日、`data/st_artwork.jsonc` に [BAKIBAKI3（node/14058443330）](https://www.openstreetmap.org/node/14058443330) をOSM APIから追加しました。座標・タグ・バージョン情報は取得内容を保持しています。`yodokabe-2025.osm.json` は2025年版の資料として22件のまま保持しています。
+OpenStreetMap由来の地図データは、[OpenStreetMapの著作権・ライセンス](https://www.openstreetmap.org/copyright)に従います。コードのライセンスは [LICENSE](LICENSE) と [LICENSE.community_mapmaker](LICENSE.community_mapmaker) を参照してください。
 
-2026年11月9日、既存OSM IDをキーに `https://overpass.openacrossbase.net/api/interpreter` から静的データを更新しました（データ基準日時: 2026-11-07 21:21:03 UTC）。閉鎖確認済みのスペースコラリオン、まちライブラリー＠ジオタワー大阪十三マンションギャラリーを除き、アート104件・店舗施設127件を保持しています。
+## システム・関連リンク
 
-2026年11月9日、バックエンドの登録129件（OSM IDは87件）と照合し、静的データに不足していた18地物と形状の参照ノード14件を `data/st_stores.jsonc` に追加しました。キッズゲルニカ会場のミナモ十三（`way/1552895764`）を含みます。追加分のOSM基準日時は2026-11-08 21:11:29 UTCで、既存データとファイル先頭の基準日時は変更していません。静的ファイルに収録した会場は、通常の地物分類に一致しなくても保持するようにしています。
+共通システムの機能、導入・公開方法、設定項目、開発情報は **[Community Map Maker](https://github.com/K-Sakanoshita/community_mapmaker)** を参照してください。
 
-起動画面のスプラッシュ画像は地図上の同じ画像にも再利用します。地図描画にはCanvasで生成したメモリ上の画像データを渡し、MapLibreによる元画像の再取得を避けます。
-
-## Turf.jsの軽量化（2026年11月10日）
-
-Turf.jsを6.5.0から7.4.0へ更新し、使用する8関数とその依存コードだけを `lib/vendor/turf.min.js` にまとめました。CDNの全機能版に代えて1ファイルを読み込みます。固定バージョン・ライセンス・再生成手順は [ビルド手順](tools/turf/README.md) を参照してください。
-
-## JavaScriptの初期読み込み
-
-スクリプトはグループ内で並列取得します。`manifest.json` の `parallel: false` では記載順に実行し、`parallel: true` では取得できたものから実行します。グループ間は前のグループの完了を待ち、依存関係を維持します。遅延読み込みと旧形式の `scripts` 配列も同じ方式に対応しています。
-
-## 3Dモデルの読み込み
-
-`data/config-user.jsonc` の `feature3d.use` で切り替えます。このマップでは `false` に設定し、Three.js・3Dモデル・モデル用テクスチャを読み込まず、従来の施設アイコン（写真アイコン設定を含む）を表示します。`true` にすると3D表示が有効になります。設定変更後はページを再読み込みしてください。
-
-自動販売機2種類のモデルとテクスチャも軽量化しました。各 `scene.bin` は約1.68MBから約548KBへ縮小し、量子化した法線は `KHR_mesh_quantization` として宣言しています。両モデルはKhronosのglTF Validatorでエラー・警告とも0件を確認しました。
-
-## 写真付きの施設アイコン
-
-自分用メモ欄は `etc.showPersonalMemo` で切り替えます。このマップでは `false`（非表示）です。`true` または未設定で表示します。訪問済み・お気に入りと保存済みのメモは維持されます。
-
-画像のある施設は、最初の投稿画像を地図アイコンとして表示します。`icon.photoMarkers.use` で切り替え、画像がない場合や読み込みに失敗した場合は通常アイコンを表示します。画像の選択順・サイズ・表示上限は [写真アイコンの設定](docs/photo-markers.md) を参照してください。
-
-地図の写真アイコン・下部の画像一覧・投稿詳細内の縮小画像には、バックエンドのサムネイルAPIを使用します。長辺400px以内の画像を同じページ内で共有し、**拡大ビューアでは必ずオリジナル画像を開きます**。保存された画像URLは変更しません。
-
-`thumbnail.backend.use` を `true` にし、`thumbnail.backend.url` に `thumbnail.php?app=jusoartfes2026` のURLを設定しています。バックエンド側の `picture_url1〜6` は `image` 型、フロント側のフォーム定義は `image_url` 型です。日本語ファイル名にも対応しています。
-
-実画像2点で、678,802 → 35,766バイト（約94.7%削減）、386,114 → 14,748バイト（約96.2%削減）を確認しました。削減率は画像により異なります。APIの対象外となる相対パスの淀壁画像は元ファイルを表示し、Commons画像には従来の縮小取得を利用します。APIで取得できない場合も元画像に戻して表示します。
-
-設定と検証結果は [バックエンドサムネイル](docs/backend-thumbnails.md) を参照してください。
-
-キーワード検索は、カテゴリ・施設条件・訪問済み・お気に入り・最近見た表示による絞り込み前の、取得済み全件を対象にします。検索語を空にして再検索すると元の絞り込み条件に戻ります。`listTable.allActs: true` の場合は、地図の表示範囲で限定せずバックエンドからプロジェクトの全登録情報を取得します。検索時は地図の表示範囲・ズーム・表示階による除外も外します。閲覧・編集モードによる地物の表示対象は維持します。
-
-## カテゴリ選択と地図アイコン
-
-`data/config-user.jsonc` の `poiView.poiFilter` で地図アイコンと一覧の連動を選べます。`"filter"`（このマップの初期値・省略時）はカテゴリ・検索・施設条件などで絞り込んだ一覧に合わせてアイコンを表示します。`"all"` は一覧だけを絞り込み、地図には表示範囲・ズーム・表示階・閲覧／編集モードで表示可能な全アイコンを維持します。設定変更後はページを再読み込みしてください。
-
-## メニューのサブメニュー設定
-
-`menu.main` と `menu.mainSystem` の項目に `children` 配列を指定すると、クリックやキーボードで開閉するサブメニューになります。見出しは従来どおり `glot-model` で指定します。各子項目は通常の `linkto`・`divider` に対応し、さらに `children` を指定して入れ子にもできます。
-
-`action: "editMode"` は編集モード切り替え項目です。`linkto` は不要で、切り替え禁止・編集対象未設定の場合は表示しません。従来の設定にこの項目がなければ、メインメニュー先頭への自動追加を維持します。
-
-このマップは「その他」の `children` に編集モード・訪問済みデータの書き出し・取り込みをまとめています。
-
-## 閲覧・編集モード
-
-メインメニューの「編集モード」で切り替えます。`poiView.editZoom` に設定した地物は、編集モードで未登録のものも一覧・地図に表示します。切り替え時はカテゴリと検索語を解除します。投稿フォームの編集中は、閉じてよいか確認します。
-
-`static.use: true` でも、編集モードではブラウザーからOverpass APIへ取得し、取得済みデータを再利用します。閲覧モードに戻すと、静的データに収録された地物だけを使用します。編集時に追加取得した地物は、投稿が登録されても静的データの更新までは表示しません。静的データにない登録地物や選択された地物は、画面に警告を出さず、OSM IDを `console.log` に記録します。
-
-`etc.editMode` が初期値 `true` のサイトは、既定では編集モード固定です。`etc.editModeSwitch: true` を指定すれば切り替えを許可し、`false` なら切り替えを禁止します。このマップは初期値 `false`、切り替え許可です。
-
-## 設定と確認
-
-`data/config-user.jsonc` の `activity.url` と互換設定 `google.AppScript` に、`https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/activities.php?app=jusoartfes2026` を設定しています。認証方式は `basic`、表示フォームは `data/config-activities.jsonc` の `activities.WP` です。画像URLは1〜6に対応しています。
-
-地図範囲、イベント項目、カテゴリ、一覧の会場名・タイトル・作家・開催日時を2025年版から移植し、現在の設定形式に合わせています。訪問済み・お気に入りの保存領域は `JusoArtFes2026` です。
-
-ローカル確認:
-
-```bash
-python3 -m http.server 8766 --bind 127.0.0.1
-```
-
-ブラウザーで `http://127.0.0.1:8766/` を開いてください。CDN、地図タイル、バックエンドAPIへの接続が必要です。
-
-本体コードのライセンスは `LICENSE.community_mapmaker`、このリポジトリのライセンスは `LICENSE` を参照してください。画像およびデータには各提供元の権利・ライセンスが適用されます。
-
-以下は取り込んだCommunity Mapmakerの説明です。汎用初期設定を前提にする `tests/generic-config.cjs` はこの専用マップには適用されません。
-
----
-
-# Community Map Maker
-
-OpenStreetMap（OSM）やGoogle Spreadsheetのデータを地図上に表示するWebアプリです。設定ファイルを編集して、地域やテーマに合わせたコミュニティマップを作成できます。
-
-## 利用・公開方法
-
-このリポジトリをクローンまたはダウンロードし、ルートディレクトリでHTTPサーバーを起動します。ビルドは不要です。
-
-```bash
-python3 -m http.server 8000
-```
-
-ブラウザで `http://localhost:8000/` を開いてください。公開する場合は、GitHub Pagesなどの静的サイト用サーバーに配置できます。
-
-## 自分の地図を作る
-
-主に次のファイルを編集します。`data/` の設定ファイルは、コメントを書けるJSONC形式です。
-
-* [data/config-user.jsonc](data/config-user.jsonc): 初期位置、ズーム、施設リスト、外部データ、メニュー
-* [data/config-system.jsonc](data/config-system.jsonc): Overpass API、背景地図
-* [data/overpass-custom.jsonc](data/overpass-custom.jsonc): 取得・表示するOSM地物と表示スタイル
-* [data/category-ja.jsonc](data/category-ja.jsonc) / [data/category-en.jsonc](data/category-en.jsonc): カテゴリ名
-* [data/marker.jsonc](data/marker.jsonc): OSMタグとマーカー画像の対応
-* [data/glot-custom.jsonc](data/glot-custom.jsonc): サイト固有の表示文言
-* [manifest.json](manifest.json): 読み込むファイルとAnalytics ID
-
-サイト名や初期位置、表示対象を自分の用途に合わせて変更してください。外部データや投稿機能を利用する場合は、接続先も設定します。マーカー画像は `icon/` に配置し、見た目は `user.css` で調整できます。
-
-Google Spreadsheetを利用する場合は `config-user.jsonc` の `google`、静的GeoJSONを利用する場合は `static` を設定します。経路検索、検索、3D表示などの追加機能は、利用したい機能の設定で `use` を有効にし、必要な接続先や表示ルールを指定してください。設定項目は各ファイルのコメントを参照してください。
-
-## バックエンド
-
-[Community Mapmaker Backend](https://github.com/K-Sakanoshita/community_mapmaker_backend) は、投稿データの保存・取得、プロジェクトと投稿項目の管理、ユーザー登録・認証を提供するPHPバックエンドです。投稿機能などで利用する場合は、別途バックエンドを設置し、フロントエンドの接続先を設定します。
-
-必要環境、セットアップ、API、公開方法は、[バックエンドのREADME](https://github.com/K-Sakanoshita/community_mapmaker_backend#readme)を参照してください。
-
-## OSMデータを整備する方へ
-
-表示する施設の種類は、地図ごとの取得対象と表示設定で決まります。施設が表示されない場合は、OSMの登録内容と [data/overpass-custom.jsonc](data/overpass-custom.jsonc) の対象タグを確認してください。
-
-施設の種類は `amenity`、`shop`、`leisure`、`historic` など、名称は `name` で登録します。実際の施設に合うタグと位置を整備してください。
-
-### 建物内の施設・インドア地物
-
-階別表示を利用する地図では、`config-user.jsonc` の `indoor.use` を有効にします。部屋や通路も表示するには、それらの地物をOSMに登録します。
-
-* 施設や屋内地物の階数は `level` に登録します。OSMの `level=0` は、この地図では1F、`level=1` は2Fとして表示します。
-* 階数未設定の施設は1F扱いになるため、上階や地下の施設には実際の階数を登録してください。
-* 複数階に属する地物は、セミコロン区切りの `level` や `repeat_on` に対応しています。
-* 部屋・共用エリア・通路・壁には `indoor=room/area/corridor/wall`、通路には `highway=corridor`、扉には `door=*` などを使います。階数と必要な名称も登録してください。
-
-表示内容はOSMデータと取得・表示設定に依存します。この地図の表示だけでは、施設がないことや建物全体の階構成を判断できません。
-
-## 開発時の確認
-
-Node.jsで回帰テストを実行できます。
-
-```bash
-node tests/run.cjs
-```
-
-## 経歴
-
-* 2020/11/23 開発開始
-* 2021/04/07 「大阪思い出のこしマップ」をリリース
-* 2021/08/05 「くさつお宝マップ」をリリース
-* 2021/10/02 「図書館年表マップ」をリリース
-* 2022/03/04 「Open History & Culture Map」をリリース
-* 2022/05/02 「設備管理MAP(デモ)」をリリース
-* 2023/01/25 「遊具のある公園マップ(β版)」をもとに本家を更新
-* 2024/05/18 「東淀川区新歓祭マップ2024」をもとに本家を更新
-* 2026/08/22 「長浜城下町遺産マップ」の実装をもとに本家を更新
-* 2026/11/03 「HigayodoStreetMap2026」の最新版をもとに、設定・全機能・3Dモデル・画像を更新
-
-## 主な更新履歴
-
-Community Map Makerと、同じコードをもとに開発している各マップの機能面の履歴です。
-日付は各リポジトリの更新履歴に記載された開発・公開日で、本家への取り込み日とは異なります。
-各項目のリンクから元の記録を確認できます。データの追加・更新やイベントの告知は省いています。
-
-### 2021年〜2022年
-
-* 2021/03/28 GoogleスプレッドシートのデータとOSMの位置情報を組み合わせた地図表示に対応。Overpass APIによる取得と、取得済みOSMデータの静的ファイル読み込みを実装（[大阪思い出のこしマップ][history-osaka]）
-* 2022/03/05 アート作品の表示に対応（[みんなの歴史文化マップ][history-historyculture]）
-* 2022/03/10 敷地を面として地図上に表示する機能を追加（[みんなの歴史文化マップ][history-historyculture]）
-* 2022/04/13 Wikipedia記事の画像表示、選択カテゴリを含めたURL共有、地物アイコン・種類名の拡充に対応（[みんなの歴史文化マップ][history-historyculture]）
-* 2022/08/03 詳細情報の表示速度と読みやすさを改善（[大阪思い出のこしマップ][history-osaka]）
-* 2022/09/08 案内板のカテゴリ選択を追加し、Facebook経由でリンクを開けない問題を修正（[みんなの歴史文化マップ][history-historyculture]）
-* 2022/10/02 表示待ち時間を短縮し、ズーム別の地物表示を細分化。一部の地物が表示されない問題を修正（[みんなの歴史文化マップ][history-historyculture]）
-
-### 2023年〜2024年
-
-* 2023/09/26 遊具写真の表示に対応（[遊具のある公園マップ][history-playgrounds]）
-* 2023/10/18 Wikimedia Commonsのファイル指定に対応（[遊具のある公園マップ][history-playgrounds]）
-* 2024/01/28 詳細文の改行・URLのリンク変換を改善し、施設単位から場所の種類によるカテゴリ選択へ変更（[大阪思い出のこしマップ][history-osaka]）
-* 2024/03/15 Wikimedia Commonsのクレジット表示とOverpass APIの切り替えを改善（[遊具のある公園マップ][history-playgrounds]）
-* 2024/04/13 日付による表示選択機能を追加（[東淀川区新歓祭マップ2024][history-welcome]）
-* 2024/04/18 PMTilesの背景地図に対応（[東淀川区新歓祭マップ2024][history-welcome]）
-* 2024/07/16 空の表示と最大80度の傾斜表示に対応（[タイムマップトラベル][history-timemap]）
-* 2024/08/31 敷地と地物の紐づけ処理を改善し、地図の最大傾き設定を追加（[遊具のある公園マップ][history-playgrounds]）
-* 2024/12/25 UI、マルチポリゴン、Wikipedia表示、Commons画像取得を改善し、地物の種類を拡充（[遊具のある公園マップ][history-playgrounds]）
-
-### 2025年
-
-* 2025/01/16 建物と施設アイコンの取得時に、汎用の建物タグより施設の種類を優先する処理を改善（[みんなの歴史文化マップ][history-historyculture]）
-* 2025/04/05 Overpass APIの長大クエリとWikimedia Commonsへのリクエスト、CSS・背景地図スタイルを改善（[遊具のある公園マップ][history-playgrounds]）
-* 2025/05/04 検索機能を改善し、訪問済みの記録機能を追加（[万博マニアックマップ][history-expo]）
-* 2025/05/06 マーカーをDOMから地図のSymbolレイヤーへ変更し、描画処理を改善（[万博マニアックマップ][history-expo]）
-* 2025/05/10 POIの表現とメニュー機能を拡張し、予約の必要性を表示（[万博マニアックマップ][history-expo]）
-* 2025/05/16 訪問済みの場所へのメモ、2階以上の地物の浮上表示、広場の名称、選択地物の強調表示を追加し、再読み込み時のカテゴリ保持を修正（[万博マニアックマップ][history-expo]）
-* 2025/05/25 訪問履歴・メモの保存と取り込み、営業時間・トイレの収容人数・管理番号の表示を追加し、Commons写真の表示を拡充（[万博マニアックマップ][history-expo]）
-* 2025/05/28 訪問履歴の取り込み時の改行処理を改善（[万博マニアックマップ][history-expo]）
-* 2025/06/01 地球儀モードを追加し、訪問済みアイコンとメニューを調整（[万博マニアックマップ][history-expo]）
-* 2025/06/04 地球儀の国名を日本語化し、国ごとの訪問状況、国旗、管理番号の表示に対応（[万博マニアックマップ][history-expo]）
-* 2025/06/24 詳細表示をモーダルからサイドパネルへ変更し、絞り込みUIを整理（[万博マニアックマップ][history-expo]）
-* 2025/07/11 PC横画面のサイドバーと地球儀を拡張し、複数国の表示、地球儀内の旗、樹木・広場の描画、選択時の強調を改善（[万博マニアックマップ][history-expo]）
-* 2025/07/12 サイドバーのコンパクトモードと、2階以上の地物への階数表示を追加（[万博マニアックマップ][history-expo]）
-* 2025/07/13 訪問チェック処理の不具合を修正（[万博マニアックマップ][history-expo]）
-* 2025/08/11 お気に入り・訪問済みの非表示オプションを追加（[万博マニアックマップ][history-expo]）
-* 2025/10/13 お気に入りのアイコン表示とメモ入力欄を改善（[万博マニアックマップ][history-expo]）
-* 2025/10/19 背景地図の種類・時期を表示し、訪問状況によるアイコンの大きさを調整（[万博マニアックマップ][history-expo]）
-* 2025/10/31 Wikipedia記事の表示を改善し、旗竿・国旗の表示に対応（[万博マニアックマップ][history-expo]）
-* 2025/12/25 システムを軽量化しUIを改善。昼夜の雪景色と降雪表現を追加（[遊具のある公園マップ][history-playgrounds]・[万博マニアックマップ][history-expo]）
-
-### 2026年
-
-* 2026/01/12 路面電車が表示されない不具合と地図の読み込みを改善（[長浜城下町遺産マップ][history-nagahama]）
-* 2026/04/29 Overpass APIキャッシュを導入し、障害時の自動切り替えと読み込み表示を改善（[遊具のある公園マップ][history-playgrounds]）
-* 2026/06/20 Wikimedia APIキャッシュ、独自リストUI、口コミの評価・特徴、CSV出力を追加（[遊具のある公園マップ][history-playgrounds]）
-* 2026/08/09 マーカー・写真・詳細表示用ライブラリの遅延読み込みと、地図初期化・GAS取得の並列化で起動を高速化（[十三新発見マップ2026][history-juso]）
-* 2026/08/20 読み込み処理の安定性を改善（[長浜城下町遺産マップ][history-nagahama]）
-* 2026/08/24 起動処理、Overpass取得・キャッシュ、POI保持上限、階層・インドア表示を改善（Community Map Maker）
-* 2026/08/30 地図年・ズーム・都道府県に応じた全国／地域ニュースと、1日1回の起動案内を追加（[タイムマップトラベル][history-timemap]）
-* 2026/08/31 ニュースのドラッグ・スワイプ切り替えとWikipedia記事リンクを追加し、起動表示を改善（[タイムマップトラベル][history-timemap]）
-* 2026/09/02 敷地内の設備による検索、調査対象リスト、Activityの集約、平均評価による絞り込みを強化（[遊具のある公園マップ][history-playgrounds]）
-* 2026/09/05 共通のニュース表示と起動案内を公園マップへ展開（[遊具のある公園マップ][history-playgrounds]）
-* 2026/09/08 OSMの遊具を低ポリゴン3Dモデルで表示する機能を追加（[遊具のある公園マップ][history-playgrounds]）
-* 2026/09/12 3D表示を遊具からベンチ・給水設備・自動販売機などにも拡張（[遊具のある公園マップ][history-playgrounds]）
-* 2026/09/13 設定項目を共通化し、低ズーム時の検索、リスト操作、読み込み・ズーム案内を改善（[遊具のある公園マップ][history-playgrounds]）
-* 2026/10/07 起動案内・各画面の英語対応、目的別の絞り込み、周辺・お気に入り・最近見たの切り替え、前回位置と目的の復元を改善（[遊具のある公園マップ][history-playgrounds]）
-* 2026/10/07 口コミ・地図情報の更新を場所ごとに集約し、未確認・既読管理と表示範囲を限定したActivity API取得に対応。地物分類と3Dモデル表示を設定ベースで汎用化（[遊具のある公園マップ][history-playgrounds]）
-* 2026/10/07 共有URLの統一、コピー結果の案内・手動コピー、経路検索へのリンクを追加し、非公開メモと公開投稿の違いを明示（[遊具のある公園マップ][history-playgrounds]）
-* 2026/10/08 サイドバー操作と共有URLを改善し、経路検索、投稿API・スキーマ対応、更新情報、敷地と地物の関連付け、検索、設定ベースの3D表示を追加
-* 2026/10/08 地図のドラッグ・ズーム時の動作速度を改善
-* 2026/10/08 インジケータを階数表示の上へ配置
-* 2026/10/08 階数未設定の施設がある場合、階層表示中も1Fを選択できるよう修正
-* 2026/10/09 都道府県別の更新取得履歴・一覧の保存、お気に入りの独立した更新確認、取得失敗時の履歴保持に対応。口コミの内訳と一覧ボタンのキーボード操作を改善（[遊具のある公園マップ][history-playgrounds]）
-* 2026/10/10 3D表示対象を拡充し、写真の読み込み表示とスマートフォンの詳細画面の余白を改善（[万博マニアックマップ][history-expo]）
-* 2026/10/12 カテゴリ横断の「すべて表示」、検索から地図への連携、ブラウザ言語に合わせた表示を追加。写真スクロール案内・遅延読み込み・最大40枚表示、パネルのサイズ変更中の地図表示を改善（[万博マニアックマップ][history-expo]）
-* 2026/10/28 固定座標の装飾画像を地図と一緒に回転・傾斜・拡大縮小して表示し、影とパネル背景を設定可能に。投稿画像とOSM画像の併用、カテゴリ変更時の地図・一覧・写真の更新を改善（[ひがよど文化祭 会場周遊マップ2026][history-higayodo]）
-* 2026/10/31 新着情報の座標を使った先行移動と詳細の並行取得、欠落地物の代替Overpassサーバーからの取得に対応。更新内訳と絞り込み表示、低ズーム時のアイコン縮小を改善（[遊具のある公園マップ][history-playgrounds]・[ひがよど文化祭 会場周遊マップ2026][history-higayodo]）
-* 2026/11/03 ソフトキーボード表示中のリサイズで入力フォームが再描画され、ユーザー名などを入力できなくなる問題を修正（[遊具のある公園マップの修正コミット](https://github.com/armd-02/Playgrounds/commit/ceab991d01046b866775886cc3618e1e93e9b1d5)から取り込み）
-
-[history-osaka]: https://github.com/armd-02/OsakaMemories#更新履歴
-[history-historyculture]: https://github.com/armd-02/openhc-map#更新履歴
-[history-playgrounds]: https://github.com/armd-02/Playgrounds#主な更新履歴
-[history-welcome]: https://github.com/armd-02/HigayodoWelcome2024#主な更新履歴
-[history-timemap]: https://github.com/armd-02/TimeMapTravel_Japan#主な更新履歴
-[history-expo]: https://github.com/K-Sakanoshita/expo2025-maniacs#更新履歴
-[history-nagahama]: https://github.com/armd-02/NagahamaJyoukamachi#更新履歴
-[history-juso]: https://github.com/armd-02/JusoNewDiscoveryMap2026#更新履歴
-[history-higayodo]: https://github.com/armd-02/HigayodoStreetMap2026#更新履歴
+- [Community Map Maker バックエンド](https://github.com/K-Sakanoshita/community_mapmaker_backend)
+- [前年版の十三アートフェスマップ](https://github.com/armd-02/JusoArtFes2025)
+- [変更履歴](https://github.com/armd-02/JusoArtFes2026/commits/main/)

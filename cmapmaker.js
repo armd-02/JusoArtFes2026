@@ -725,6 +725,12 @@ class CMapMaker extends IndoorControl {
         mapLibre.on('moveend', () => newsTicker.update())
         mapLibre.on('zoomend', this.eventZoomMap.bind(cMapMaker))			// ズーム終了時に表示更新
         list_category.addEventListener('change', this.eventChangeCategory.bind(cMapMaker))	// category change
+        document.getElementById("list_event_date")?.addEventListener('change', () => {
+            this.refreshLocalFilters();
+            this.clearDatail();
+            geoCont.writePoiCircle();
+            areaSearchController.renderDisplayStatus();
+        });
         list_keyword.addEventListener('keydown', (event) => {
             if (event.key !== 'Enter') return;
             event.preventDefault();

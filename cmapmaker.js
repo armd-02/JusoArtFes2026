@@ -532,6 +532,16 @@ class CMapMaker extends IndoorControl {
                     cMapMaker.showMapTitleWhenReady(mapLibre.selectStyle);
                     const mergedMenu = [...Conf.menu.main, ...Conf.menu.mainSystem];
                     winCont.menu_make(mergedMenu, "main_menu");
+                    if (Conf.areaSearch.use === true || Conf.etc.localSave) {
+                        document.getElementById("main_menu").insertAdjacentHTML("afterbegin", `
+                            <button class="dropdown-item d-flex align-items-center gap-2" type="button"
+                                id="poiFilterButton" onclick="poiFilterController.open('search')"
+                                aria-haspopup="dialog" aria-controls="poiFilterModal">
+                                <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                                <span glot-model="placeFilter_title"></span>
+                            </button>
+                            <div class="dropdown-divider"></div>`);
+                    }
                     winCont.mouseDragScroll(images, cMapMaker.eventViewThumb); // set Drag Scroll on images
                     winCont.initSidebarResize();
                     glot.render();
@@ -542,8 +552,6 @@ class CMapMaker extends IndoorControl {
                         }
                     });
                     areaSearchController.init();
-                    const filterButton = document.getElementById("poiFilterButton");
-                    if (filterButton) filterButton.hidden = Conf.areaSearch.use !== true && !Conf.etc.localSave;
                     const listModes = document.querySelector(".place-list-mode");
                     if (listModes) listModes.hidden = !Conf.etc.localSave;
                     listActions.init(Conf.listActions ?? Conf.system?.listActions);

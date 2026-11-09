@@ -4,7 +4,10 @@ const vm = require("vm");
 
 const html = fs.readFileSync("index.html", "utf8");
 const base = fs.readFileSync("baselist.html", "utf8");
-assert.match(base, /id="poiFilterButton"[\s\S]*?aria-controls="poiFilterModal"/);
+const app = fs.readFileSync("cmapmaker.js", "utf8");
+assert.doesNotMatch(base, /id="poiFilterButton"/);
+assert.match(app, /getElementById\("main_menu"\)\.insertAdjacentHTML\("afterbegin", `[\s\S]*?id="poiFilterButton"[\s\S]*?aria-controls="poiFilterModal"/);
+assert.match(app, /Conf\.areaSearch\.use === true \|\| Conf\.etc\.localSave/);
 assert.doesNotMatch(base, /id="filter_menu"|id="sub_menu"/);
 assert.match(html, /id="poiFilterVisited"/);
 assert.doesNotMatch(html, /id="poiFilterFavoriteOnly"|id="poiFilterPresets"|onchange="cMapMaker.setVisitedFilter/);

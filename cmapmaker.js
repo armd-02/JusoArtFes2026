@@ -418,7 +418,7 @@ class CMapMaker extends IndoorControl {
                     json = JSON5.parse(data);
                 }
                 const ovanswer = await overPassCont.setOsmJson(json);
-                poiCont.addGeojson(ovanswer);
+                poiCont.addGeojson(ovanswer, { source: "static" });
             }
             poiCont.setActlnglat();
             console.log("cMapMaker: Static load done.");
@@ -486,7 +486,8 @@ class CMapMaker extends IndoorControl {
                     && Conf.tile[UrlParams.category]) {
                     Conf.map.tileName = UrlParams.category;
                 }
-                if (UrlParams.edit) Conf.etc["editMode"] = true;
+                this.editModeSwitchEnabled = Conf.etc.editModeSwitch ?? !Conf.etc.editMode;
+                if (this.editModeSwitchEnabled && UrlParams.edit !== undefined && basic.parseBoolean(UrlParams.edit) === true) Conf.etc.editMode = true;
                 if (UrlParams.static !== undefined) {
                     const staticMode = basic.parseBoolean(UrlParams.static);
                     if (staticMode !== null) Conf.static.use = staticMode;
@@ -541,6 +542,15 @@ class CMapMaker extends IndoorControl {
                                 <span glot-model="placeFilter_title"></span>
                             </button>
                             <div class="dropdown-divider"></div>`);
+                    }
+                    if (this.editModeSwitchEnabled && Object.keys(Conf.poiView.editZoom ?? {}).length) {
+                        document.getElementById("main_menu").insertAdjacentHTML("afterbegin", `
+                            <button class="dropdown-item d-flex align-items-center gap-2" type="button"
+                                id="editModeButton" onclick="cMapMaker.setEditMode(!Conf.etc.editMode)"
+                                role="menuitemcheckbox" aria-checked="${Boolean(Conf.etc.editMode)}">
+                                <i id="editModeIndicator" class="fa-solid ${Conf.etc.editMode ? 'fa-check' : 'fa-pen-to-square'}" aria-hidden="true"></i>
+                                <span glot-model="editMode_label"></span>
+                            </button>`);
                     }
                     winCont.mouseDragScroll(images, cMapMaker.eventViewThumb); // set Drag Scroll on images
                     winCont.initSidebarResize();
@@ -678,7 +688,7 @@ class CMapMaker extends IndoorControl {
                         if (!Conf.activity.url || activities.length === 0) return;
                         poiCont.setActdata(activities);
 
-                        if (Conf.poiView.poiActLoad && !Conf.static.use) {
+                        if (Conf.poiView.poiActLoad && (!Conf.static.use || Conf.etc.editMode)) {
                             const osmids = activities.map((act) => act.osmid).filter(Boolean);
                             if (osmids.length > 0) {
                                 try {
@@ -793,6 +803,47 @@ class CMapMaker extends IndoorControl {
         setTimeout(() => { globalMessage.innerHTML = "" }, 4000)
     }
 
+    async setEditMode(enabled) {
+        if (!this.editModeSwitchEnabled || this.editModeChanging || enabled === Boolean(Conf.etc.editMode)) return false;
+        this.editModeChanging = true;
+        const button = document.getElementById("editModeButton");
+        if (button) button.disabled = true;
+        try {
+            if (this.mode === "edit") {
+                const confirmed = await new Promise(resolve => winCont.confirm({
+                    title: glot.get("confirmCloseTitle"), message: glot.get("confirmCloseDetail"), callback: resolve
+                }));
+                if (!confirmed) return false;
+            }
+            // Invalidate an in-flight update before changing which data is visible.
+            ++this.updateViewRequestId;
+            Conf.etc.editMode = Boolean(enabled);
+            ++poiCont.revision;
+            poiCont.cat_cache = {};
+            const indicator = document.getElementById("editModeIndicator");
+            if (indicator) indicator.className = `fa-solid ${enabled ? "fa-check" : "fa-pen-to-square"}`;
+            if (button) button.setAttribute("aria-checked", String(Conf.etc.editMode));
+            this.clearDatail();
+            this.changeMode("list");
+            list_category.value = "";
+            list_keyword.value = "";
+            const url = new URL(location.href);
+            url.searchParams.delete("category");
+            if (enabled) url.searchParams.set("edit", "true");
+            else url.searchParams.delete("edit");
+            history.replaceState("", "", url.pathname + url.search + url.hash);
+            this.refreshLocalFilters();
+            await this.updateView();
+            return true;
+        } catch (error) {
+            console.warn("cMapMaker: edit mode update failed", error);
+            return false;
+        } finally {
+            this.editModeChanging = false;
+            if (button) button.disabled = false;
+        }
+    }
+
     getPoiZoom(target) {
         const defaultZoom = Conf.poiView?.poiZoom?.[target];
         const isMobile = basic.isSmartPhone()
@@ -828,7 +879,8 @@ class CMapMaker extends IndoorControl {
     viewArea() {			// Area(敷地など)を表示させる refタグがあれば()表記
         const started = performance.now();
         const stages = [];
-        let targets = poiCont.getTargets()  //
+        const activeTargets = new Set(poiCont.getTargets());
+        let targets = [...new Set([...activeTargets, ...Object.keys(Conf.poiView.editZoom ?? {})])];
         console.log("viewArea: " + targets.join())
         targets.forEach((target) => {
             const osmConf = Conf.osm[target]
@@ -837,7 +889,8 @@ class CMapMaker extends IndoorControl {
                 if (osmConf.expression.renderer !== "indoor"
                     && mapLibre.isPolygonSourceCurrent(target, poiCont.revision)) return;
                 const targetStarted = performance.now();
-                let pois = poiCont.getPois(target, false)
+                let pois = activeTargets.has(target) ? poiCont.getPois(target, false)
+                    : { geojson: [], targets: [], lnglat: [] };
                 if (osmConf.expression.renderer === "indoor") {
                     const controlPois = poiCont.getPois("-", false);
                     const contextStarted = performance.now();
@@ -992,7 +1045,7 @@ class CMapMaker extends IndoorControl {
         try {
             const activities = await gSheet.get(url.href, { throwOnError: true });
             if (requestId !== this.activityRequestId) return false;
-            if (Conf.poiView.poiActLoad && !Conf.static.use) {
+            if (Conf.poiView.poiActLoad && (!Conf.static.use || Conf.etc.editMode)) {
                 // Imported rows may have no coordinates, and activity-only maps do not
                 // run a viewport OSM query. Resolve their OSM IDs here as well.
                 const osmids = [...new Set(activities.map(act => act.osmid).filter(Boolean))]
@@ -1269,7 +1322,8 @@ class CMapMaker extends IndoorControl {
                     // append activity
                     let catname = listTable.getSelCategory() !== "-" ? `&category=${listTable.getSelCategory()}` : "";
                     let actlists = poiCont.getActlistByOsmid(osmid);
-                    const detailUrl = this.withIndoorLevel(location.pathname + "?" + osmid + (!openid ? "" : "." + openid) + catname);
+                    const modeQuery = Conf.etc.editMode && this.editModeSwitchEnabled ? "&edit=true" : "";
+                    const detailUrl = this.withIndoorLevel(location.pathname + "?" + osmid + (!openid ? "" : "." + openid) + catname + modeQuery);
                     history.replaceState('', '', detailUrl + location.hash);
                     if (actlists.length > 0) {	// アクティビティ有り
                         message += modalActs.make(actlists);
@@ -1372,7 +1426,9 @@ class CMapMaker extends IndoorControl {
             const selectedCategory = listTable.getSelCategory().join(",");
             const catname = selectedCategory !== "" && selectedCategory !== "-"
                 ? `?category=${encodeURIComponent(selectedCategory)}` : "";
-            history.replaceState('', '', this.withIndoorLevel(location.pathname + catname) + location.hash)
+            const modeQuery = Conf.etc.editMode && this.editModeSwitchEnabled
+                ? `${catname ? "&" : "?"}edit=true` : "";
+            history.replaceState('', '', this.withIndoorLevel(location.pathname + catname + modeQuery) + location.hash)
         }
         this.openOSMid = null
         this.detail = false
@@ -1574,7 +1630,9 @@ class CMapMaker extends IndoorControl {
                 break;
         }
         catname = selcategory !== "-" ? `?category=${selcategory}` : ""
-        history.replaceState('', '', this.withIndoorLevel(location.pathname + catname) + location.hash)
+        const modeQuery = Conf.etc.editMode && this.editModeSwitchEnabled
+            ? `${catname ? "&" : "?"}edit=true` : "";
+        history.replaceState('', '', this.withIndoorLevel(location.pathname + catname + modeQuery) + location.hash)
         cMapMaker.clearDatail()
         geoCont.writePoiCircle()
         mapLibre.map.redraw()

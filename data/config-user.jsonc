@@ -190,7 +190,6 @@
             "shop": 16,
             "indoor": 18,
             "parking": 16,
-            "JusoArtFes": 8,
             "publicArt": 14,
             "Green": 15
         },
@@ -478,6 +477,7 @@
         "showPersonalMemo": false,
         "reverseIcon": false,
         "editMode": false,
+        "editModeSwitch": true, // メニューから閲覧・編集モードを切り替える
         "splashUrl": "./image/splash.png",
         "loadingUrl": "./image/loading.gif"
     },

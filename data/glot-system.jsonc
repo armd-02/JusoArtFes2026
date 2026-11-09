@@ -1,4 +1,5 @@
 {
+    "editMode_label": {"ja": "編集モード", "en": "Edit mode"},
     "map_documents_title": {"ja":"パンフレット", "en":"Brochure"},
     "map_documents_map": {"ja":"会場マップ", "en":"Venue map"},
     "map_documents_program": {"ja":"イベント紹介", "en":"Program"},

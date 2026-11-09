@@ -2370,6 +2370,494 @@
       "changeset": 174489167,
       "user": "K_Sakanoshita",
       "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 3213122311,
+      "lat": 34.7195146,
+      "lon": 135.4845863,
+      "timestamp": "2026-08-30T16:39:53Z",
+      "version": 12,
+      "changeset": 188259621,
+      "user": "Wish_F",
+      "uid": 6972989,
+      "tags": {
+        "addr:block_number": "17",
+        "addr:city": "大阪市",
+        "addr:housenumber": "13",
+        "addr:neighbourhood": "十三東一丁目",
+        "addr:postcode": "532-0023",
+        "addr:province": "大阪府",
+        "addr:suburb": "淀川区",
+        "amenity": "coworking_space",
+        "contact:facebook": "https://ja-jp.facebook.com/jusocoworking/",
+        "contact:instagram": "jusocoworking",
+        "contact:twitter": "https://twitter.com/jusocoworking",
+        "contact:website": "http://juso-coworking.com/",
+        "internet_access": "wlan",
+        "level": "3",
+        "name": "JUSO Coworking",
+        "phone": "+81 6 6302 3366",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7488701539,
+      "lat": 34.7208024,
+      "lon": 135.4831409,
+      "timestamp": "2026-08-08T10:38:33Z",
+      "version": 4,
+      "changeset": 187127169,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "pub",
+        "check_date": "2024-07-25;2023-08-19",
+        "contact:instagram": "hachihachi_8888",
+        "level": "0",
+        "name": "立呑処 ハチハチ",
+        "name:ja": "立呑処ハチハチ",
+        "takeaway": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7536331299,
+      "lat": 34.7176216,
+      "lon": 135.4805946,
+      "timestamp": "2026-11-08T13:54:42Z",
+      "version": 3,
+      "changeset": 191648591,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "nightclub",
+        "contact:facebook": "https://www.facebook.com/13base",
+        "name": "吉見商店＆13BASE",
+        "shop": "alcohol",
+        "website": "https://yoshimi13base.jimdosite.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9905657916,
+      "lat": 34.7170774,
+      "lon": 135.4735989,
+      "timestamp": "2025-08-24T03:58:35Z",
+      "version": 6,
+      "changeset": 170905987,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "cafe",
+        "contact:instagram": "ocara.tey",
+        "name": "つどい小屋 おから亭",
+        "website": "https://ocara-tey.jimdofree.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10159500167,
+      "lat": 34.7214368,
+      "lon": 135.4896197,
+      "timestamp": "2022-11-05T15:14:32Z",
+      "version": 1,
+      "changeset": 128524764,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "community_centre",
+        "name": "木川南 西一南町会 公民館"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11126584571,
+      "lat": 34.7215039,
+      "lon": 135.4812783,
+      "timestamp": "2026-08-08T09:01:35Z",
+      "version": 2,
+      "changeset": 187123475,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "bar",
+        "check_date": "2023-08-19",
+        "contact:instagram": "dreamroad1113",
+        "name": "DREAM ROAD"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11126829670,
+      "lat": 34.7297239,
+      "lon": 135.4956178,
+      "timestamp": "2024-07-14T13:01:58Z",
+      "version": 2,
+      "changeset": 153929777,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "fast_food",
+        "check_date": "2023-08-19",
+        "contact:instagram": "crepe_rose_osaka",
+        "cuisine": "juice",
+        "level": "0",
+        "name": "クレープ ローゼ"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11968164187,
+      "lat": 34.7164104,
+      "lon": 135.48061,
+      "timestamp": "2024-07-14T14:09:11Z",
+      "version": 3,
+      "changeset": 153932361,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "restaurant",
+        "check_date": "2024-06-10",
+        "contact:instagram": "udonmaru2021",
+        "name": "うどん食堂まる"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12048152582,
+      "lat": 34.7199961,
+      "lon": 135.4843393,
+      "timestamp": "2024-07-14T05:24:00Z",
+      "version": 2,
+      "changeset": 153916629,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "check_date": "2024-07-11",
+        "contact:phone": "+81 6-6777-7640",
+        "healthcare": "alternative",
+        "healthcare:speciality": "acupuncture",
+        "level": "2",
+        "name": "小竹鍼灸院",
+        "website": "http://sinkyu.jp/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13430315702,
+      "lat": 34.7219167,
+      "lon": 135.4834061,
+      "timestamp": "2026-01-04T12:47:30Z",
+      "version": 1,
+      "changeset": 176817496,
+      "user": "Wish_F",
+      "uid": 6972989,
+      "tags": {
+        "amenity": "cafe",
+        "name": "自家焙煎珈琲M"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13741175270,
+      "lat": 34.7188435,
+      "lon": 135.4840641,
+      "timestamp": "2026-08-08T16:42:25Z",
+      "version": 2,
+      "changeset": 187143222,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "library",
+        "name": "まちライブラリー@履正社十三図書館",
+        "website": "https://machi-library.org/where/detail/8950/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14058363598,
+      "lat": 34.7214913,
+      "lon": 135.4812663,
+      "timestamp": "2026-07-29T10:35:38Z",
+      "version": 1,
+      "changeset": 186575995,
+      "user": "CAFEYUTTE",
+      "uid": 8768240,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2026-07-29",
+        "contact:instagram": "https://www.instagram.com/aibou_js?igsh=bmRsbTh2NHJnMnFo",
+        "name": "かふぇaibou"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14058453967,
+      "lat": 34.7171108,
+      "lon": 135.4802447,
+      "timestamp": "2026-08-08T16:09:28Z",
+      "version": 2,
+      "changeset": 187141864,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "cafe",
+        "check_date": "2026-07-29",
+        "contact:instagram": "door_laugh_coffee",
+        "name": "DOOR laugh&coffee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14058492178,
+      "lat": 34.7216088,
+      "lon": 135.486745,
+      "timestamp": "2026-08-08T06:23:39Z",
+      "version": 2,
+      "changeset": 187118081,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "contact:instagram": "comeco.no.torico",
+        "name": "コメコノトリコ",
+        "shop": "bakery",
+        "website": "https://comeco-no-torico.myshopify.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14318605683,
+      "lat": 34.7298062,
+      "lon": 135.4728343,
+      "timestamp": "2026-10-25T15:37:05Z",
+      "version": 1,
+      "changeset": 191016594,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "name": "トキヤサイクル",
+        "shop": "bicycle"
+      }
+    },
+    {
+      "type": "way",
+      "id": 169220378,
+      "timestamp": "2025-05-19T10:03:55Z",
+      "version": 2,
+      "changeset": 166467596,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "nodes": [
+        1803817209,
+        1803817148,
+        1803817151,
+        1803817211,
+        1803817209
+      ],
+      "tags": {
+        "building": "yes",
+        "building:levels": "5",
+        "source": "Bing, 2008-3"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1241573907,
+      "timestamp": "2026-06-23T11:58:51Z",
+      "version": 2,
+      "changeset": 184473615,
+      "user": "TTmechanicalupdates",
+      "uid": 13606340,
+      "nodes": [
+        11536258967,
+        11536258966,
+        11536258965,
+        11536258964,
+        11536258967
+      ],
+      "tags": {
+        "building": "yes",
+        "height": "7.2",
+        "source:height": "MLIT_PLATEAU"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1552895764,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "nodes": [
+        14128630040,
+        14128630041,
+        14128630042,
+        14128630043,
+        14128630044,
+        14128630045,
+        14128630040
+      ],
+      "tags": {
+        "landuse": "retail",
+        "name": "ミナモ十三"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1803817148,
+      "lat": 34.7189581,
+      "lon": 135.4811485,
+      "timestamp": "2020-05-05T10:18:44Z",
+      "version": 3,
+      "changeset": 84685237,
+      "user": "HikaruKinkakuji",
+      "uid": 1878070
+    },
+    {
+      "type": "node",
+      "id": 1803817151,
+      "lat": 34.7189602,
+      "lon": 135.4812395,
+      "timestamp": "2020-05-05T10:18:44Z",
+      "version": 3,
+      "changeset": 84685237,
+      "user": "HikaruKinkakuji",
+      "uid": 1878070
+    },
+    {
+      "type": "node",
+      "id": 1803817209,
+      "lat": 34.7190819,
+      "lon": 135.4811444,
+      "timestamp": "2020-05-05T10:18:44Z",
+      "version": 3,
+      "changeset": 84685237,
+      "user": "HikaruKinkakuji",
+      "uid": 1878070
+    },
+    {
+      "type": "node",
+      "id": 1803817211,
+      "lat": 34.719084,
+      "lon": 135.4812354,
+      "timestamp": "2020-05-05T10:18:44Z",
+      "version": 3,
+      "changeset": 84685237,
+      "user": "HikaruKinkakuji",
+      "uid": 1878070
+    },
+    {
+      "type": "node",
+      "id": 11536258964,
+      "lat": 34.719646,
+      "lon": 135.488449,
+      "timestamp": "2024-01-21T08:09:07Z",
+      "version": 1,
+      "changeset": 146503201,
+      "user": "okadatsuneo",
+      "uid": 10163840
+    },
+    {
+      "type": "node",
+      "id": 11536258965,
+      "lat": 34.719684,
+      "lon": 135.4885194,
+      "timestamp": "2024-01-21T08:09:07Z",
+      "version": 1,
+      "changeset": 146503201,
+      "user": "okadatsuneo",
+      "uid": 10163840
+    },
+    {
+      "type": "node",
+      "id": 11536258966,
+      "lat": 34.7197363,
+      "lon": 135.4884775,
+      "timestamp": "2024-01-21T08:09:07Z",
+      "version": 1,
+      "changeset": 146503201,
+      "user": "okadatsuneo",
+      "uid": 10163840
+    },
+    {
+      "type": "node",
+      "id": 11536258967,
+      "lat": 34.7196983,
+      "lon": 135.4884071,
+      "timestamp": "2024-01-21T08:09:07Z",
+      "version": 1,
+      "changeset": 146503201,
+      "user": "okadatsuneo",
+      "uid": 10163840
+    },
+    {
+      "type": "node",
+      "id": 14128630040,
+      "lat": 34.7181749,
+      "lon": 135.4866131,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14128630041,
+      "lat": 34.7182601,
+      "lon": 135.4866243,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14128630042,
+      "lat": 34.7188157,
+      "lon": 135.487586,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14128630043,
+      "lat": 34.7187941,
+      "lon": 135.487686,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14128630044,
+      "lat": 34.7187819,
+      "lon": 135.4876961,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14128630045,
+      "lat": 34.7181669,
+      "lon": 135.4866196,
+      "timestamp": "2026-08-27T11:13:12Z",
+      "version": 1,
+      "changeset": 188090228,
+      "user": "K_Sakanoshita",
+      "uid": 389520
     }
   ]
 }

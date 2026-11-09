@@ -866,7 +866,7 @@ class CMapMaker extends IndoorControl {
     }
 
     refreshLocalFilters() {
-        // Personal filters change presentation, not the loaded geographic extent.
+        // Category/personal filters can immediately reuse the loaded data.
         listTable.makeList(false);
         listTable.filterByPoiStatus(this.visitedFilterStatus, this.favoriteFilter, false);
         listTable.renderList();
@@ -1633,7 +1633,11 @@ class CMapMaker extends IndoorControl {
                 newsTicker.update()
                 break;
             case "ChangePoi":
+                this.refreshLocalFilters();
                 cMapMaker.updateView()
+                break;
+            default:
+                this.refreshLocalFilters();
                 break;
         }
         catname = selcategory !== "-" ? `?category=${selcategory}` : ""

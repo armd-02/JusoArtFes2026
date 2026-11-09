@@ -17,7 +17,7 @@
 | `areaFeatureLinker/areaSearch` | 面地物の関連付け、地域検索。各 `use: false` |
 | `discovery/listActions/directions` | 発見、一覧アクション、経路案内。各 `use: false` |
 | `icon.flagPath` | 国旗の画像パス。`./flags/w40` |
-| `poiView.poiFilter` | POI表示フィルタ。`all` |
+| `poiView.poiFilter` | `filter`（現在の初期値・省略時）は一覧の絞り込みに地図アイコンも連動。`all` は一覧だけを絞り込み、地図は表示可能な全アイコンを維持 |
 | `listTable.nameFallback/height` | 名称がない場合の代替表示、一覧の高さ。最新版の設定を追加 |
 | `google.Analytics` | 空。アクセス解析IDは `manifest.json` も空 |
 | `wikipedia.image` | Wikipediaの画像表示。有効 |

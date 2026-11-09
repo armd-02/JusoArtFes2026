@@ -138,3 +138,27 @@ for (const [level, suffix] of [['0', ''], ['0.0', ''], ['1', '\n(1)'], ['-1', '\
         'ground-floor labels are omitted while other floors remain: ' + level);
 }
 console.log('PASS: omit ground-only map labels, retain upper/basement/multi-floor labels');
+
+// The all policy uses the current-view path rather than filtered list rows.
+controller.getPois = () => ({ geojson: [poi.geojson], targets: [poi.targets], lnglat: [poi.lnglat] });
+controller.setPoi(undefined, false);
+assert.equal(sources.get('marker-normal').data.features.length, 1);
+context.geoCont.checkInner = () => false;
+controller.setPoi(undefined, false);
+assert.equal(sources.get('marker-normal').data.features.length, 0, 'all still respects the viewport');
+context.geoCont.checkInner = () => true;
+context.cMapMaker.isPoiVisibleInLevelMode = () => false;
+controller.setPoi(undefined, false);
+assert.equal(sources.get('marker-normal').data.features.length, 0, 'all still respects the selected floor');
+context.cMapMaker.isPoiVisibleInLevelMode = () => true;
+context.mapLibre.getZoom = () => 1;
+controller.setPoi(undefined, false);
+assert.equal(sources.get('marker-normal').data.features.length, 0, 'all still respects zoom thresholds');
+context.mapLibre.getZoom = () => 18;
+controller.adata = [{ id: 'WP/1', osmid: 'node/1' }, { id: 'WP/2', osmid: 'node/1' }];
+controller.getActlistByOsmid = () => controller.adata;
+controller.setPoi(undefined, false);
+const markerCount = [...sources].filter(([id]) => /^marker-(attention|green|middle|normal|visited)$/.test(id))
+    .reduce((sum, [, source]) => sum + source.data.features.length, 0);
+assert.equal(markerCount, 1, 'all emits one icon for a venue with multiple activities');
+console.log('PASS: all markers retain viewport, floor and zoom limits and deduplicate venues');

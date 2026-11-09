@@ -181,6 +181,8 @@
         }
     },
     "poiView": {
+        // filter: 一覧の絞り込みに地図アイコンも連動 / all: 地図アイコンは全件表示を維持
+        "poiFilter": "filter",
         "poiActLoad": true,
         "poiZoom": {
             "activity": 8,

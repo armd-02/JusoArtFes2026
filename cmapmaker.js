@@ -932,6 +932,11 @@ class CMapMaker extends IndoorControl {
     }
 
     viewPoi(targets) {		// Poiを表示させる
+        if (Conf.poiView.poiFilter === "all") {
+            // Keep viewport/zoom/floor visibility while ignoring list filters.
+            poiCont.setPoi(undefined, false);
+            return;
+        }
         let nowselect = listTable.getSelCategory()          // tags,key=valueの複数値
         nowselect = nowselect[0] == "" ? "-" : nowselect[nowselect.length - 1]
         //console.log(`viewPoi: Start(now select ${nowselect}).`)

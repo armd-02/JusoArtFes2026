@@ -59,6 +59,17 @@ config.etc.editMode = false;
 assert.equal(poi.makeList(['editable'], false).length, 0, 'editZoom cannot activate an edit-only target in browse mode');
 assert.equal(poi.getPois('-').geojson.length, 1, 'dynamic features disappear on return to browse');
 
+// Keyword search precedes map extent, zoom and floor filters, but respects static mode.
+zoom = 2;
+context.cMapMaker.isPoiVisibleInLevelMode = () => false;
+context.geoCont.checkInner = () => false;
+assert.equal(poi.makeList(['activity'], false).length, 0);
+assert.deepEqual(Array.from(poi.makeList(['activity'], false, {searchAll:true}), row => row[0]), ['WP/1'],
+    'search includes off-screen/other-floor registrations, excluding unavailable static features');
+zoom = 15;
+context.cMapMaker.isPoiVisibleInLevelMode = () => true;
+context.geoCont.checkInner = () => true;
+
 // Exercise the actual list target selection and row cache across mode changes.
 config.etc.editMode = true;
 vm.runInContext(fs.readFileSync('lib/listtable.js', 'utf8') + '\nthis.Table = ListTable;', context);

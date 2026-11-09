@@ -1032,16 +1032,18 @@ class CMapMaker extends IndoorControl {
 
     async loadActivitiesForView(force = false) {
         if (!this.usesActivityBbox()) return false;
-        // A date-line crossing view cannot be represented by one API BBOX.
-        const viewportBbox = areaSearchController.searchBbox();
-        const bbox = viewportBbox ?? "-180,-90,180,90";
+        // All-activity lists must not lose registrations when the map moves.
+        const allActivities = Conf.listTable?.allActs === true;
+        const viewportBbox = allActivities ? null : areaSearchController.searchBbox();
+        const bbox = allActivities ? "all" : viewportBbox ?? "-180,-90,180,90";
         if (!force && bbox === this.lastActivityBbox) return false;
         const requestId = ++this.activityRequestId;
         const url = new URL(Conf.activity.url, location.href);
-        url.searchParams.set("bbox", bbox);
-        console.info(viewportBbox === null
-            ? "Activity BBOX request (full-world fallback):"
-            : "Activity BBOX request (viewport):", url.href);
+        if (allActivities) url.searchParams.delete("bbox");
+        else url.searchParams.set("bbox", bbox);
+        console.info(allActivities ? "Activity request (all registrations):"
+            : viewportBbox === null ? "Activity BBOX request (full-world fallback):"
+                : "Activity BBOX request (viewport):", url.href);
         try {
             const activities = await gSheet.get(url.href, { throwOnError: true });
             if (requestId !== this.activityRequestId) return false;

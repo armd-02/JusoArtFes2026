@@ -105,3 +105,34 @@ img.slide {
     width: 5.25rem;
     height: 40px;
 }
+
+/* Compact list text without shrinking the visited/favorite touch targets. */
+#listArea .list-facility-item .list-detail-button .align-middle {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Keep the display selector next to the facility-list heading. */
+#listHeader .detailTitle {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+#listHeader .place-list-mode {
+    flex: 0 1 8.5rem;
+    margin-inline: .75rem .5rem;
+}
+
+#listHeader #listDisplayMode {
+    min-width: 0;
+}
+
+.place-list-toolbar:has(> #placeDiscovery[hidden]) {
+    display: none !important;
+}
+
+@media (min-width: 1080px) {
+    #bottom-pane.sidebar-minimized #listHeader .place-list-mode {
+        display: none !important;
+    }
+}

@@ -543,7 +543,8 @@ class CMapMaker extends IndoorControl {
                             </button>
                             <div class="dropdown-divider"></div>`);
                     }
-                    if (this.editModeSwitchEnabled && Object.keys(Conf.poiView.editZoom ?? {}).length) {
+                    if (this.editModeSwitchEnabled && Object.keys(Conf.poiView.editZoom ?? {}).length
+                        && !document.getElementById("editModeButton")) {
                         document.getElementById("main_menu").insertAdjacentHTML("afterbegin", `
                             <button class="dropdown-item d-flex align-items-center gap-2" type="button"
                                 id="editModeButton" onclick="cMapMaker.setEditMode(!Conf.etc.editMode)"

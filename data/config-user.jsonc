@@ -126,7 +126,7 @@
         ]
     },
     "minimap": {
-        "use": true,
+        "use": false,
         "height": 200,
         "initZoom": 2,
         "viewCenter": [
@@ -240,7 +240,8 @@
         "height": 0.8
     },
     "feature3d": {
-        "use": true,
+        // true: 3D表示、false: Three.js・3Dモデルを読み込まず通常のアイコンで表示（変更後は再読み込み）
+        "use": false,
         "visualScale": 1,
         "hitArea": {
             "use": true,
@@ -506,14 +507,24 @@
         ],
         "mainSystem": [
             {
-                "glot-model": "export_visited",
-                "linkto": "javascript:poiStatusCont.export()",
-                "divider": false
-            },
-            {
-                "glot-model": "import_visited",
-                "linkto": "javascript:poiStatusCont.import()",
-                "divider": false
+                "glot-model": "menu_other",
+                "children": [
+                    {
+                        "action": "editMode",
+                        "glot-model": "editMode_label",
+                        "divider": true
+                    },
+                    {
+                        "glot-model": "export_visited",
+                        "linkto": "javascript:poiStatusCont.export()",
+                        "divider": false
+                    },
+                    {
+                        "glot-model": "import_visited",
+                        "linkto": "javascript:poiStatusCont.import()",
+                        "divider": false
+                    }
+                ]
             }
         ],
         "modal": [

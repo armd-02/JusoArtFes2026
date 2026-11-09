@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.min.css" />
-    <link rel="stylesheet" href="system.css?ver=20261109-map-controls-02" />
-<script type="module" src="./loader.module.js?ver=20261109-map-controls-02"></script>
+    <link rel="stylesheet" href="system.css?ver=20261110-turf-subset-01" />
+<script type="module" src="./loader.module.js?ver=20261110-turf-subset-01"></script>
 </head>
 
 <body>
@@ -100,6 +100,15 @@
                     <div id="listPanel" class="accordion-item">
                         <h2 class="d-flex align-items-center m-0 p-2" id="listHeader">
                             <span class="detailTitle ms-1" id="listTitle"></span>
+                            <span class="place-list-mode d-flex align-items-center gap-1">
+                                <label class="visually-hidden" for="listDisplayMode" data-area-label="placeListView"></label>
+                                <select id="listDisplayMode" class="form-select form-select-sm"
+                                    onchange="listTable.setDisplayMode(this.value)">
+                                    <option value="nearby" data-area-label="placeListNearby"></option>
+                                    <option value="favorite" data-area-label="placeListFavorites"></option>
+                                    <option value="recent" data-area-label="placeListRecent"></option>
+                                </select>
+                            </span>
                             <span id="changesButtonDesktop" class="ms-2 flex-shrink-0"></span>
                             <span id="listWindowControls" class="sidebar-window-controls btn-group ms-auto"
                                 role="group" aria-label="リスト表示サイズ" data-glot-aria-label="sidebar_listSize">
@@ -120,15 +129,6 @@
                             <div class="accordion-body p-0">
                                 <div class="place-list-toolbar d-flex gap-2 p-2 border-bottom">
                                     <section id="placeDiscovery" class="place-discovery d-flex align-items-center gap-1" hidden></section>
-                                    <div class="place-list-mode d-flex align-items-center gap-1">
-                                        <label class="flex-shrink-0 small mb-0" for="listDisplayMode" data-area-label="placeListView"></label>
-                                        <select id="listDisplayMode" class="form-select form-select-sm"
-                                            onchange="listTable.setDisplayMode(this.value)">
-                                            <option value="nearby" data-area-label="placeListNearby"></option>
-                                            <option value="favorite" data-area-label="placeListFavorites"></option>
-                                            <option value="recent" data-area-label="placeListRecent"></option>
-                                        </select>
-                                    </div>
                                 </div>
                                 <p id="placePurposeNotice" class="place-purpose-notice" role="status" hidden></p>
                                 <!-- リスト -->

@@ -1925,3 +1925,30 @@ img.slide { flex: 0 0 auto; }
 .map-image-link img { display:block; width:68px; height:32px; object-fit:contain; }
 .map-image-link:focus-visible { outline:3px solid #169be8; outline-offset:2px; }
 .map-image-link:hover { background:#fff8e8; }
+
+/* Expand nested menu groups inline so they fit narrow screens. */
+.menu-submenu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu-submenu-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.menu-submenu-toggle::after {
+    content: "›";
+}
+
+.menu-submenu[open] > .menu-submenu-toggle::after {
+    transform: rotate(90deg);
+}
+
+.menu-submenu-items {
+    margin-inline-start: .75rem;
+    border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
+}

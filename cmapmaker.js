@@ -1401,6 +1401,7 @@ class CMapMaker extends IndoorControl {
     }
 
     syncPoiStatus(osmid) {
+        osmid = poiStatusCont.getStatusId(osmid);
         const record = poiStatusCont.getRecord(osmid);
         for (const kind of ["visited", "favorite"]) {
             const button = document.getElementById(kind);

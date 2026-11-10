@@ -41,7 +41,7 @@
 
 **[yodokabe/](yodokabe/) 内の画像はオープンデータではありません。** 各画像・作品の権利はそれぞれの権利者に帰属し、このリポジトリのコードに適用されるMITライセンスの対象には含まれません。転載・再配布・改変などの利用には、権利者の許諾または別途明示された利用条件の確認が必要です。
 
-淀壁の作品と画像の対応は [data/yodokabe-2025-images.json](data/yodokabe-2025-images.json) を参照してください。スプラッシュ画像など、その他の画像にも各提供元の権利・利用条件が適用されます。
+スプラッシュ画像など、その他の画像にも各提供元の権利・利用条件が適用されます。
 
 OpenStreetMap由来の地図データは、[OpenStreetMapの著作権・ライセンス](https://www.openstreetmap.org/copyright)に従います。コードのライセンスは [LICENSE](LICENSE) と [LICENSE.community_mapmaker](LICENSE.community_mapmaker) を参照してください。
 

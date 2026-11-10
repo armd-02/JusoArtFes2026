@@ -2858,6 +2858,40 @@
       "changeset": 188090228,
       "user": "K_Sakanoshita",
       "uid": 389520
+    },
+    {
+      "type": "node",
+      "id": 14359267041,
+      "lat": 34.7196835,
+      "lon": 135.4884704,
+      "timestamp": "2026-11-08T14:22:11Z",
+      "version": 1,
+      "changeset": 191650207,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "amenity": "social_facility",
+        "name": "児童発達支援・放課後等デイサービス MayMay",
+        "social_facility": "outreach"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14359327534,
+      "lat": 34.7190183,
+      "lon": 135.4811928,
+      "timestamp": "2026-11-08T14:31:04Z",
+      "version": 2,
+      "changeset": 191650683,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "club": "game",
+        "contact:twitter": "SAKURA13_2",
+        "level": "3",
+        "name": "麻雀SAKURA",
+        "website": "https://jan39.com/shop/14257/"
+      }
     }
   ]
 }

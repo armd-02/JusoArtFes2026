@@ -213,6 +213,32 @@
                 "shadow": {
                     "use": false
                 }
+            },
+            {
+                "id": "juso-frame-wao",
+                "image": "./image/wao.png",
+                "bounds": [
+                    135.4665,
+                    34.713,
+                    135.47016666666667,
+                    34.7138
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-bass",
+                "image": "./image/bass.png",
+                "bounds": [
+                    135.4905,
+                    34.716324146174,
+                    135.4965,
+                    34.718275853826
+                ],
+                "shadow": {
+                    "use": false
+                }
             }
         ]
     },

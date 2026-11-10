@@ -239,6 +239,58 @@
                 "shadow": {
                     "use": false
                 }
+            },
+            {
+                "id": "juso-frame-tree",
+                "image": "./image/tree.png",
+                "bounds": [
+                    135.47646,
+                    34.71643,
+                    135.47826,
+                    34.71817
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-kamitsu",
+                "image": "./image/kamitsu.png",
+                "bounds": [
+                    135.48374,
+                    34.72055,
+                    135.48534,
+                    34.72199
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-tommy",
+                "image": "./image/tommy.png",
+                "bounds": [
+                    135.4818,
+                    34.7149,
+                    135.4840,
+                    34.7167
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-cat",
+                "image": "./image/cat.png",
+                "bounds": [
+                    135.48047,
+                    34.72906,
+                    135.48287,
+                    34.73103
+                ],
+                "shadow": {
+                    "use": false
+                }
             }
         ]
     },
@@ -524,7 +576,7 @@
         ]
     },
     "indoor": {
-        "use": false,
+        "use": true,
         "defaultLevel": "0",
         "floorHeightMeters": 3.66,
         "buildingLevelHeightMeters": 3.66,
@@ -713,6 +765,6 @@
         "use": false
     },
     "directions": {
-        "use": false
+        "use": true
     }
 }

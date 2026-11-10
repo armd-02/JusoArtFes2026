@@ -99,6 +99,21 @@ class OSMbasic {
             }
         }
 
+        // Wikipedia joins the facility's website and social links.
+        const wikipediaTag = /^([a-z][a-z0-9-]*):(.+)$/i.exec(String(tags.wikipedia ?? "").trim());
+        if (wikipediaTag) {
+            const [, lang, article] = wikipediaTag;
+            const sectionIndex = article.indexOf("#");
+            const title = sectionIndex < 0 ? article : article.slice(0, sectionIndex);
+            const section = sectionIndex < 0 ? "" : article.slice(sectionIndex + 1);
+            if (title.trim()) {
+                const url = `https://${lang}.${Conf.wikipedia?.domain ?? "wikipedia.org"}/wiki/${encodeURIComponent(title)}`
+                    + (section ? `#${encodeURIComponent(section)}` : "");
+                html += `<div class="flex-row mt-1 me-3"><a class="facility-wikipedia-link" href="${url}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-wikipedia-w text-body" aria-hidden="true"></i> ${glot.get("wikipedia")}</a></div>`;
+                elements++;
+            }
+        }
+
         // write tel
         if (tags.phone !== undefined) {
             let phone = tags.phone

@@ -175,6 +175,10 @@
         "ja": "QRコード生成",
         "en": "QR-code generatie"
     },
+    "placeAboutWikipedia": {
+        "ja": "この場所について（Wikipedia）",
+        "en": "About this place (Wikipedia)"
+    },
     "source_wikipedia": {
         "ja": "(出典/記事: Wikipedia)",
         "en": "(Source/Article: Wikipedia)"

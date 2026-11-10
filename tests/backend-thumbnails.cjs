@@ -92,6 +92,7 @@ ctx.Conf.thumbnail.backend.use = true;
     ctx.Conf.thumbnail.limits = 20;
     ctx.Conf.thumbnail.slideThumbWidth = 320;
     vm.runInContext(fs.readFileSync('lib/winlib.js','utf8')+'\nthis.win = new WinCont();',ctx);
+    require('./helpers/thumbnail-cards')(ctx, strip);
     ctx.win.setImages(strip,[{ src:[record.picture_url1], activity:record, osmid:'node/1', title:'Photo' }],'loading.gif',20);
     await new Promise(setImmediate);
     assert.equal(image.src,'blob:WP/1506','thumbnail strip displays the API result');

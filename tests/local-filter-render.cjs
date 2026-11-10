@@ -57,3 +57,39 @@ maker.searchKeyword(null);
 assert.equal(queued.length, 0);
 assert.equal(searched.length, count);
 console.log('PASS: keyword search restores minimized lists and preserves normal/maximized sizes');
+
+// Date buttons switch to events, filter immediately, and expand the list while retaining the map.
+context.winCont.setSidebar = (mode, ratio) => resized.push([mode, ratio]);
+context.Conf.eventDateFilter = { use: true, category: 'イベント' };
+context.list_category = { value: 'アート展示' };
+context.list_keyword = { value: 'old category keyword' };
+context.searchList.getSelCategory = () => context.list_category.value.split(',');
+vm.runInContext('geoCont.writePoiCircle = () => {};', context);
+maker.clearDatail = () => {};
+for (const size of [1, 2, 3]) {
+    context.winCont.sidebarSize = size;
+    resized.length = 0;
+    calls.length = 0;
+    maker.selectEventDate('2026-11-28');
+    assert.equal(context.list_category.value, 'イベント');
+    assert.equal(context.list_keyword.value, '');
+    assert.equal(context.searchList.eventDate, '2026-11-28');
+    assert.deepEqual(resized, [['list', 0.65]]);
+    assert.deepEqual(calls.find(call => call[0] === 'markers'), ['markers', 'イベント']);
+}
+for (const size of [1, 2, 3]) {
+    context.winCont.sidebarSize = size;
+    context.list_category.value = 'イベント';
+    context.list_keyword.value = 'old search';
+    resized.length = 0;
+    maker.selectEventDate('');
+    assert.equal(context.searchList.eventDate, '');
+    assert.equal(context.list_category.value, '', 'all offerings restores automatic category');
+    assert.equal(context.list_keyword.value, '');
+    assert.deepEqual(resized, [['list', 0.35]], 'all offerings restores standard list height');
+}
+context.Conf.eventDateFilter.use = false;
+resized.length = 0;
+maker.selectEventDate('2026-11-29');
+assert.deepEqual(resized, []);
+console.log('PASS: independent date actions switch category, update markers and expand from every list size');

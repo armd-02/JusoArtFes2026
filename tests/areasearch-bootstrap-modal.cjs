@@ -10,7 +10,8 @@ assert.match(app, /getElementById\("main_menu"\)\.insertAdjacentHTML\("afterbegi
 assert.match(app, /Conf\.areaSearch\.use === true \|\| Conf\.etc\.localSave/);
 assert.doesNotMatch(base, /id="filter_menu"|id="sub_menu"/);
 assert.match(html, /id="poiFilterVisited"/);
-assert.doesNotMatch(html, /id="poiFilterFavoriteOnly"|id="poiFilterPresets"|onchange="cMapMaker.setVisitedFilter/);
+assert.match(html, /id="poiFilterFavoriteOnly"/);
+assert.doesNotMatch(html, /id="listDisplayMode"|id="poiFilterPresets"|onchange="cMapMaker.setVisitedFilter/);
 assert.match(html, /id="placeCriteriaSearch"/);
 assert.doesNotMatch(html, /id="poiFilterDescription"/);
 const css = fs.readFileSync("system.css", "utf8");
@@ -59,6 +60,25 @@ controller.updatePreviewCount = () => {};
 context.cMapMaker.favoriteFilter = true;
 controller.open("search");
 assert.strictEqual(elements.get("poiFilterPersonal").hidden, false);
+assert.strictEqual(elements.get("poiFilterFavoriteOnly").checked, true);
+assert.strictEqual(context.cMapMaker.favoriteFilter, true, "opening preserves applied favorite filter");
+elements.get("poiFilterFavoriteOnly").checked = false;
+controller.close();
+assert.strictEqual(context.cMapMaker.favoriteFilter, true, "closing without applying preserves favorites");
+controller.open("search");
+assert.strictEqual(elements.get("poiFilterFavoriteOnly").checked, true);
+controller.resetDraft();
+assert.strictEqual(elements.get("poiFilterFavoriteOnly").checked, false);
+assert.strictEqual(context.cMapMaker.favoriteFilter, true, "reset remains a draft until applied");
+context.document.querySelector = () => ({ value: "unvisited" });
+elements.get("poiFilterFavoriteOnly").checked = true;
+controller.applyPersonalDraft();
+assert.strictEqual(context.cMapMaker.favoriteFilter, true);
+assert.strictEqual(context.cMapMaker.visitedFilterStatus, "unvisited");
+elements.get("poiFilterFavoriteOnly").checked = false;
+controller.applyPersonalDraft();
+assert.strictEqual(context.cMapMaker.favoriteFilter, false);
+
 
 assert.strictEqual(elements.get("poiFilterTitle").textContent, "絞り込み");
 assert.strictEqual(elements.get("poiFilterSearchContent").hidden, false);
@@ -71,8 +91,8 @@ controller.open("research");
 assert.strictEqual(elements.get("poiFilterResearchContent").hidden, false);
 controller.close();
 
-assert.strictEqual(showCount, 3);
-assert.strictEqual(hideCount, 1);
+assert.strictEqual(showCount, 4);
+assert.strictEqual(hideCount, 2);
 controller.usesSearchApi = () => true;
 controller.searchBbox = () => "135,34,136,35";
 controller.open("search");

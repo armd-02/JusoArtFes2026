@@ -1874,8 +1874,18 @@ img.slide { flex: 0 0 auto; }
     border-left: 3px solid #b8cbd9;
 }
 
-.basemenu .dropdown:has(#main_menu.show) {
-    z-index: 1;
+/* Open menus must clear map controls and may extend over the facility list. */
+#top-pane:has(#main_menu.show) {
+    position: relative;
+    overflow: visible;
+    z-index: 1002;
+}
+#mapid:has(#main_menu.show) { overflow: visible; }
+#mapid:has(#main_menu.show) .maplibregl-ctrl-top-left { z-index: 1003; }
+.basemenu .dropdown:has(#main_menu.show) { z-index: 1; }
+#main_menu {
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
 }
 
 #mapid:has(#main_menu.show) .map-display-status {
@@ -1952,3 +1962,93 @@ img.slide { flex: 0 0 auto; }
     margin-inline-start: .75rem;
     border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
 }
+
+/* Date navigation is a separate map control, outside the menu. */
+.maplibregl-ctrl-top-left:has(.event-date-control) { max-width: calc(100% - 20px); }
+#mapid .event-date-control { max-width: 100%; margin-top: 0; }
+.event-date-filter {
+    display: flex;
+    gap: 6px;
+    max-width: 100%;
+    padding: 3px 6px;
+    overflow-x: auto;
+    background: transparent;
+    border-radius: 6px;
+    box-shadow: none;
+    touch-action: pan-x;
+}
+.event-date-filter[hidden] { display: none; }
+#eventDateFilter .event-date-button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 3px 10px;
+    border: 1px solid #64766e;
+    border-radius: 5px;
+    background: transparent;
+    color: #203e32;
+    font: inherit;
+    font-size: .85rem;
+    font-weight: 700;
+    text-shadow: 0 0 2px #fff, 0 1px 3px #fff;
+    white-space: nowrap;
+}
+#eventDateFilter .event-date-button[aria-pressed="true"] { background: #245d47; color: #fff; text-shadow: 0 1px 2px #0006; }
+.event-date-button:focus-visible { outline: 3px solid #2878cf; outline-offset: -3px; }
+
+#eventDateFilter .event-date-button[data-weekday="6"] { color: #1558b0; }
+#eventDateFilter .event-date-button[data-weekday="0"] { color: #c62828; }
+#eventDateFilter .event-date-button[data-weekday="6"][aria-pressed="true"] { background: #1558b0; color: #fff; }
+#eventDateFilter .event-date-button[data-weekday="0"][aria-pressed="true"] { background: #c62828; color: #fff; }
+
+#images.showcase .thumbnail-card {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 100px;
+    width: 100px;
+    margin: 2px;
+    border: 2px solid #fff;
+    background: #fff;
+    color: #203e32;
+    box-shadow: 2px 2px 2px #0006;
+    pointer-events: auto;
+    cursor: grab;
+}
+#images.showcase .thumbnail-card img.slide {
+    width: 100%;
+    height: clamp(48px, calc(9vh - 16px), 72px);
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    object-fit: cover;
+}
+.thumbnail-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .85));
+    text-shadow: 0 1px 2px #000;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 36px;
+    padding: 4px 3px 0;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.facility-wikipedia { margin-top: 12px; }
+.facility-wikipedia > summary {
+    padding: 8px;
+    border: 1px solid #d5dae0;
+    border-radius: 5px;
+    background: #f6f8f7;
+    font-weight: 600;
+    cursor: pointer;
+}
+.facility-wikipedia[open] > summary { margin-bottom: 6px; }

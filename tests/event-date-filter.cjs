@@ -11,13 +11,12 @@ const activities = [
     { id: 'empty', category: 'イベント', event_dates: ['2027-01-01'] }
 ];
 const elements = {
-    eventDateFilter: { hidden: true }, eventDateFilterLabel: {},
-    list_event_date: { value: '', dataset: {}, options: [],
-        replaceChildren() { this.options = []; }, append(option) { this.options.push(option); } },
+    eventDateFilter: { hidden: true, dataset: {}, children: [], setAttribute() {},
+        replaceChildren() { this.children = []; }, append(button) { this.children.push(button); } },
     listArea: { addEventListener() {} }
 };
 const context = vm.createContext({
-    console, document: { getElementById: id => elements[id], createElement: () => ({}) },
+    console, document: { getElementById: id => elements[id], createElement: () => ({ dataset: {}, setAttribute(key, value) { this[key] = value; }, addEventListener(type, callback) { this[type] = callback; } }) },
     window: {}, list_category: { value: 'イベント' }, list_keyword: { value: '' },
     Conf: { eventDateFilter: { use: true, category: 'イベント', dates: ['2027-01-01', '2027-01-02', '2027-01-03'],
         activityDates: { override: ['2027-01-02'], empty: [] } },
@@ -32,12 +31,22 @@ const table = context.table;
 const ids = () => Array.from(table.getMarkerList(), row => row[0]);
 table.init(); table.makeList(false);
 assert.equal(elements.eventDateFilter.hidden, false);
-assert.equal(elements.list_event_date.options.length, 4);
+assert.equal(elements.eventDateFilter.children.length, 4);
 assert.equal(ids().length, 5, 'all dates includes undated event records');
-elements.list_event_date.value = '2027-01-01'; table.makeList(false);
+table.eventDate = '2027-01-01'; table.makeList(false);
 assert.deepEqual(ids(), ['first'], 'structured dates match; overrides and explicit empty arrays win');
-elements.list_event_date.value = '2027-01-02'; table.makeList(false);
+assert.deepEqual(activities.filter(a => table.matchesSelectedEventDate(a)).map(a => a.id), ['first'],
+    'facility details share dates, event category, explicit overrides and empty-array rules');
+assert.equal(table.matchesSelectedEventDate(undefined), false);
+
+table.eventDate = '2027-01-02'; table.makeList(false);
 assert.deepEqual(ids(), ['second', 'override']);
+assert.equal(elements.eventDateFilter.children[2]['aria-pressed'], 'true');
+assert.equal(elements.eventDateFilter.children[1]['aria-pressed'], 'false');
+let clickedDate;
+context.cMapMaker.selectEventDate = date => { clickedDate = date; };
+elements.eventDateFilter.children[1].click();
+assert.equal(clickedDate, '2027-01-01', 'buttons invoke the date selection action');
 table.filterCategory(['イベント'], false);
 assert.deepEqual(ids(), ['second', 'override'], 'category rebuild after map movement preserves date');
 context.list_keyword.value = '共通'; table.makeList(false);
@@ -45,12 +54,13 @@ assert.deepEqual(ids(), ['second', 'override'], 'keyword search keeps date and e
 table.filterCategory(['イベント'], false);
 assert.deepEqual(ids(), ['second', 'override']);
 context.list_keyword.value = '';
-elements.list_event_date.value = '2027-01-03'; table.makeList(false);
+table.eventDate = '2027-01-03'; table.makeList(false);
 assert.deepEqual(ids(), [], 'a day without events clears marker input');
 context.list_category.value = 'アート展示'; table.makeList(false);
-assert.equal(elements.eventDateFilter.hidden, true);
-assert.equal(elements.list_event_date.value, '');
+assert.equal(elements.eventDateFilter.hidden, false, 'date buttons remain available outside the event category');
+assert.equal(table.eventDate, '');
 assert.deepEqual(ids(), ['second', 'art'], 'other categories ignore date');
+assert.equal(activities.filter(a => table.matchesSelectedEventDate(a)).length, activities.length, 'details remain unfiltered without selected date');
 context.list_category.value = 'イベント'; table.makeList(false);
 assert.equal(ids().length, 5, 'returning to events starts with all dates');
 context.Conf.eventDateFilter.use = false; table.makeList(false);
@@ -70,10 +80,11 @@ const expected = {
 activities.splice(0, activities.length, ...Object.keys(config.activityDates).map(id => ({ id, category: 'イベント' })));
 context.Conf.eventDateFilter = config;
 table.makeList(false);
-assert.equal(elements.list_event_date.options.length, 10);
+assert.equal(elements.eventDateFilter.children.length, 10);
 for (const [day, expectedIds] of Object.entries(expected)) {
-    elements.list_event_date.value = `2026-11-${day}`;
+    table.eventDate = `2026-11-${day}`;
     table.makeList(false);
     assert.deepEqual(ids().sort(), expectedIds.map(id => `WP/${id}`).sort(), `schedule for November ${day}`);
+    assert.deepEqual(activities.filter(a => table.matchesSelectedEventDate(a)).map(a => a.id).sort(), expectedIds.map(id => `WP/${id}`).sort(), `detail schedule for November ${day}`);
 }
 console.log('PASS: optional UI, category/date/keyword filtering, overrides, empty results and all nine schedule dates');

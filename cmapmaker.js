@@ -510,6 +510,9 @@ class CMapMaker extends IndoorControl {
                         if (ready) cMapMaker.viewPoi(listTable.getSelCategory());
                     }).catch(error => console.warn("MapFeature3D: marker refresh failed", error));
                     mapLibre.addControl("top-left", "baselist", basehtml, "mapLibre-control m-0 p-0"); // Make: base list
+                    mapLibre.addControl("top-left", "eventDates",
+                        '<div id="eventDateFilter" class="event-date-filter" role="group" aria-label="イベント日付" hidden></div>',
+                        "event-date-control");
                     document.querySelector(".basemenu")?.classList.toggle("category-secondary", Conf.searchUi?.categoryPresentation === "secondary");
                     setBGImage(Conf.listTable.backgroundImage)
                     mapLibre.addControl("bottom-right", "dummy", " ", "");
@@ -725,17 +728,30 @@ class CMapMaker extends IndoorControl {
         mapLibre.on('moveend', () => newsTicker.update())
         mapLibre.on('zoomend', this.eventZoomMap.bind(cMapMaker))			// ズーム終了時に表示更新
         list_category.addEventListener('change', this.eventChangeCategory.bind(cMapMaker))	// category change
-        document.getElementById("list_event_date")?.addEventListener('change', () => {
-            this.refreshLocalFilters();
-            this.clearDatail();
-            geoCont.writePoiCircle();
-            areaSearchController.renderDisplayStatus();
-        });
         list_keyword.addEventListener('keydown', (event) => {
             if (event.key !== 'Enter') return;
             event.preventDefault();
             cMapMaker.searchKeyword(list_keyword.value);
         });
+    }
+
+    selectEventDate(date) {
+        const config = Conf.eventDateFilter;
+        if (config?.use !== true) return;
+        if (!date) {
+            list_category.value = "";
+            list_keyword.value = "";
+        } else if (!listTable.getSelCategory().includes(config.category)) {
+            list_category.value = config.category;
+            list_keyword.value = "";
+        }
+        listTable.eventDate = date;
+        this.refreshLocalFilters();
+        this.clearDatail();
+        geoCont.writePoiCircle();
+        areaSearchController.renderDisplayStatus();
+        this.changeMode("list");
+        winCont.setSidebar("list", date ? 0.65 : 0.35);
     }
 
     // about Map
@@ -1328,22 +1344,21 @@ class CMapMaker extends IndoorControl {
                     message += osmBasic.make(tags);
                     message += osmBasic.makeAreaFacilities(osmid);
                     message += areaSearchController.matchReasonHtml(osmid);
-                    if (tags.wikipedia !== undefined) {
-                        message += wikimedia.makeWikipediaOverView(tags.wikipedia)
-                    }
-
                     // append activity
                     let catname = listTable.getSelCategory() !== "-" ? `&category=${listTable.getSelCategory()}` : "";
-                    let actlists = poiCont.getActlistByOsmid(osmid);
+                    const facilityActivities = poiCont.getActlistByOsmid(osmid);
+                    const actlists = facilityActivities.filter(activity => listTable.matchesSelectedEventDate(activity));
                     const modeQuery = Conf.etc.editMode && this.editModeSwitchEnabled ? "&edit=true" : "";
                     const detailUrl = this.withIndoorLevel(location.pathname + "?" + osmid + (!openid ? "" : "." + openid) + catname + modeQuery);
                     history.replaceState('', '', detailUrl + location.hash);
-                    if (actlists.length > 0) {	// アクティビティ有り
-                        message += modalActs.make(actlists);
-                        winCont.makeDetail({ "title": title, "message": message, "append": Conf.menu.activities, "menu": true, "openid": openid });
-                    } else {					// アクティビティ無し
-                        winCont.makeDetail({ "title": title, "message": message, "append": Conf.menu.activities, "menu": true, "openid": openid });
+                    if (actlists.length > 0) message += modalActs.make(actlists);
+                    if (tags.wikipedia !== undefined) {
+                        message += `<details class="facility-wikipedia"${facilityActivities.length === 0 ? " open" : ""}>
+                            <summary>${glot.get("placeAboutWikipedia")}</summary>
+                            ${wikimedia.makeWikipediaOverView(tags.wikipedia)}
+                        </details>`;
                     }
+                    winCont.makeDetail({ "title": title, "message": message, "append": Conf.menu.activities, "menu": true, "openid": openid });
                     mapLibre.viewMiniMap(tags.country)
                     cMapMaker.changeMode("map")
                     this.detail = true
@@ -1546,6 +1561,7 @@ class CMapMaker extends IndoorControl {
     eventViewThumb(imgdom) {
         console.log("eventViewThumb: Start.");
 
+        imgdom = imgdom.closest?.(".thumbnail-card")?.querySelector("img") ?? imgdom;
         const osmid = imgdom.getAttribute("osmid");
         const poi = poiCont.get_osmid(osmid);
         const zoomlv = Math.max(mapLibre.getZoom(true), Conf.map.detailZoom);

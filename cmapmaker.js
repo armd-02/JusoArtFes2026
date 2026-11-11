@@ -1334,6 +1334,12 @@ class CMapMaker extends IndoorControl {
                     let name = poiCont.getOSMname(tags, glot.lang);
                     name = name == "" ? poiCont.getCatnames(tags)[0] : name;   // 名前がある場合は「: 名前」とする
                     title += name;
+                    const operator = String(tags.operator ?? "").trim();
+                    if (operator && operator !== name) {
+                        const operatorHtml = operator.replace(/[&<>"']/g, char =>
+                            ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+                        title += ` / ${operatorHtml}`;
+                    }
 
                     if (title == "") title = category[0] + category[1] !== "" ? "(" + category[1] + ")" : "";   // サブカテゴリ時は追加
                     if (title == "") title = glot.get("undefined");

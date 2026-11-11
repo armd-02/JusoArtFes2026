@@ -513,6 +513,7 @@ class CMapMaker extends IndoorControl {
                     mapLibre.addControl("top-left", "eventDates",
                         '<div id="eventDateFilter" class="event-date-filter" role="group" aria-label="イベント日付" hidden></div>',
                         "event-date-control");
+                    winCont.enableHorizontalDrag(document.getElementById("eventDateFilter"));
                     document.querySelector(".basemenu")?.classList.toggle("category-secondary", Conf.searchUi?.categoryPresentation === "secondary");
                     setBGImage(Conf.listTable.backgroundImage)
                     mapLibre.addControl("bottom-right", "dummy", " ", "");

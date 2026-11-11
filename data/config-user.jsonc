@@ -282,11 +282,85 @@
             {
                 "id": "juso-frame-cat",
                 "image": "./image/cat.png",
+                "corners": [
+                    [135.48071542007915, 34.7306022432075],
+                    [135.48294995403722, 34.731321936749744],
+                    [135.48382457992085, 34.729487756792494],
+                    [135.48159004596278, 34.72876806325025]
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-west",
+                "image": "./image/WEST.png",
                 "bounds": [
-                    135.48047,
-                    34.72906,
-                    135.48287,
-                    34.73103
+                    135.4665,
+                    34.7216,
+                    135.4710033,
+                    34.7234
+                ],
+                "shadow": {
+                    "use": false
+                }
+            },
+            {
+                "id": "juso-frame-east",
+                "image": "./image/EAST.png",
+                "bounds": [
+                    135.4962602,
+                    34.7216,
+                    135.5,
+                    34.7234
+                ],
+                "shadow": {
+                    "use": false
+                }            },
+            {
+                "id": "juso-frame-vories",
+                "image": "./image/Vories.png",
+                "bounds": [
+                    135.47499699445154,
+                    34.7208433,
+                    135.47762660554844,
+                    34.7226433
+                ],
+                "shadow": {
+                    "use": false
+                }            },
+            {
+                "id": "juso-frame-hato",
+                "image": "./image/hato.png",
+                "bounds": [
+                    135.4731231675439,
+                    34.7280518,
+                    135.4785354324561,
+                    34.7298518
+                ],
+                "shadow": {
+                    "use": false
+                }            },
+            {
+                "id": "juso-frame-neko",
+                "image": "./image/neko.png",
+                "bounds": [
+                    135.49636450733848,
+                    34.7258177,
+                    135.49886049266152,
+                    34.7276177
+                ],
+                "shadow": {
+                    "use": false
+                }            },
+            {
+                "id": "juso-frame-tsubame",
+                "image": "./image/tsubame.png",
+                "bounds": [
+                    135.46695521045712,
+                    34.724856599999995,
+                    135.4713891895429,
+                    34.7266566
                 ],
                 "shadow": {
                     "use": false
@@ -763,6 +837,18 @@
     },
     "listActions": {
         "use": false
+    },
+    "stampMarkers": {
+        "use": true,
+        "osmIds": [
+            "node/9905603114",
+            "node/10745288583",
+            "node/5875311485",
+            "node/13295784146",
+            "node/9889510717",
+            "node/9921941800"
+        ],
+        "ringColor": "#D65C8C"
     },
     "directions": {
         "use": true

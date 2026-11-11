@@ -3,9 +3,10 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const images = [], markers = [];
 const element = tag => ({
-    tag, style: {}, attributes: {}, children: [], listeners: {},
+    tag, style: { setProperty(key, value) { this[key] = value; } }, attributes: {}, children: [], listeners: {},
     setAttribute(key, value) { this.attributes[key] = value; },
     append(...children) { this.children.push(...children); },
+    removeChild(child) { const i = this.children.indexOf(child); if (i >= 0) this.children.splice(i, 1); },
     addEventListener(key, callback) { this.listeners[key] = callback; }
 });
 const context = vm.createContext({
@@ -31,7 +32,7 @@ assert.equal(select([], {}), '');
 assert.equal(select([{ id: 'WP/1', custom: './custom.jpg' }], {}, {}, { imageFields: ['custom'] }), 'https://example.test/map/custom.jpg');
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
-const item = (id, image = `https://images.test/${id}.jpg`) => ({ id, image, lnglat: [135, 34], name: id, favorite: false, size: 38, color: '#888888' });
+const item = (id, image = `https://images.test/${id}.jpg`, extra = {}) => ({ id, image, lnglat: [135, 34], name: id, favorite: false, size: 38, color: '#888888', ...extra });
 (async () => {
     let selected;
     const map = { on() {}, getCanvas: () => ({ getBoundingClientRect: () => ({ left: 100, top: 50 }) }),
@@ -97,5 +98,40 @@ const item = (id, image = `https://images.test/${id}.jpg`) => ({ id, image, lngl
     images[imageIndex].onload(); await flush();
     assert.equal(commons.entries.get('commons').marker.map, map);
     commons.destroy();
-    console.log('PASS: first image selection, configurable fields, opt-in, deduplication, no-CORS images, load fallback, stale completions, marker limits, statuses and detail clicks');
+
+    // Rubber-stamp decoration for stamped candidates.
+    const stampCtl = new Controller(map, { onSelect: id => { selected = id; } });
+    const stampItem = (id, extra = {}) => item(id, `https://images.test/${id}.jpg`, { stamp: true, stampColor: '#ff5aa0', stampLabel: 'アート', ...extra });
+    const stampStart = images.length;
+    stampCtl.sync([stampItem('s1'), item('s2')], { use: true });
+    images[stampStart].onload(); images[stampStart + 1].onload(); await flush();
+    const stamped = stampCtl.entries.get('s1').marker.element;
+    assert.equal(stamped.attributes['data-stamp'], 'true', 'stamped candidates carry the decoration flag');
+    assert.equal(stamped.style['--poi-stamp-color'], '#ff5aa0', 'the thick outer ring follows the candidate stamp color');
+    let badge = stamped.children.find(node => node.className === 'poi-photo-marker-stamp');
+    assert.ok(badge, 'stamped markers gain a rubber-stamp badge');
+    assert.equal(badge.attributes['aria-hidden'], 'true', 'the badge is decorative and hidden from assistive tech');
+    assert.equal(badge.title, 'アート', 'the decorative icon keeps its label');
+    assert.equal(stamped.attributes['aria-label'], 's1（アート）', 'the marker announces the stamp location');
+    assert.equal(badge.style.color, '#ff5aa0', 'the badge follows the candidate stamp color');
+    const plain = stampCtl.entries.get('s2').marker.element;
+    assert.equal(plain.attributes['data-stamp'], 'false', 'non-stamped candidates keep the original appearance');
+    assert.equal(plain.children.some(node => node.className === 'poi-photo-marker-stamp'), false, 'non-stamped markers gain no badge');
+    assert.equal(plain.children.length, 2, 'non-stamped markers keep the original image and heart only');
+    stampCtl.sync([stampItem('s1', { favorite: true })], { use: true });
+    assert.equal(stampCtl.entries.get('s1').marker.element.children[1].className, 'poi-photo-marker-heart', 'the favorite heart stays in its original slot');
+    assert.equal(stampCtl.entries.get('s1').marker.element.children[1].hidden, false, 'the favorite heart remains visible beside the badge');
+    assert.ok(stampCtl.entries.get('s1').marker.element.children.find(node => node.className === 'poi-photo-marker-stamp'), 'the badge survives a favorite-only update');
+    stampCtl.sync([item('s1')], { use: true });
+    badge = stampCtl.entries.get('s1').marker.element.children.find(node => node.className === 'poi-photo-marker-stamp');
+    assert.equal(badge, undefined, 'disabling the stamp removes the badge from the marker');
+    assert.equal(stampCtl.entries.get('s1').marker.element.attributes['data-stamp'], 'false');
+    const s1Marker = stampCtl.entries.get('s1').marker;
+    stampCtl.sync([stampItem('s1')], { use: true });
+    assert.equal(stampCtl.entries.get('s1').marker, s1Marker, 're-stamping reuses the loaded photo and marker');
+    s1Marker.element.getBoundingClientRect = () => ({ left: 110, top: 60, width: 40, height: 40 });
+    s1Marker.element.listeners.click({ stopPropagation() {} });
+    assert.equal(selected, 's1', 'clicks on stamped markers keep the original selection behavior');
+    stampCtl.destroy();
+    console.log('PASS: first image selection, configurable fields, opt-in, deduplication, no-CORS images, load fallback, stale completions, marker limits, statuses, detail clicks and stamp decoration');
 })().catch(error => { console.error(error); process.exitCode = 1; });

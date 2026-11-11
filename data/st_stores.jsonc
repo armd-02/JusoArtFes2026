@@ -2892,6 +2892,21 @@
         "name": "麻雀SAKURA",
         "website": "https://jan39.com/shop/14257/"
       }
+    },
+    {
+      "type": "node",
+      "id": 13295784146,
+      "lat": 34.7221621,
+      "lon": 135.4835102,
+      "timestamp": "2025-11-11T01:38:00Z",
+      "version": 1,
+      "changeset": 174489167,
+      "user": "K_Sakanoshita",
+      "uid": 389520,
+      "tags": {
+        "information": "board",
+        "tourism": "information"
+      }
     }
   ]
 }

@@ -26,6 +26,7 @@
 | 投稿項目 | [data/config-activities.jsonc](data/config-activities.jsonc) の `activities.WP` |
 | 一覧 | 活動情報を対象に、会場名・タイトル・作家・開催日時を表示。`listTable.allActs: true` |
 | 地図アイコンの絞り込み | `poiView.poiFilter: "filter"`。`"all"` に変更すると一覧だけを絞り込み、地図は全件表示を維持 |
+| スタンプ設置場所 | `stampMarkers.osmIds` の6か所をピンクのリングと左上バッジで表示。[設定方法](docs/stamp-markers.md) |
 | 写真アイコン | `icon.photoMarkers.use: true` |
 | 縮小画像 | `thumbnail.backend.use: true`。このプロジェクトのサムネイルAPIを使用 |
 | 3D表示・ミニマップ・屋内表示 | `feature3d.use`・`minimap.use`・`indoor.use` はいずれも `false` |

@@ -117,7 +117,7 @@ class OSMbasic {
         // write tel
         if (tags.phone !== undefined) {
             let phone = tags.phone
-            phone = phone.startsWith("+81") ? "0" + phone.slice(3) : phone;
+            phone = phone.replace(/^\+81[-\s]*(?=[1-9])/, "0");
             html += `<div class="flex-row mt-1 me-3"> <i class="fas fa-phone-alt"></i> <a href="tel:${phone}">${phone}</a></div>`;
             elements++;
         }

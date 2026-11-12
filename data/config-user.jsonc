@@ -424,6 +424,8 @@
         }
     },
     "poiView": {
+        // 店舗詳細の営業時間を表示する場合はtrue
+        "openingHours": false,
         // filter: 一覧の絞り込みに地図アイコンも連動 / all: 地図アイコンは全件表示を維持
         "poiFilter": "filter",
         "poiActLoad": true,

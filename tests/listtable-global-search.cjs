@@ -32,7 +32,7 @@ vm.runInContext(fs.readFileSync('lib/listtable.js','utf8')+'\nthis.table=new Lis
 const table=context.table;table.init();
 
 rows = [
-    ['node/cafe', 'Cafe original', 'Cafe', 'amenity=cafe', ['amenity'], 'cafe.png'],
+    ['node/cafe', 'Cafe Yutte', 'Cafe', 'amenity=cafe', ['amenity'], 'cafe.png'],
     ['node/art', 'A&B Gallery', 'Art', 'tourism=artwork', ['amenity'], 'art.png']
 ];
 context.list_category.value = 'tags,amenity.cafe';
@@ -65,6 +65,12 @@ table.filterKeyword('');
 assert.deepEqual(ids(), ['node/cafe'], 'clearing search restores category, area and personal conditions');
 assert.equal(table.displayMode, 'favorite', 'search does not overwrite the saved display mode');
 assert.equal(table.getFlistCount(), 1);
+table.filterKeyword('CafeYutte');
+assert.deepEqual(ids(), ['node/cafe'], 'search ignores spaces in names');
+table.filterKeyword('cafe　yutte');
+assert.deepEqual(ids(), ['node/cafe'], 'search ignores full-width spaces and case');
+table.filterKeyword('Cafe Yut');
+assert.deepEqual(ids(), ['node/cafe'], 'partial search still works across spaces');
 table.filterKeyword('no match');
 assert.deepEqual(ids(), []);
 assert.equal(table.getFlistCount(), 0);

@@ -1,4 +1,5 @@
 {
+    "clearKeyword": { "ja": "検索をクリア", "en": "Clear search" },
     "menu_other": {"ja": "その他", "en": "Other"},
     "editMode_label": {"ja": "編集モード", "en": "Edit mode"},
     "map_documents_title": {"ja":"パンフレット", "en":"Brochure"},

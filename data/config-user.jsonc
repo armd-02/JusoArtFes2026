@@ -721,6 +721,7 @@
         "image": true
     },
     "etc": {
+        "relativePath": "", // 旧Google Spreadsheetの画像ファイル名を解決する基準パス
         "localSave": "JusoArtFes2026",
         "showPersonalMemo": false,
         "reverseIcon": false,

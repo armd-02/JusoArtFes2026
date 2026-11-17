@@ -1,7 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const context = vm.createContext({ console });
+const context = vm.createContext({ console, Conf: { static: { use: false }, etc: {} } });
 vm.runInContext(fs.readFileSync('lib/poilib.js', 'utf8') + '\nthis.poiCont = new PoiCont();', context);
 const poi = context.poiCont;
 const first = { id: 'post/1', osmid: 'node/1' };
@@ -14,6 +14,8 @@ assert.equal(poi.getActlistByOsmid('node/1').length, 2, 'callers cannot mutate i
 assert.equal(poi.get_actid('absent'), undefined);
 poi.lnglats['node/1'] = [135, 34];
 poi.geoidx['node/1'] = 0;
+poi.pdata.geojson.push({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [135, 34] } });
+poi.pdata.targets.push([]);
 assert.deepEqual(poi.getLnglatbyId('post/1'), [135, 34]);
 assert.deepEqual(poi.getLnglatbyId('node/1'), [135, 34]);
 assert.equal(poi.getLnglatbyId('absent'), undefined);

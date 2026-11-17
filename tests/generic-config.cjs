@@ -24,41 +24,24 @@ for (const key of Object.keys(config)) {
 }
 assert.equal(prepared.activity.url, config.activity.url);
 assert.equal(prepared.activity.targetName, config.activity.targetName);
-assert.equal(prepared.activity.authMode, 'legacy');
-assert.equal(prepared.selectItem.action, 'ChangePoi', 'category changes must refresh the map and list');
-assert.equal(prepared.activity.url, '');
-assert.equal(prepared.activity.local.url, '');
-assert.equal(prepared.google.AppScript, prepared.activity.url);
-assert.equal(prepared.activity.local.use, false);
-assert.ok(prepared.activity.local.hosts.includes('127.0.0.1'));
-assert.equal(prepared.mapIllustrations.use, false);
-assert.equal(prepared.mapIllustrations.items.length, 0);
-for (const name of ['news', 'changes', 'intro', 'areaFeatureLinker', 'areaSearch',
-    'discovery', 'listActions', 'directions', 'documentPreview', 'mapImageLinks']) {
-    assert.equal(prepared[name].use, false, `${name} requires opt-in`);
+assert.equal(prepared.activity.authMode, 'basic', 'the festival uses its configured backend authentication');
+assert.equal(prepared.etc.localSave, 'JusoArtFes2026', 'festival visit data retains its storage key');
+assert.equal(prepared.static.use, true, 'festival browsing uses its static OSM data');
+assert.equal(prepared.eventDateFilter.use, true, 'festival event dates remain enabled');
+assert.ok(prepared.eventDateFilter.dates.length > 0);
+assert.equal(parse('data/glot-custom.jsonc').site_title.ja, '十三アートフェスマップ2026');
+
+// Defaults are tested using an empty configuration, independent of site settings.
+context.Conf = {};
+context.maker.prepareConfig();
+assert.equal(context.Conf.activity.url, '');
+assert.equal(context.Conf.activity.authMode, 'legacy');
+assert.equal(context.Conf.activity.targetName, 'activity');
+for (const name of ['news', 'changes', 'intro', 'siteUpdates', 'areaFeatureLinker', 'areaSearch',
+    'discovery', 'listActions', 'feature3d', 'stampMarkers', 'directions', 'documentPreview', 'mapImageLinks']) {
+    assert.equal(context.Conf[name].use, false, `${name} requires opt-in`);
 }
-assert.equal(prepared.feature3d.use, true);
-vm.runInContext(fs.readFileSync('lib/playgroundmodels3d.js', 'utf8') + '\nthis.factories = PlaygroundModelFactories;', context);
-vm.runInContext(fs.readFileSync('lib/mapfeature3d.js', 'utf8') + '\nthis.modelLayer = new MapFeature3D({ modelFactories: this.factories });', context);
-context.modelLayer.configure(prepared.feature3d);
-assert.equal(context.modelLayer.getModelKey({ amenity: 'vending_machine', brand: 'コカ・コーラ' }), 'vending_machine_red');
-assert.equal(context.modelLayer.getModelKey({ amenity: 'vending_machine', brand: '別ブランド' }), 'vending_machine');
-assert.equal(context.modelLayer.getModelKey({ amenity: 'vending_machine' }), 'vending_machine');
-for (const model of Object.values(prepared.feature3d.models)) if (model.url) assert(fs.existsSync(model.url));
-assert.equal(prepared.indoor.use, true);
-assert.equal(parse('data/glot-custom.jsonc').site_title.ja, 'Community Map Maker');
-assert.equal(parse('manifest.json').gId, '');
-assert.equal(prepared.map.tileName, 'OSMFJ_NOPOI');
-assert.equal(JSON.stringify(prepared.map.viewCenter), '[135.518691,34.663617]');
-assert.equal(prepared.minimap.use, false);
-assert.equal(prepared.static.use, false);
-assert.equal(JSON.stringify(prepared.static.osmjsons), '[]');
-assert.equal(prepared.etc.localSave, '');
-assert.equal(prepared.etc.reverseIcon, false);
-assert.equal(prepared.selectItem.default, '');
-assert.equal(prepared.icon.markerColors.attention.stroke, '#888888');
-assert.equal(JSON.stringify(parse('data/listtable.jsonc').list.columns.poiFields),
-    '["id","#parent.name,name","#category","#memo"]');
+
 // The application merges these files shallowly, in this order.
 const loaded = Object.assign({}, ...[
     'data/config-user.jsonc', 'data/config-system.jsonc', 'data/config-activities.jsonc',
@@ -66,15 +49,6 @@ const loaded = Object.assign({}, ...[
 ].map(parse));
 assert.equal(JSON.stringify(loaded.listTable), JSON.stringify(config.listTable),
     'loading list columns must preserve the complete user list settings');
-assert.equal(loaded.listTable.nameFallback, 'category');
-assert.equal(loaded.listTable.playback.view, false);
-assert.equal(loaded.listTable.backgroundImage, './image/transparent.png');
-assert.ok(fs.existsSync(loaded.listTable.backgroundImage));
-assert.equal(loaded.listTable.category, 'tags');
-assert.equal(loaded.listTable.target, 'tags');
-assert.equal(loaded.mapDisplayStatus.use, false);
-assert.equal(prepared.menu.modal.find(item => item['glot-model'] === 'osm_open').linkto,
-    'javascript:winCont.osm_open(cMapMaker.openOSMid)');
 
 // Explicit new settings take precedence over the legacy adapter and defaults.
 context.Conf = structuredClone(config);

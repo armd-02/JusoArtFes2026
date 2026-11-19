@@ -2026,6 +2026,24 @@ img.slide { flex: 0 0 auto; }
     border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
 }
 
+.menu-submenu-items[popover] {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    min-width: 12rem;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+    overflow: auto;
+    padding: .5rem 0;
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    border-radius: .375rem;
+    background: white;
+    box-shadow: 0 .5rem 1rem #0003;
+}
+
+.visited-import { padding: .75rem .75rem 1rem; }
+.visited-import + .col-12 { padding: 0 .75rem 1rem; }
+
 /* Date navigation is a separate map control, outside the menu. */
 .maplibregl-ctrl-top-left:has(.event-date-control) { max-width: calc(100% - 20px); }
 #mapid .event-date-control { max-width: 100%; margin-top: 0; }

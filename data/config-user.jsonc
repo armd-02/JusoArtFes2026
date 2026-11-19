@@ -642,7 +642,7 @@
     "google": {
         "AppScript": "https://armd-01.sakura.ne.jp/community-mapmaker-backend/api/activities.php?app=jusoartfes2026",
         "targetName": "activity",
-        "Analytics": ""
+        "Analytics": "G-3FXX5VTHVG"
     },
     "static": {
         "use": true,

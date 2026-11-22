@@ -733,6 +733,17 @@
     "menu": {
         "main": [
             {
+                "glot-model": "copyShareLink",
+                "linkto": "javascript:cMapMaker.shareURL()",
+                "divider": false
+            },
+            {
+                "glot-model": "osm_open",
+                "linkto": "javascript:winCont.osm_open(cMapMaker.openOSMid)",
+                "requiresOpenPoi": true,
+                "divider": false
+            },
+            {
                 "glot-model": "about",
                 "linkto": "https://yodogawaartnet.sakura.ne.jp/category/artfes2026/",
                 "divider": false
@@ -775,18 +786,7 @@
                 ]
             }
         ],
-        "modal": [
-            {
-                "glot-model": "copyShareLink",
-                "linkto": "javascript:cMapMaker.shareURL()",
-                "divider": false
-            },
-            {
-                "glot-model": "osm_open",
-                "linkto": "javascript:winCont.osm_open(cMapMaker.openOSMid)",
-                "divider": false
-            }
-        ],
+        "modal": [],
         "activities": [],
         "editActivity": [
             {

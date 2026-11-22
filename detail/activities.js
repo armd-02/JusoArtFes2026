@@ -132,15 +132,14 @@ class Activities {
         return result;
     }
 
-    makePreview(activities) {
-        const [activity] = activities;
+    makeActivityPreviewItem(activity, prefix) {
         const escape = value => basic.htmlspecialchars(value);
         const detailId = escape(activity.id.replace("/", ""));
         const image = PhotoMarkerController.firstImage([activity], null, Conf.activities);
         let photo = "";
         let credit = "";
         if (image.startsWith("File:")) {
-            const imageId = `facility-preview-${detailId}`;
+            const imageId = `facility-${prefix}-${detailId}`;
             photo = `<img id="${imageId}" class="facility-activity-preview-image" src="${escape(Conf.etc.loadingUrl)}" alt="">`;
             credit = `<small id="${imageId}-copyright" class="facility-activity-preview-credit"></small>`;
             requestAnimationFrame(() => {
@@ -162,38 +161,39 @@ class Activities {
         const date = String(activity.eventdate ?? "").trim() || (Array.isArray(dates)
             ? dates.map(value => dateConfig?.dates?.find(item => item.value === value)?.label ?? value).join(" / ")
             : "");
-        const allActivities = activities.length > 1
-            ? `<button type="button" class="btn btn-sm btn-link facility-activity-preview-all" onclick="modalActs.moveTo('facility-activity-list')">${escape(glot.get("facility_activity_all").replace("{count}", activities.length))}</button>`
-            : "";
-        return `<div class="facility-activity-preview">
+        const summary = String(activity.memo ?? "").trim();
+        return `<div class="facility-activity-preview-item">
             <button type="button" class="facility-activity-preview-main" data-activity-id="${detailId}" onclick="modalActs.moveTo(this.dataset.activityId)">
                 ${photo}
                 <span class="facility-activity-preview-text">
                     <strong>${escape(activity.title)}</strong>
                     ${date ? `<span class="facility-activity-preview-date">${escape(date)}</span>` : ""}
-                    <span class="facility-activity-preview-link">${escape(glot.get("facility_activity_details"))} <span aria-hidden="true">›</span></span>
+                    ${summary ? `<span class="facility-activity-preview-summary">${escape(summary)}</span>` : ""}
                 </span>
             </button>
             ${credit}
-            ${allActivities}
         </div>`;
     }
 
     // make activity list
     makeActivityList(actlists) {
-        if (actlists.length > 1) {
-            let html = "<div id='facility-activity-list' class='list-group mb-2'>";
-            for (let act of actlists) {
-                html += `<a href="#" class="list-group-item list-group-item-action" onclick="modalActs.moveTo('${act.id.replace("/", "")}')">${act.title}</a>`;
-            }
-            return html + "</div>";
+        if (actlists.length > 0) {
+            return `<div id="facility-activity-list" class="facility-activity-list mb-2">${actlists.map(act => this.makeActivityPreviewItem(act, "list")).join("")}</div>`;
         }
         return "";
     }
 
     // move linkto
-    moveTo(id) {
-        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    async moveTo(id) {
+        const target = document.getElementById(id);
+        if (!target) return;
+        await winCont.setSidebar("viewMax");
+        if (document.getElementById(id) !== target) return;
+        const scroller = document.getElementById("btmHeader");
+        const header = document.getElementById("detailHeader");
+        if (!scroller || !header) { target.scrollIntoView({ behavior: "smooth" }); return; }
+        const top = scroller.scrollTop + target.getBoundingClientRect().top - header.getBoundingClientRect().bottom - 8;
+        scroller.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
 
     // edit activity

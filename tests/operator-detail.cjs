@@ -10,13 +10,13 @@ const context=vm.createContext({
  glot:{lang:'ja',get:key=>key},
  listTable:{getSelCategory:()=>['イベント'],recordView(){}},
  areaSearchController:{matchReasonHtml:()=>''},
- winCont:{setSidebar:async()=>{},menu_make(){},setProgress(){},makeDetail:params=>{output=params;}},
+ winCont:{setSidebar:async()=>{},menu_make(){},setProgress(){},showPoiStatusAt(){},makeDetail:params=>{output=params;}},
  mapLibre:{viewMiniMap(){}},location:{pathname:'/',hash:''},history:{replaceState(){}},
  document:{getElementById:()=>({scrollTo(){}})}
 });
 vm.runInContext(fs.readFileSync('detail/osmbasic.js','utf8')+'\nthis.osmBasic=new OSMbasic();',context);
 context.osmBasic.makeAreaFacilities=()=>'';
-vm.runInContext('this.cMapMaker=({loadDetailLibraries:async()=>{},withIndoorLevel:value=>value,changeMode(){},'+method+'});',context);
+vm.runInContext('this.cMapMaker=({loadDetailLibraries:async()=>{},withIndoorLevel:value=>value,getDirectionsUrl:()=>"",changeMode(){},'+method+'});',context);
 (async()=>{
  const original=JSON.stringify(tags);
  assert.match(context.osmBasic.make(tags),/案内\(案内板\)<\/div>/);

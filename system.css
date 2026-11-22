@@ -236,19 +236,32 @@ body.is-resizing-sidebar * {
     padding: 4px 5px !important;
 }
 
-#detailHeader .dropdown {
-    margin-right: 4px !important;
-}
-
-#btnMenuButton {
-    width: 40px !important;
-    height: 40px !important;
-}
+#main_menu [data-requires-open-poi][hidden] { display: none !important; }
 
 #detailHeader .detailTitle {
     flex: 1 1 auto;
     min-width: 0;
     color: var(--bs-accordion-active-color);
+}
+
+.map-poi-status-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 2px;
+    border: 1px solid #adb5bd;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 2px 6px #0003;
+}
+.map-poi-status-controls .poi-status-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 4px 10px;
+    text-align: start;
+    white-space: nowrap;
 }
 
 #detailHeaderClose {
@@ -260,6 +273,13 @@ body.is-resizing-sidebar * {
     color: #000;
     font-size: 24px;
     line-height: 1;
+}
+
+#detailDirections {
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    margin-inline-end: 4px;
 }
 
 #listHeader {
@@ -682,12 +702,24 @@ tr.selected td {
 .poi-photo-marker:focus-visible { outline: 3px solid #0d6efd; outline-offset: 2px; }
 .poi-photo-marker-heart {
     position: absolute;
-    top: -7px;
-    right: -5px;
+    top: -9px;
+    right: -10px;
     color: #d14970;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 1;
     text-shadow: 0 0 2px white, 0 0 2px white;
+    pointer-events: none;
+}
+.poi-photo-marker-visited {
+    position: absolute;
+    right: -17px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: white;
+    color: #0d6efd;
+    font-size: 17px;
+    line-height: 1;
     pointer-events: none;
 }
 .poi-photo-marker[data-stamp="true"] {
@@ -699,7 +731,7 @@ tr.selected td {
 .poi-photo-marker-stamp {
     position: absolute;
     top: -7px;
-    left: -7px;
+    left: -10px;
     width: clamp(16px, 46%, 24px);
     aspect-ratio: 1;
     border: 1.5px solid white;
@@ -715,11 +747,9 @@ tr.selected td {
     mask: url("./icon/stamp.svg") center / contain no-repeat;
 }
 #stampMarkerLegend {
-    position: absolute;
-    z-index: 2;
-    left: 8px;
-    bottom: calc(9vh + 36px);
-    max-width: calc(100% - 70px);
+    width: fit-content;
+    max-width: calc(100% - 12px);
+    margin: 4px 6px 0;
     padding: 5px 8px;
     border-radius: 6px;
     background: rgba(255, 255, 255, .94);

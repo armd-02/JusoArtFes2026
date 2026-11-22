@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.min.css" />
-    <link rel="stylesheet" href="system.css?ver=artfes-import-20261118" />
-<script type="module" src="./loader.module.js?ver=artfes-activity-preview-20261122"></script>
+    <link rel="stylesheet" href="system.css?ver=artfes-stamp-legend-20261122" />
+<script type="module" src="./loader.module.js?ver=artfes-stamp-legend-20261122"></script>
 </head>
 
 <body>
@@ -71,22 +71,18 @@
                     <div id="detailMenu" class="accordion-item mb-2">
 
                         <h2 id="detailHeader" class="d-flex align-items-center m-0 p-2">
-                            <div class="dropdown me-2">
-                                <button class="btn btn-light border-secondary p-0" type="button" id="btnMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false" style="width: 30px; height: 30px">
-                                    <i class="fas fa-bars text-black"></i>
-                                </button>
-
-                                <div class="dropdown-menu" aria-labelledby="btnMenuButton" id="btnMenu"></div>
-                            </div>
-
                             <span class="detailTitle d-flex align-items-center" id="btmWindow_title"></span>
+                            <a id="detailDirections" class="btn btn-light border-secondary p-0 ms-1 flex-shrink-0 d-none"
+                                target="_blank" rel="noopener noreferrer" aria-label="経路を検索" data-glot-aria-label="directions_open"
+                                title="Googleマップで経路を開く（外部サイト）" data-glot-title="directions_google_maps">
+                                <i class="fa-solid fa-route" aria-hidden="true"></i>
+                            </a>
                             <span id="detailWindowControls"
                                 class="sidebar-window-controls btn-group ms-auto" role="group"
                                 aria-label="詳細表示サイズ" data-glot-aria-label="sidebar_detailSize"></span>
                             <button id="detailHeaderClose" type="button"
                                 class="btn btn-light border-secondary p-0 ms-1 flex-shrink-0"
-                                onclick="cMapMaker.changeMode('list')" aria-label="詳細を閉じる" data-glot-aria-label="sidebar_closeDetail" title="詳細を閉じる" data-glot-title="sidebar_closeDetail">
+                                onclick="cMapMaker.changeMode('list', true)" aria-label="詳細を閉じる" data-glot-aria-label="sidebar_closeDetail" title="詳細を閉じる" data-glot-title="sidebar_closeDetail">
                                 <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                                     <path d="M4 4 20 20M20 4 4 20" />
                                 </svg>

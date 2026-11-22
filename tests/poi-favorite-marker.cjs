@@ -24,6 +24,7 @@ const poi = { geojson: {
     properties: { tags: { id: 'node/1', name: 'Test' } }
 }, targets: ['park'], lnglat: [135, 34] };
 let favorite = false;
+let visited = false;
 let hasModel = false;
 const context = vm.createContext({
     console, structuredClone: value => {
@@ -41,7 +42,7 @@ const context = vm.createContext({
         textViewZoom: 14, textSize: 12, textFont: ['Noto Sans'] }
     },
     PoiStatusIndex: { VISITED: 0, FAVORITE: 1, MEMO: 2 },
-    poiStatusCont: { getValueByOSMID: () => [false, favorite, ''] },
+    poiStatusCont: { getValueByOSMID: () => [visited, favorite, ''] },
     mapLibre: { map, getZoom: () => 18, get_LL: () => ({}) },
     geoCont: { checkInner: () => true },
     cMapMaker: { isPoiVisibleInLevelMode: () => true, getPoiZoom: () => 12 },
@@ -58,6 +59,13 @@ context.poiCont = controller;
 controller.setPoi([['node/1']], false);
 assert.equal(sources.has('marker-favorite'), false);
 assert.equal(layers.has('marker-favorite'), false);
+visited = true;
+controller.setPoi([['node/1']], false);
+assert.equal(sources.get('marker-visited-badge').data.features.length, 1);
+assert.equal(layers.get('marker-visited-badge').layout['text-field'], '✔');
+visited = false;
+controller.setPoi([['node/1']], false);
+assert.equal(sources.get('marker-visited-badge').data.features.length, 0);
 favorite = true;
 controller.setPoi([['node/1']], false);
 assert.equal(sources.get('marker-favorite').data.features.length, 1);

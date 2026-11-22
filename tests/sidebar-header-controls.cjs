@@ -24,7 +24,7 @@ assert.match(winlib, /if \(isWide\) return 48/);
 assert.match(winlib, /setDetailHeaderMode\(viewDetail\)/);
 assert.match(winlib, /listHeader\?\.classList\.toggle\("d-none", viewDetail\)/);
 assert.match(winlib, /destination\.appendChild\(sidebarChange\)/);
-assert.match(winlib, /makeDetail\(p\)\s*\{\s*this\.setDetailHeaderMode\(true\)/);
+assert.match(winlib, /makeDetail\(p\)\s*\{[\s\S]*?this\.setDetailHeaderMode\(true\)/);
 assert.match(fs.readFileSync("cmapmaker.js", "utf8"), /detailMenu\.classList\.add\("d-none"\)\s*winCont\.setDetailHeaderMode\(false\)/);
 
 const elements = {};

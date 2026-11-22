@@ -117,12 +117,15 @@ const item = (id, image = `https://images.test/${id}.jpg`, extra = {}) => ({ id,
     const plain = stampCtl.entries.get('s2').marker.element;
     assert.equal(plain.attributes['data-stamp'], 'false', 'non-stamped candidates keep the original appearance');
     assert.equal(plain.children.some(node => node.className === 'poi-photo-marker-stamp'), false, 'non-stamped markers gain no badge');
-    assert.equal(plain.children.length, 2, 'non-stamped markers keep the original image and heart only');
-    stampCtl.sync([stampItem('s1', { favorite: true })], { use: true });
+    assert.equal(plain.children.length, 3, 'non-stamped markers retain image and status badges');
+    assert.equal(plain.children[2].hidden, true, 'unvisited marker hides the visited badge');
+    stampCtl.sync([stampItem('s1', { favorite: true, visited: true })], { use: true });
     assert.equal(stampCtl.entries.get('s1').marker.element.children[1].className, 'poi-photo-marker-heart', 'the favorite heart stays in its original slot');
     assert.equal(stampCtl.entries.get('s1').marker.element.children[1].hidden, false, 'the favorite heart remains visible beside the badge');
+    assert.equal(stampCtl.entries.get('s1').marker.element.children[2].hidden, false, 'visited badge is visible');
     assert.ok(stampCtl.entries.get('s1').marker.element.children.find(node => node.className === 'poi-photo-marker-stamp'), 'the badge survives a favorite-only update');
     stampCtl.sync([item('s1')], { use: true });
+    assert.equal(stampCtl.entries.get('s1').marker.element.children[2].hidden, true, 'clearing visited hides the badge');
     badge = stampCtl.entries.get('s1').marker.element.children.find(node => node.className === 'poi-photo-marker-stamp');
     assert.equal(badge, undefined, 'disabling the stamp removes the badge from the marker');
     assert.equal(stampCtl.entries.get('s1').marker.element.attributes['data-stamp'], 'false');

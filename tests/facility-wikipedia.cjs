@@ -17,18 +17,17 @@ const context = vm.createContext({
         recordView() {} },
     osmBasic: { make: () => 'BASIC', makeAreaFacilities: () => '' },
     areaSearchController: { matchReasonHtml: () => '' },
-    modalActs: { make: items => 'ACTIVITY:' + items.map(a => a.id).join(','), makePreview: () => 'PREVIEW' },
+    modalActs: { make: items => 'ACTIVITY:' + items.map(a => a.id).join(',') },
     wikimedia: { makeWikipediaOverView: () => '<div id="wikipedia">WIKIPEDIA</div>' },
-    winCont: { setSidebar: async () => {}, menu_make() {}, setProgress() {}, makeDetail: params => { output = params.message; } },
+    winCont: { setSidebar: async () => {}, menu_make() {}, setProgress() {}, showPoiStatusAt() {}, makeDetail: params => { output = params.message; } },
     mapLibre: { viewMiniMap() {} }, location: { pathname: '/', hash: '' }, history: { replaceState() {} },
     document: { getElementById: () => ({ scrollTo() {} }) }
 });
-vm.runInContext('this.cMapMaker = ({ loadDetailLibraries: async () => {}, withIndoorLevel: value => value, changeMode() {}, ' + method + ' });', context);
+vm.runInContext('this.cMapMaker = ({ loadDetailLibraries: async () => {}, withIndoorLevel: value => value, getDirectionsUrl: () => "", changeMode() {}, ' + method + ' });', context);
 (async () => {
     activities = [{ id: 'one' }];
     await context.cMapMaker.viewDetail('node/1');
     assert.match(output, /<details class="facility-wikipedia">/);
-    assert(output.indexOf('PREVIEW') < output.indexOf('BASIC'));
     assert(output.indexOf('BASIC') < output.indexOf('ACTIVITY:one'));
     assert(output.indexOf('ACTIVITY:one') < output.indexOf('WIKIPEDIA'));
     selected = 'other-day';

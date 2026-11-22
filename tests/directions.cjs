@@ -54,11 +54,33 @@ assert.equal(url.searchParams.get('api'), '1');
 assert(!url.searchParams.has('origin'), 'device location belongs to the external map application');
 assert(!url.searchParams.has('dir_action'), 'opening a route must not start navigation automatically');
 vm.runInContext(fs.readFileSync('detail/osmbasic.js', 'utf8') + '\nthis.detail = new OSMbasic();', context);
+context.maker.formatIndoorLevel = value => `floor:${value}`;
+for (const level of ['0', 0, ' 0 ', '0.0']) {
+    assert.doesNotMatch(context.detail.make({ id: 'way/park', level }), /fa-stairs/, 'ground floor is omitted');
+}
+for (const level of ['1', '-1', '0;1']) {
+    assert.match(context.detail.make({ id: 'way/park', level }), /fa-stairs/, 'other and mixed floors remain visible');
+}
 const html = context.detail.make({ id: 'way/park' });
-assert.match(html, /経路を検索/);
-assert.match(html, /destination=34.7%2C135.5/);
-assert.match(html, /target="_blank" rel="noopener noreferrer"/);
-assert.match(html, /Googleマップで経路を開く（外部サイト）/);
+assert.doesNotMatch(html, /経路を検索/, 'directions are no longer in the facility body');
+const page = fs.readFileSync('index.html', 'utf8');
+assert(page.indexOf('id="detailDirections"') < page.indexOf('id="detailWindowControls"'));
+assert.match(page, /id="detailDirections"[\s\S]*?target="_blank" rel="noopener noreferrer"/);
+const link = { classList: { toggle(name, value) { link.hidden = value; } }, removeAttribute() { delete this.href; } };
+const elements = { detailDirections: link, btmWindow_title: {}, btmWindow_message: { insertAdjacentHTML() {} },
+    detailMenu: { classList: { remove() {} } } };
+context.document = { getElementById: id => elements[id] };
+context.btmWindow_message = elements.btmWindow_message;
+vm.runInContext(fs.readFileSync('lib/winlib.js', 'utf8') + '\nthis.controller = new WinCont();', context);
+context.controller.setDetailHeaderMode = () => {};
+context.controller.setProgress = () => {};
+context.winCont = context.controller;
+context.controller.makeDetail({ title: '会場', message: '', directionsUrl: url.href });
+assert.equal(link.href, url.href);
+assert.equal(link.hidden, false);
+context.controller.makeDetail({ title: '別の画面', message: '' });
+assert.equal(link.hidden, true, 'non-facility details must not retain the previous route');
+assert.equal(link.href, undefined);
 context.Conf.directions.use = false;
 assert.equal(context.maker.getDirectionsUrl('way/park'), '');
 assert.doesNotMatch(context.detail.make({ id: 'way/park' }), /経路を検索/);

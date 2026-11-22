@@ -20,6 +20,10 @@ class Element {
         const [tag, cls] = selector.split('.');
         return descendants(this).find(node => node.tagName === tag && (!cls || node.className.split(' ').includes(cls)));
     }
+    querySelectorAll(selector) {
+        if (selector === '[data-requires-open-poi]') return descendants(this).filter(node => 'data-requires-open-poi' in node.attrs);
+        return [];
+    }
     cloneNode() {
         const clone = new Element(this.tagName); clone.className = this.className; clone.attrs = {...this.attrs}; clone.html = this.html;
         clone.children = this.children.map(node => node.cloneNode()); return clone;
@@ -27,6 +31,7 @@ class Element {
 }
 function descendants(root) { return root.children.flatMap(node => [node, ...descendants(node)]); }
 const root = new Element('div');
+root.parentElement = new Element('div');
 const configuration = vm.runInNewContext('('+fs.readFileSync('data/config-user.jsonc','utf8')+')');
 const labels = {menu_other:'その他',editMode_label:'編集モード',external:'External',local:'Local'};
 const toggles = [];
@@ -72,4 +77,15 @@ context.controller.menu_make([{'glot-model':'menu_other',children:[{action:'edit
 assert.equal(root.children.length,0,'empty groups are omitted');
 context.controller.menu_make([{'glot-model':'menu_other',children:[{'glot-model':'menu_other',children:[{linkto:'javascript:local()','glot-model':'local'}]}]}],'menu');
 assert.equal(descendants(root).filter(node=>node.tagName==='details').length,2,'nested submenus are supported');
+context.controller.menu_make(configuration.menu.main, 'menu');
+const share = descendants(root).find(node => node.attrs.href === 'javascript:cMapMaker.shareURL()');
+const osm = descendants(root).find(node => node.attrs.href === 'javascript:winCont.osm_open(cMapMaker.openOSMid)');
+assert.ok(share, 'sharing is available in the main menu');
+assert.equal(osm.hidden, true, 'OSM link is hidden without a selected facility');
+context.cMapMaker.openOSMid = 'node/1';
+root.parentElement.events['show.bs.dropdown']();
+assert.equal(osm.hidden, false, 'OSM link appears when a facility is selected');
+context.cMapMaker.openOSMid = null;
+root.parentElement.events['show.bs.dropdown']();
+assert.equal(osm.hidden, true, 'OSM link is hidden again after closing the facility');
 console.log('PASS: configurable nested menus, edit switch visibility/state, data tools, parent click handling and legacy entries');

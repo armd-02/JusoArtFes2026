@@ -84,7 +84,8 @@ span.normal {
 }
 
 .facility-activity-preview-text strong,
-.facility-activity-preview-date {
+.facility-activity-preview-date,
+.facility-activity-preview-summary {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -94,6 +95,28 @@ span.normal {
 .facility-activity-preview-date {
     color: #414c45;
     font-size: 0.875em;
+}
+
+.facility-activity-preview-summary {
+    color: #414c45;
+    font-size: 0.875em;
+    white-space: pre-line;
+}
+
+.facility-activity-list {
+    overflow: hidden;
+    border: 1px solid #c6dcd1;
+    border-radius: 0.5rem;
+    background: #f4faf6;
+}
+
+.facility-activity-list .facility-activity-preview-item + .facility-activity-preview-item {
+    border-top: 1px solid #c6dcd1;
+}
+
+.facility-activity-preview-main:focus-visible {
+    outline: 2px solid #075337;
+    outline-offset: -2px;
 }
 
 .facility-activity-preview-link,

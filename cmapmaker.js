@@ -531,6 +531,7 @@ class CMapMaker extends IndoorControl {
                     mapLibre.addControl("top-left", "eventDates",
                         '<div id="eventDateFilter" class="event-date-filter" role="group" aria-label="イベント日付" hidden></div>',
                         "event-date-control");
+                    document.getElementById("eventDates").appendChild(document.getElementById("stampMarkerLegend"));
                     winCont.enableHorizontalDrag(document.getElementById("eventDateFilter"));
                     document.querySelector(".basemenu")?.classList.toggle("category-secondary", Conf.searchUi?.categoryPresentation === "secondary");
                     setBGImage(Conf.listTable.backgroundImage)
@@ -849,13 +850,13 @@ class CMapMaker extends IndoorControl {
         winCont.setSidebar("view")
     }
 
-    changeMode(newmode) {	// mode change(list or map or edit)
+    changeMode(newmode, restoreMaximized = false) {	// mode change(list or map or edit)
         this.mode = newmode ? newmode : (this.mode == "map" ? "list" : "map");
         basic.openAccordion(!["map", "edit"].includes(this.mode) ? "listAccordion" : "detailArea")	// アコーディオン切り替え
         basic.closeAccordion(["map", "edit"].includes(this.mode) ? "listAccordion" : "detailArea")	// アコーディオン切り替え
         if (this.mode == "list") {
             geoCont.writePoiCircle()
-            cMapMaker.clearDatail()
+            cMapMaker.clearDatail(restoreMaximized)
         }
         //closeDetail.classList.toggle("d-none", this.mode == "list") // 詳細モーダルの閉じるボタンを非表示
     }
@@ -1468,7 +1469,6 @@ class CMapMaker extends IndoorControl {
 
                     if (title == "") title = category[0] + category[1] !== "" ? "(" + category[1] + ")" : "";   // サブカテゴリ時は追加
                     if (title == "") title = glot.get("undefined");
-                    winCont.menu_make(Conf.menu.modal, "btnMenu");
                     winCont.setProgress(0);
 
                     console.log("viewDatail: Make OSM Basic Info.");
@@ -1483,8 +1483,7 @@ class CMapMaker extends IndoorControl {
                     const detailUrl = this.withIndoorLevel(location.pathname + "?" + osmid + (!openid ? "" : "." + openid) + catname + modeQuery);
                     history.replaceState('', '', detailUrl + location.hash);
                     if (actlists.length > 0) {
-                        const activityDetails = modalActs.make(actlists);
-                        message = modalActs.makePreview(actlists) + message + activityDetails;
+                        message += modalActs.make(actlists);
                     }
                     if (tags.wikipedia !== undefined) {
                         message += `<details class="facility-wikipedia"${facilityActivities.length === 0 ? " open" : ""}>
@@ -1492,7 +1491,8 @@ class CMapMaker extends IndoorControl {
                             ${wikimedia.makeWikipediaOverView(tags.wikipedia)}
                         </details>`;
                     }
-                    winCont.makeDetail({ "title": title, "message": message, "append": Conf.menu.activities, "menu": true, "openid": openid });
+                    winCont.makeDetail({ "title": title, "message": message, "append": Conf.menu.activities, "menu": true, "openid": openid, "directionsUrl": this.getDirectionsUrl(osmid) });
+                    winCont.showPoiStatusAt(osmid, osmobj.lnglat);
                     mapLibre.viewMiniMap(tags.country)
                     cMapMaker.changeMode("map")
                     this.detail = true
@@ -1570,17 +1570,17 @@ class CMapMaker extends IndoorControl {
         }
     }
 
-    clearDatail() {
+    clearDatail(restoreMaximized = false) {
         const visited = document.getElementById("visited")
         const favorite = document.getElementById("favorite")
         const memo = document.getElementById("visited-memo")
         const mmap = document.getElementById("mini-map")
-        const menu = document.getElementById("btnMenu")
         const detailMenu = document.getElementById("detailMenu")
         if (Conf.etc.localSave !== "" && visited !== null) {    // 訪問機能が有効＆訪問済みチェックの場合
             this.savePoiStatus()
             cMapMaker.eventMoveMap()                            // アイコン表示を更新
         }
+        winCont.clearPoiStatusMarker();
         mmap.classList.add("d-none")
         detailMenu.classList.add("d-none")
         winCont.setDetailHeaderMode(false)
@@ -1597,7 +1597,7 @@ class CMapMaker extends IndoorControl {
         this.detail = false
         btmWindow_title.innerHTML = ""
         btmWindow_message.innerHTML = ""
-        return winCont.setSidebar()
+        return winCont.setSidebar(restoreMaximized && winCont.sidebarSize === 3 ? "view" : undefined)
     }
 
     getDirectionsUrl(osmid) {

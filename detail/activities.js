@@ -187,7 +187,7 @@ class Activities {
     async moveTo(id) {
         const target = document.getElementById(id);
         if (!target) return;
-        await winCont.setSidebar("viewMax");
+        if (window.matchMedia("(orientation: portrait)").matches) await winCont.setSidebar("viewMax");
         if (document.getElementById(id) !== target) return;
         const scroller = document.getElementById("btmHeader");
         const header = document.getElementById("detailHeader");

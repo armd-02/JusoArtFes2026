@@ -34,6 +34,8 @@ const target = { getBoundingClientRect: () => ({ top: 420 }) };
 const scroller = { scrollTop: 100, scrollTo: options => actions.push(['scroll', options.top, options.behavior]) };
 const header = { getBoundingClientRect: () => ({ bottom: 80 }) };
 context.document = { getElementById: id => ({ WP1: target, btmHeader: scroller, detailHeader: header })[id] || null };
+let portrait = true;
+context.window = { matchMedia: () => ({ matches: portrait }) };
 context.winCont = { setSidebar: mode => { actions.push(['resize', mode]); return new Promise(resolve => { release = resolve; }); } };
 (async () => {
     const pending = context.activities.moveTo('WP1');
@@ -41,7 +43,11 @@ context.winCont = { setSidebar: mode => { actions.push(['resize', mode]); return
     release();
     await pending;
     assert.deepEqual(actions, [['resize', 'viewMax'], ['scroll', 432, 'smooth']], 'title remains below the sticky header');
+    actions.length = 0;
+    portrait = false;
+    await context.activities.moveTo('WP1');
+    assert.deepEqual(actions, [['scroll', 432, 'smooth']], 'landscape keeps its current size and scrolls to the title');
     await context.activities.moveTo('missing');
-    assert.equal(actions.length, 2, 'missing targets do not resize the sidebar');
-    console.log('PASS: activity list renders summaries and maximizes before scrolling to details');
+    assert.equal(actions.length, 1, 'missing targets do not resize the sidebar');
+    console.log('PASS: activity list maximizes in portrait only and scrolls to the title');
 })().catch(error => { console.error(error); process.exitCode = 1; });

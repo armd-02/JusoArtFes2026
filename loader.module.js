@@ -22,6 +22,7 @@ const hideStartupStatus = () => {
     const hide = () => {
         status.hidden = true;
         startupStatusHideTimer = null;
+        window.dispatchEvent(new Event("app-startup-hidden"));
     };
     const remaining = STARTUP_STATUS_MIN_VISIBLE_MS - (Date.now() - startupStatusShownAt);
     if (remaining <= 0) {

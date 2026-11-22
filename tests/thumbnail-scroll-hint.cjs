@@ -5,7 +5,8 @@ const classes = () => {
     const values = new Set();
     return { add: value => values.add(value), remove: value => values.delete(value), contains: value => values.has(value) };
 };
-const frames = [], timers = [], handlers = {};
+const frames = [], timers = [], handlers = {}, windowHandlers = {};
+const startup = { hidden: true };
 const bounds = { left: 120, right: 320, top: 100, bottom: 180, width: 200, height: 80 };
 const strip = { children: [], classList: classes(), scrollWidth: 400, clientWidth: 200,
     getBoundingClientRect: () => bounds,
@@ -20,10 +21,11 @@ const hint = { style: {}, classList: classes() };
 hint.classList.add('d-none');
 const context = { console, images: strip, scrollHand: hint,
     Conf: { thumbnail: { limits: 10, slideThumbWidth: 160 } },
-    window: { scrollX: 15, scrollY: 0, withAppAssetVersion: src => src },
+    window: { scrollX: 15, scrollY: 0, withAppAssetVersion: src => src,
+        addEventListener: (name, fn) => { windowHandlers[name] = fn; } },
     requestAnimationFrame: callback => frames.push(callback),
     setTimeout: callback => timers.push(callback),
-    document: { createElement: () => {
+    document: { getElementById: id => id === 'startupStatus' ? startup : null, createElement: () => {
         const listeners = {};
         return { dataset: {}, complete: false, naturalWidth: 0,
             rect: { ...bounds, right: 200, width: 80 },
@@ -59,7 +61,9 @@ assert.equal(shown, 0, 'non-scrollable photos must not consume the one-time hint
 strip.scrollWidth = 400;
 strip.classList.add('d-none'); handlers.scroll();
 assert.equal(shown, 0, 'hidden photos must not show the hint');
-strip.classList.remove('d-none'); handlers.scroll();
+strip.classList.remove('d-none'); startup.hidden = false; handlers.scroll();
+assert.equal(shown, 0, 'startup screen must not be covered by the hint');
+startup.hidden = true; windowHandlers['app-startup-hidden'](); flush();
 assert.equal(shown, 1);
 assert.equal(hint.style.left, "135px", "align with the thumbnail strip including page scroll");
 assert.equal(hint.style.width, "200px", "center within the strip, not the entire viewport");

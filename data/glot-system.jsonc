@@ -953,6 +953,10 @@
         "ja": "読み込み済み：{count}件",
         "en": "Loaded matches: {count}"
     },
+    "placeFilter_loadedFacilities": {
+        "ja": "読み込み済みの施設：{count}件",
+        "en": "Loaded places: {count}"
+    },
     "placeFilter_custom": {
         "ja": "カスタム条件",
         "en": "Custom filters"

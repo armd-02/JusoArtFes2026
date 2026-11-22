@@ -37,7 +37,7 @@ const modal = {
 const elements = new Map();
 const element = () => ({ hidden: false, textContent: "" });
 ["poiFilterModal", "poiFilterSearchContent", "poiFilterResearchContent", "poiFilterRatingContent", "poiFilterTitle",
-    "poiFilterZoomNotice", "poiFilterActions", "poiFilterPersonal", "poiFilterFavoriteOnly"].forEach(id => elements.set(id, element()));
+    "poiFilterZoomNotice", "poiFilterActions", "poiFilterPersonal", "poiFilterFavoriteOnly", "placeCriteriaSearch", "poiFilterPreviewCount"].forEach(id => elements.set(id, element()));
 
 const context = {
     console,
@@ -62,6 +62,20 @@ controller.open("search");
 assert.strictEqual(elements.get("poiFilterPersonal").hidden, false);
 assert.strictEqual(elements.get("poiFilterFavoriteOnly").checked, true);
 assert.strictEqual(context.cMapMaker.favoriteFilter, true, "opening preserves applied favorite filter");
+context.Conf.activity = { authMode: 'basic' };
+controller.searchBbox = () => '135,34,136,35';
+controller.open('search');
+assert.equal(elements.get('placeCriteriaSearch').hidden, false, 'area search is available when enabled');
+context.Conf.areaSearch.use = false;
+controller.open('search');
+assert.equal(elements.get('placeCriteriaSearch').hidden, true, 'disabled area search does not offer remote search');
+let remoteCalled = false;
+const previousApply = controller.apply;
+controller.apply = () => { remoteCalled = true; };
+controller.searchFromForm();
+assert.equal(remoteCalled, false, 'disabled area search cannot start a remote filter');
+controller.apply = previousApply;
+context.Conf.areaSearch.use = true;
 elements.get("poiFilterFavoriteOnly").checked = false;
 controller.close();
 assert.strictEqual(context.cMapMaker.favoriteFilter, true, "closing without applying preserves favorites");
@@ -91,7 +105,7 @@ controller.open("research");
 assert.strictEqual(elements.get("poiFilterResearchContent").hidden, false);
 controller.close();
 
-assert.strictEqual(showCount, 4);
+assert.strictEqual(showCount, 6);
 assert.strictEqual(hideCount, 2);
 controller.usesSearchApi = () => true;
 controller.searchBbox = () => "135,34,136,35";

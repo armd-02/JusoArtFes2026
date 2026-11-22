@@ -237,6 +237,8 @@ body.is-resizing-sidebar * {
 }
 
 #main_menu [data-requires-open-poi][hidden] { display: none !important; }
+#placeCriteriaSearch[hidden] { display: none !important; }
+#poiFilterPersonal:has(+ #poiFilterSearchContent[hidden]) { border-bottom: 0 !important; }
 
 #detailHeader .detailTitle {
     flex: 1 1 auto;

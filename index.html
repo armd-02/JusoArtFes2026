@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.min.css" />
-    <link rel="stylesheet" href="system.css?ver=artfes-stamp-legend-20261122" />
-<script type="module" src="./loader.module.js?ver=artfes-stamp-legend-20261122"></script>
+    <link rel="stylesheet" href="system.css?ver=artfes-filter-divider-20261122" />
+<script type="module" src="./loader.module.js?ver=artfes-thumbnail-hint-20261122"></script>
 </head>
 
 <body>
@@ -270,7 +270,7 @@
                 <span id="poiFilterPreviewCount" class="w-100 m-0 small text-muted" role="status"></span>
                 <button class="btn btn-light border-secondary" type="reset" form="poiFilterForm" onclick="poiFilterController.resetDraft()" data-area-label="areaSearchUi_reset"></button>
                 <button class="btn btn-success" type="button" onclick="poiFilterController.applyFromForm()"><span data-area-label="placeFilter_apply">適用</span></button>
-                <button id="placeCriteriaSearch" class="btn btn-outline-primary" type="button" onclick="poiFilterController.searchFromForm()" data-area-label="placeFilter_search"></button>
+                <button id="placeCriteriaSearch" class="btn btn-outline-primary" type="button" onclick="poiFilterController.searchFromForm()" data-area-label="placeFilter_search" hidden></button>
             </footer>
         </div>
         </div>

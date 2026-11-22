@@ -36,7 +36,6 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - `data/config-user.jsonc`: 初期位置・表示範囲、読み込み元、メニュー。
 - `data/config-system.jsonc`: 背景地図と共通設定。
 - `data/glot-custom.jsonc`: サイトの日本語・英語表示。
-- `data/higayodo2026.json`: 初期作成時の空のOSM JSON（現在は読み込み対象外）。
 - `data/config-activities.jsonc`: バックエンドの項目に対応する詳細表示。
 - `manifest.json`: コピー元のアクセス解析IDを無効化。
 - `image/higayodo2026.svg`: 起動画面・favicon。

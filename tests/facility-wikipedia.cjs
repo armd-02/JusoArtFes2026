@@ -17,7 +17,7 @@ const context = vm.createContext({
         recordView() {} },
     osmBasic: { make: () => 'BASIC', makeAreaFacilities: () => '' },
     areaSearchController: { matchReasonHtml: () => '' },
-    modalActs: { make: items => 'ACTIVITY:' + items.map(a => a.id).join(',') },
+    modalActs: { make: items => 'ACTIVITY:' + items.map(a => a.id).join(','), makePreview: () => 'PREVIEW' },
     wikimedia: { makeWikipediaOverView: () => '<div id="wikipedia">WIKIPEDIA</div>' },
     winCont: { setSidebar: async () => {}, menu_make() {}, setProgress() {}, makeDetail: params => { output = params.message; } },
     mapLibre: { viewMiniMap() {} }, location: { pathname: '/', hash: '' }, history: { replaceState() {} },
@@ -28,6 +28,7 @@ vm.runInContext('this.cMapMaker = ({ loadDetailLibraries: async () => {}, withIn
     activities = [{ id: 'one' }];
     await context.cMapMaker.viewDetail('node/1');
     assert.match(output, /<details class="facility-wikipedia">/);
+    assert(output.indexOf('PREVIEW') < output.indexOf('BASIC'));
     assert(output.indexOf('BASIC') < output.indexOf('ACTIVITY:one'));
     assert(output.indexOf('ACTIVITY:one') < output.indexOf('WIKIPEDIA'));
     selected = 'other-day';

@@ -1482,7 +1482,10 @@ class CMapMaker extends IndoorControl {
                     const modeQuery = Conf.etc.editMode && this.editModeSwitchEnabled ? "&edit=true" : "";
                     const detailUrl = this.withIndoorLevel(location.pathname + "?" + osmid + (!openid ? "" : "." + openid) + catname + modeQuery);
                     history.replaceState('', '', detailUrl + location.hash);
-                    if (actlists.length > 0) message += modalActs.make(actlists);
+                    if (actlists.length > 0) {
+                        const activityDetails = modalActs.make(actlists);
+                        message = modalActs.makePreview(actlists) + message + activityDetails;
+                    }
                     if (tags.wikipedia !== undefined) {
                         message += `<details class="facility-wikipedia"${facilityActivities.length === 0 ? " open" : ""}>
                             <summary>${glot.get("placeAboutWikipedia")}</summary>

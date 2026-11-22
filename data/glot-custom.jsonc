@@ -1,4 +1,12 @@
 {
+    "facility_activity_details": {
+        "ja": "詳しく見る",
+        "en": "View details"
+    },
+    "facility_activity_all": {
+        "ja": "この会場の催し 全{count}件",
+        "en": "All {count} activities at this venue"
+    },
     "listUnnamed": {
         "ja": "名称不明",
         "en": "Unnamed place"

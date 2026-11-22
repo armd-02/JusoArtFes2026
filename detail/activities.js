@@ -132,10 +132,57 @@ class Activities {
         return result;
     }
 
+    makePreview(activities) {
+        const [activity] = activities;
+        const escape = value => basic.htmlspecialchars(value);
+        const detailId = escape(activity.id.replace("/", ""));
+        const image = PhotoMarkerController.firstImage([activity], null, Conf.activities);
+        let photo = "";
+        let credit = "";
+        if (image.startsWith("File:")) {
+            const imageId = `facility-preview-${detailId}`;
+            photo = `<img id="${imageId}" class="facility-activity-preview-image" src="${escape(Conf.etc.loadingUrl)}" alt="">`;
+            credit = `<small id="${imageId}-copyright" class="facility-activity-preview-credit"></small>`;
+            requestAnimationFrame(() => {
+                const element = document.getElementById(imageId);
+                if (element) wikimedia.getWikiMediaImage(image, 120, element)
+                    .then(result => { if (!result) element.hidden = true; })
+                    .catch(() => { element.hidden = true; });
+            });
+        } else if (image) {
+            const thumbnail = ActivityThumbnails.forSource(activity, image);
+            const src = thumbnail === image ? image : Conf.etc.loadingUrl;
+            const thumbnailData = thumbnail === image ? ""
+                : ` data-thumbnail-url="${escape(thumbnail)}" data-original-src="${escape(image)}"`;
+            photo = `<img class="facility-activity-preview-image" src="${escape(src)}"${thumbnailData} alt="" onerror="this.hidden = true">`;
+        }
+
+        const dateConfig = Conf.eventDateFilter;
+        const dates = dateConfig?.activityDates?.[activity.id] ?? activity[dateConfig?.dateField ?? "event_dates"];
+        const date = String(activity.eventdate ?? "").trim() || (Array.isArray(dates)
+            ? dates.map(value => dateConfig?.dates?.find(item => item.value === value)?.label ?? value).join(" / ")
+            : "");
+        const allActivities = activities.length > 1
+            ? `<button type="button" class="btn btn-sm btn-link facility-activity-preview-all" onclick="modalActs.moveTo('facility-activity-list')">${escape(glot.get("facility_activity_all").replace("{count}", activities.length))}</button>`
+            : "";
+        return `<div class="facility-activity-preview">
+            <button type="button" class="facility-activity-preview-main" data-activity-id="${detailId}" onclick="modalActs.moveTo(this.dataset.activityId)">
+                ${photo}
+                <span class="facility-activity-preview-text">
+                    <strong>${escape(activity.title)}</strong>
+                    ${date ? `<span class="facility-activity-preview-date">${escape(date)}</span>` : ""}
+                    <span class="facility-activity-preview-link">${escape(glot.get("facility_activity_details"))} <span aria-hidden="true">›</span></span>
+                </span>
+            </button>
+            ${credit}
+            ${allActivities}
+        </div>`;
+    }
+
     // make activity list
     makeActivityList(actlists) {
         if (actlists.length > 1) {
-            let html = "<div class='list-group mb-2'>";
+            let html = "<div id='facility-activity-list' class='list-group mb-2'>";
             for (let act of actlists) {
                 html += `<a href="#" class="list-group-item list-group-item-action" onclick="modalActs.moveTo('${act.id.replace("/", "")}')">${act.title}</a>`;
             }

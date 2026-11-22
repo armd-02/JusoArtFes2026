@@ -296,6 +296,9 @@ body.is-resizing-sidebar * {
     min-width: 0;
 }
 
+.list-visited-count { font-size: .72em; font-weight: normal; white-space: nowrap; }
+#bottom-pane.sidebar-minimized #listVisitedCount { display: none; }
+
 .sidebar-window-controls .btn {
     display: inline-flex;
     align-items: center;

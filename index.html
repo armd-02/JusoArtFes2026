@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.min.css" />
-    <link rel="stylesheet" href="system.css?ver=artfes-filter-divider-20261122" />
-<script type="module" src="./loader.module.js?ver=artfes-thumbnail-hint-20261122"></script>
+    <link rel="stylesheet" href="system.css?ver=artfes-visited-count-20261122" />
+<script type="module" src="./loader.module.js?ver=artfes-visited-count-20261122"></script>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
                     <!-- list -->
                     <div id="listPanel" class="accordion-item">
                         <h2 class="d-flex align-items-center m-0 p-2" id="listHeader">
-                            <span class="detailTitle ms-1" id="listTitle"></span>
+                            <span class="detailTitle ms-1"><span id="listTitle"></span><span id="listVisitedCount" class="list-visited-count" aria-live="polite" hidden></span></span>
                             <span id="changesButtonDesktop" class="ms-2 flex-shrink-0"></span>
                             <span id="listWindowControls" class="sidebar-window-controls btn-group ms-auto"
                                 role="group" aria-label="リスト表示サイズ" data-glot-aria-label="sidebar_listSize">

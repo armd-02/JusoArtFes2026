@@ -941,6 +941,10 @@
         "ja": "絞り込み",
         "en": "Detailed filters"
     },
+    "listVisitedCount": {
+        "ja": "（訪問済み：{visited}件/{total}件）",
+        "en": " (Visited: {visited}/{total})"
+    },
     "placeFilter_apply": {
         "ja": "適用",
         "en": "Apply"

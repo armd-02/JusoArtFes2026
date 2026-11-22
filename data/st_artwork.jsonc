@@ -1776,15 +1776,15 @@
             "id": 14058443330,
             "lat": 34.7167106,
             "lon": 135.4811025,
-            "timestamp": "2026-07-29T11:28:11Z",
-            "version": 4,
-            "changeset": 186578554,
+            "timestamp": "2026-11-22T05:55:46Z",
+            "version": 5,
+            "changeset": 192295692,
             "user": "K_Sakanoshita",
             "uid": 389520,
             "tags": {
                 "artist_name": "BAKIBAKI",
                 "artwork_type": "mural",
-                "name": "BAKIBAKI3",
+                "name": "EXPO 2025 大阪・関西万博 西ゲート壁画『希望の系譜』",
                 "tourism": "artwork",
                 "website": "https://www.yodokabe.net/artist/bakibaki-3"
             }

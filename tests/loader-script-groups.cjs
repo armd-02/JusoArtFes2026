@@ -14,7 +14,10 @@ async function boot(manifest) {
         location: { origin: 'https://example.test' },
         CSS: { escape: value => value },
         setTimeout: () => 1, clearTimeout() {},
-        fetch: async () => ({ ok: true, json: async () => manifest }),
+        JSON5: { parse: text => JSON.parse(text) },
+        fetch: async (url) => String(url).includes('config-user.jsonc')
+            ? { ok: true, text: async () => JSON.stringify({ google: { Analytics: 'G-TEST' } }) }
+            : { ok: true, json: async () => manifest },
         document: {
             getElementById: () => null,
             querySelector: selector => selector === ".startup-splash-image"
@@ -64,10 +67,13 @@ async function boot(manifest) {
     app.nodes.find(node => node.tag === 'link').onload();
     await flush();
     assert.equal(app.initialized(), 1);
+    const gtag = scripts().find(node => String(node.src).includes('gtag/js?id=G-TEST'));
+    assert.ok(gtag, 'gtag.js is injected with the config-user.jsonc analytics id');
+    assert.ok(app.context.dataLayer.some(entry => entry[0] === 'config' && entry[1] === 'G-TEST'));
 
     const lazy = app.context.loadLazyScriptGroup('detail');
     assert.equal(app.context.loadLazyScriptGroup('detail'), lazy);
-    const detail = scripts().slice(5);
+    const detail = scripts().filter(node => String(node.src).includes('detail'));
     assert.equal(detail.length, 2); // Lazy ordered groups download together too.
     assert.ok(detail.every(node => node.async === false));
     detail.forEach(node => node.onload());
@@ -75,12 +81,14 @@ async function boot(manifest) {
     assert.equal(app.errors.length, 0);
 
     const legacy = await boot({ scripts: ['first.js', 'second.js'] });
-    assert.equal(legacy.nodes.length, 2);
-    assert.ok(legacy.nodes.every(node => node.async === false));
-    legacy.nodes[0].onload();
+    // The gtag script is injected separately and is async; only the app scripts are ordered.
+    const legacyScripts = legacy.nodes.filter(node => node.tag === 'script' && !String(node.src).includes('gtag'));
+    assert.equal(legacyScripts.length, 2);
+    assert.ok(legacyScripts.every(node => node.async === false));
+    legacyScripts[0].onload();
     await flush();
     assert.equal(legacy.initialized(), 0);
-    legacy.nodes[1].onload();
+    legacyScripts[1].onload();
     await flush();
     assert.equal(legacy.initialized(), 1);
 

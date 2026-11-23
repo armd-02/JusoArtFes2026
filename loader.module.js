@@ -63,9 +63,19 @@ window.hideStartupStatus = hideStartupStatus;
         styles = [],
         scripts = [],
         scriptGroups = [],
-        lazyScriptGroups = {},
-        gId = ""
+        lazyScriptGroups = {}
     } = manifest;
+
+    // 測定IDは manifest.json ではなく data/config-user.jsonc の google.Analytics が正。
+    // スクリプト群と並行して取りにいき、確定後に gtag を注入する。
+    const configTextPromise = (async () => {
+        const res = await fetch(withAssetVersion("./data/config-user.jsonc"));
+        if (!res.ok) throw new Error(`config-user load failed: ${res.status}`);
+        return res.text();
+    })().catch((error) => {
+        console.warn("config-user.jsonc unavailable; starting without Google Analytics", error);
+        return null;
+    });
 
     const trimNonEmpty = (items) =>
         (items || []).map(v => String(v).trim()).filter(Boolean);
@@ -175,9 +185,9 @@ window.hideStartupStatus = hideStartupStatus;
     // 初期化時にはCSSとJSの両方が揃っていることを保証する。
     await Promise.all([stylesReady, scriptsReady]);
 
-    // Google Analytics は本体初期化を待たせない。
+    // Google Analytics は本体初期化を待たせない。config の fetch 完了後に注入する。
     // gtag.js の URL は ?id=G-XXXX が正しい。
-    if (gId) {
+    const injectGtag = (gId) => {
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function () {
             window.dataLayer.push(arguments);
@@ -191,7 +201,19 @@ window.hideStartupStatus = hideStartupStatus;
         }).catch(err => {
             console.warn(err);
         });
-    }
+    };
+
+    configTextPromise.then((text) => {
+        let gId = "";
+        try {
+            // cmapmaker.js と同じく JSON5 で解釈する（スクリプト群の読み込み済みグローバル）。
+            const config = JSON5.parse(text);
+            gId = String(config?.google?.Analytics ?? "").trim();
+        } catch (error) {
+            console.warn("config-user.jsonc parse failed; starting without Google Analytics", error);
+        }
+        if (gId) injectGtag(gId);
+    });
 
     setStartupStatus(window.startupText("settings"));
     cMapMaker.init();
